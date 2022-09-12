@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import Whitelogo from "../assets/chip/whiteLogo.jsx";
-import Clogo from "../assets/chip/clogo.jsx";
-import Iconclose from "../assets/nav/icon-close.jsx";
-import Iconburger from "../assets/nav/icon-hamburger.jsx";
+import Whitelogo from "../../assets/chip/whiteLogo.jsx";
+import Clogo from "../../assets/chip/clogo.jsx";
+import Iconclose from "../../assets/nav/icon-close.jsx";
+import Iconburger from "../../assets/nav/icon-hamburger.jsx";
 // https://github.com/Sridhar-C-25/space-tourism-website_react_tailwind/blob/main/src/components/Nav.jsx
 const Nav = ({ size, setopen, open }) => {
   const menus = [

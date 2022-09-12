@@ -1,5 +1,5 @@
 import React from "react";
-import Testing from "./Testing";
+import Testing from "./Hero/AnimationLogic";
 
 function Hero() {
   return (
