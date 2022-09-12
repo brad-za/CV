@@ -6,19 +6,36 @@ import WelcomeScreen from "./Hero/WelcomeScreen.jsx";
 function Testing() {
   const [size, setSize] = useState(false);
   const [moveScreenUp, setMoveScreenUp] = useState(true);
+  const moveScreenDown = useRef(false);
   const [animationIter, setAnimationIter] = useState(0);
+  const screenSizeChanging = useRef(false);
+  const ScreenSizeChangingTimer = useRef(0);
+  const moveScreenDownTimer = useRef(0);
+  const busyAnimationTimer = useRef(0);
+
+  const animationLogic = () => {
+    console.log(
+      "step 1: screen SIZE countdown has started 12s until 5s animation, 17s until completely animated"
+    );
+    ScreenSizeChangingTimer.current = setTimeout(() => {
+      console.log("step 2: screen SIZE animation should be taking place");
+      setSize(!size);
+      screenSizeChanging.current = true;
+      busyAnimationTimer.current = setTimeout(() => {
+        setMoveScreenUp(!moveScreenUp);
+        console.log(
+          "step 3: screen slide up animation should be taking place for 5 seconds."
+        );
+      }, "5000");
+    }, "12000");
+  };
 
   useEffect(() => {
-    const screenSizeTimer = setTimeout(() => {
-      setSize(!size);
-      setMoveScreenUp(!moveScreenUp);
-    }, "12000");
-
-    const screenMoveUpTimer = setTimeout(() => {}, "12000");
+    animationLogic();
 
     return () => {
-      clearTimeout(screenSizeTimer);
-      clearTimeout(screenMoveUpTimer);
+      clearTimeout(ScreenSizeChangingTimer.current);
+      clearTimeout(busyAnimationTimer.current);
     };
   }, [size]);
 

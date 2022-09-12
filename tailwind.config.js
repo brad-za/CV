@@ -24,8 +24,9 @@ module.exports = {
         multiple: "width , height",
       },
       animation: {
-        moveScreenUp: "moveScreenUp 12s ",
-        moveScreenDown: "moveScreenDown 12s ",
+        moveScreenUp: "moveScreenUp 5s ",
+        moveScreenDown: "moveScreenDown 5s ",
+
         moveUp: "moveUp 3s ",
         moveDown: "moveDown 3s",
         moveScreen: "moveScreen 24s infinite",
@@ -36,11 +37,22 @@ module.exports = {
           "0%": {
             transform: "translateY(0%)",
           },
-          "50%": {
-            transform: "translateY(0%)",
-          },
+          //   "50%": {
+          //     transform: "translateY(0%)",
+          //   },
           "100%": {
             transform: "translateY(-100%)",
+          },
+        },
+        moveScreenDown: {
+          "0%": {
+            transform: "translateY(-100%)",
+          },
+          //   "50%": {
+          //     transform: "translateY(-100%)",
+          //   },
+          "100%": {
+            transform: "translateY(0%)",
           },
         },
         moveUp: {
@@ -59,18 +71,6 @@ module.exports = {
 
           "100%": {
             transform: "translateY(-40px)",
-          },
-        },
-
-        moveScreenDown: {
-          "0%": {
-            transform: "translateY(-100%)",
-          },
-          "50%": {
-            transform: "translateY(-100%)",
-          },
-          "100%": {
-            transform: "translateY(0%)",
           },
         },
         moveScreen: {
