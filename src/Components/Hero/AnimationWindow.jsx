@@ -3,34 +3,43 @@ import BabyNavbar from "./BabyNavbar.jsx";
 import AppScreen from "./AppsScreen.jsx";
 import WelcomeScreen from "./WelcomeScreen.jsx";
 
-function AnimationWindow({ children, size }) {
+function AnimationWindow({ children, size, perspectiveStyle }) {
   return (
     <div
-      className={
-        "bg-blue- relative flex w-[1000px] content-center justify-center"
-      }
+      style={{
+        ...perspectiveStyle,
+      }}
+      className={`bg-blue- relative ml-20 flex w-[1000px] justify-center rounded-xl `}
     >
       <div
-        style={{ clipPath: "inset(0 0 0 0 round 0% 0% 0.5rem 0%)" }}
-        className={`bg-blue- flex content-center items-center justify-center rounded-lg duration-[5000ms] ease-in-out ${
-          size ? "h-[580px] w-[300px]" : "h-[620px] w-[1000px]"
-        }`}
+        style={{
+          // offsetX, offsetY, blur-radius, colour
+          borderBottomRightRadius: "8px",
+          boxShadow: "10px 40px 40px -20px #888888",
+        }}
       >
         <div
-          className={`absolute bottom-0 right-0 rounded-br-lg bg-blue-200 px-8 py-6`}
+          style={{ clipPath: "inset(0 0 0 0 round 0% 0% 0.5rem 0%)" }}
+          className={`bg-red- flex content-center items-center justify-center rounded-lg duration-[5000ms] ease-in-out ${
+            size ? "h-[580px] w-[300px]" : "h-[620px] w-[1000px]"
+          }`}
         >
-          <p className="">scroll</p>
-        </div>
-        <div
-          className={`bg-pink- rounded-xl border-2 border-black transition-multiple duration-[5000ms]
-                ${
-                  size
-                    ? "h-[580px] w-[300px] text-center"
-                    : " h-[620px] w-[1000px] "
-                }`}
-        >
-          <BabyNavbar size={size} />
-          {children}
+          <div
+            className={`absolute bottom-0 right-0 rounded-br-lg bg-blue-500 px-8 py-6`}
+          >
+            <p className="">scroll</p>
+          </div>
+          <div
+            className={`bg-pink- rounded-xl border-2 border-black transition-multiple duration-[5000ms]
+                    ${
+                      size
+                        ? "h-[580px] w-[300px] text-center"
+                        : " h-[620px] w-[1000px] "
+                    }`}
+          >
+            <BabyNavbar size={size} />
+            {children}
+          </div>
         </div>
       </div>
     </div>

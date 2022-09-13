@@ -41,24 +41,29 @@ function AnimationLogic({}) {
       clearTimeout(busyAnimationTimer.current);
     };
   }, [animationIter.current]);
-
+  const perspectiveStyle = {
+    transform: "rotateY(11deg)",
+    perspective: "1000px",
+  };
   return (
-    <AnimationWindow size={size}>
-      <div
-        style={{ animationFillMode: "forwards" }}
-        className={`bg-slate- h-full flex-row  rounded-lg
-                ${
-                  animationIter.current > 1 &&
-                  (moveScreenUp
-                    ? " animate-moveScreenUp"
-                    : " animate-moveScreenDown")
-                }
-                `}
-      >
-        <WelcomeScreen moveScreenUp={moveScreenUp} size={size} />
-        <AppScreen moveScreenUp={moveScreenUp} size={size} />
-      </div>
-    </AnimationWindow>
+    <div style={perspectiveStyle} className=" bg-blue-">
+      <AnimationWindow perspectiveStyle={perspectiveStyle} size={size}>
+        <div
+          style={{ animationFillMode: "forwards" }}
+          className={`bg-slate- h-full rounded-lg
+                    ${
+                      animationIter.current > 1 &&
+                      (moveScreenUp
+                        ? " animate-moveScreenUp"
+                        : " animate-moveScreenDown")
+                    }
+                    `}
+        >
+          <WelcomeScreen moveScreenUp={moveScreenUp} size={size} />
+          <AppScreen moveScreenUp={moveScreenUp} size={size} />
+        </div>
+      </AnimationWindow>
+    </div>
   );
 }
 

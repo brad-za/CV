@@ -8,7 +8,7 @@ import Iconburger from "../../assets/nav/icon-hamburger.jsx";
 const Nav = ({ size, setopen, open }) => {
   const menus = [
     { name: "x", href: "/", id: "home" },
-    { name: "x", href: "/testing", id: "testing" },
+    { name: "x", href: "", id: "testing" },
   ];
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-white hover:border-white md:py-5";

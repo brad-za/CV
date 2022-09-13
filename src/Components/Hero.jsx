@@ -1,10 +1,12 @@
 import React from "react";
-import Testing from "./Hero/AnimationLogic";
+import AnimationLogic from "./Hero/AnimationLogic";
+import TextAnimation from "./Hero/TextAnimation";
 
 function Hero() {
   return (
-    <div className=" relative flex h-[80vh] w-full content-center items-center justify-center">
-      <Testing />
+    <div className="jusify-center  bg-pink- relative flex h-[82vh]  items-center">
+      <AnimationLogic className="" />
+      <TextAnimation />
     </div>
   );
 }
