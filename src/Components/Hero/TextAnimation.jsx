@@ -3,11 +3,11 @@ import Typical from "react-typical";
 
 function TextAnimation() {
   return (
-    <div className="bg-purple- flex w-full content-center items-center justify-center">
+    <div className="bg-purple- m-auto flex content-center items-center justify-center font-bold text-white">
       <div className=" bg-green- flex w-[800px] space-x-3 text-8xl ">
         <h1>I like to </h1>
         {/* Text to Animate */}
-        <strong className="bg-yellow-400 px-1 pb-5">
+        <h1 className="bg-yellow-400 px-1 pb-5 text-black">
           <Typical
             steps={[
               "code",
@@ -22,7 +22,7 @@ function TextAnimation() {
             wrapper="p"
             loop={Infinity}
           />
-        </strong>
+        </h1>
       </div>
     </div>
   );

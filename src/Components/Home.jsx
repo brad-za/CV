@@ -12,7 +12,6 @@ function Home() {
       <Seperator />
       <About />
       <Seperator />
-
       <Abilities />
     </div>
   );

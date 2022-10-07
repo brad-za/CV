@@ -1,5 +1,10 @@
 module.exports = {
   content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
+  variants: {
+    extend: {
+      display: ["group-hover"],
+    },
+  },
   theme: {
     fontFamily: {
       poppins: ["Poppins"],
@@ -101,5 +106,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-scoped-groups")({
+      groups: ["one", "two"],
+    }),
+  ],
 };

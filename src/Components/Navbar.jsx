@@ -9,7 +9,7 @@ const Nav = () => {
   let [open, setopen] = useState(false);
   const menus = [
     { name: "Home", href: "/", id: "home" },
-    { name: "Hero", href: "/hero", id: "hero" },
+    { name: "Blog", href: "/blog", id: "blog" },
   ];
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-white hover:border-white md:py-5";
