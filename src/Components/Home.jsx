@@ -13,6 +13,7 @@ function Home() {
       <About />
       <Seperator />
       <Abilities />
+      <Seperator />
     </div>
   );
 }
