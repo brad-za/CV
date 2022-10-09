@@ -3,34 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { getCategories } from "../../services/services.js";
 
-const languages3 = [
-  {
-    name: "Javascript",
-    slug: "js",
-    categories: [
-      {
-        name: "React",
-        slug: "react",
-        posts: [
-          { title: "Part 1: learning to react", slug: "part1-react" },
-          { title: "Part 2: understanding react", slug: "part2-react" },
-        ],
-      },
-    ],
-  },
-];
-
 const Header = () => {
   const [languages, setLanguages] = useState([]);
 
-  useEffect(async () => {
-    const categories2 = await getCategories();
+  useEffect(() => {
+    const categories2 = getCategories().then((data) =>
+      setLanguages(data.map((category) => category.node))
+    );
 
-    const data = categories2.map((category) => category.node);
-
-    // console.log(data[0]);
-    // console.log(languages3[0]);
-    setLanguages(data);
+    return () => categories2;
   }, []);
 
   return (

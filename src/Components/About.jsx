@@ -3,7 +3,10 @@ import me from "../assets/links/me.jpg";
 
 function About() {
   return (
-    <div className="m-auto flex max-h-[600px] max-w-[960px] items-center justify-center rounded-3xl bg-[#bdc0c238] px-4 py-4 shadow-xl hover:shadow-2xl">
+    <div
+      href="about"
+      className="m-auto flex max-h-[600px] max-w-[950px] items-center justify-center rounded-3xl bg-[#bdc0c238] px-4 py-4 shadow-xl hover:shadow-2xl"
+    >
       <img src={me} className="h-96 rounded-full shadow-lg" />
       <div className="mx-16 h-[200px] w-[1px]" />
       <div className="bg- w-1/3 flex-row items-center justify-center">
