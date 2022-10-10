@@ -12,9 +12,9 @@ const BlogLayout = () => {
     <Routes>
       <Route path="/">
         <Route path="" element={<Blog />} />
-        <Route path="/:language/" element={<Language />} />
-        <Route path="/:language/:category/" element={<Category />} />
-        <Route path="/:language/:category/:post/" element={<Article />} />
+        <Route path="/:language" element={<Language />} />
+        <Route path="/:language/:category" element={<Category />} />
+        <Route path="/:language/:category/:post" element={<Article />} />
       </Route>
     </Routes>
   );

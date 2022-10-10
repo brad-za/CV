@@ -16,13 +16,11 @@ const PostDetails = ({ posts }) => {
 
       if (obj.code) {
         modifiedText = (
-          <div>
-            <br />
+          <React.Fragment>
             <code className=" bg-[#4949496a]" key={index}>
               {text}
             </code>
-            <br />
-          </div>
+          </React.Fragment>
         );
       }
 
