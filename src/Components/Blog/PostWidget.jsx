@@ -37,37 +37,38 @@ const PostWidget = ({ slug, categories }) => {
         // console.log(post.language.icon.url);
         // post.language.slug
         return (
-          <div
-            key={post.title}
-            className="mb-4 flex w-full items-center rounded-lg p-3 hover:bg-[#9b99995b]"
+          <Link
+            to={`${post.language.slug}/${post.categories[0].slug}/${post.slug}`}
           >
-            <div className="w-16 flex-none">
-              <img
-                src={post.featuredImage.url}
-                alt={post.title}
-                height="60px"
-                width="60px"
-              />
-            </div>
-            <div className="ml-4 flex-grow">
-              <Link
-                className="flex items-center justify-between"
-                to={`${post.language.slug}/${post.categories[0].slug}/${post.slug}`}
-              >
-                {post.title}
+            <div
+              key={post.title}
+              className="mb-4 flex w-full items-center rounded-lg p-3 hover:bg-[#9b99995b]"
+            >
+              <div className="w-16 flex-none">
                 <img
-                  alt={post.language.name}
-                  height="20px"
-                  width="20px"
-                  className="rounded-full  shadow-xl"
-                  src={post.language.icon.url}
+                  src={post.featuredImage.url}
+                  alt={post.title}
+                  height="60px"
+                  width="60px"
                 />
-              </Link>
-              <p className=" text-right text-xs text-gray-500">
-                {moment(post.createdAt).format("DD MMM YY")}
-              </p>
+              </div>
+              <div className="ml-4 flex-grow">
+                <div className="flex items-center justify-between">
+                  {post.title}
+                  <img
+                    alt={post.language.name}
+                    height="20px"
+                    width="20px"
+                    className="rounded-full  shadow-xl"
+                    src={post.language.icon.url}
+                  />
+                </div>
+                <p className=" text-right text-xs text-gray-500">
+                  {moment(post.createdAt).format("DD MMM YY")}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </div>
