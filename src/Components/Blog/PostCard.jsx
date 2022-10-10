@@ -6,7 +6,7 @@ const PostCard = ({ post }) => {
   const { language, category } = useParams();
 
   return (
-    <div className="mb-8 w-[650px] rounded-lg bg-white  pb-12 text-black shadow-lg lg:w-[950px] lg:p-8">
+    <div className="mb-8 w-full rounded-lg bg-white pb-12  text-black shadow-lg md:max-w-[650px] lg:max-w-[950px] lg:p-8">
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
         <img
           src={post.featuredImage.url}
