@@ -92,7 +92,7 @@ const PostDetails = ({ posts }) => {
         {posts.map((post) => (
           <div
             key={post.title}
-            className="mb-8  w-[650px] rounded-lg bg-white pb-12 shadow-lg lg:w-[950px] lg:p-8"
+            className="mb-8  max-w-[650px] rounded-lg bg-white pb-12 shadow-lg lg:w-[950px] lg:p-8"
           >
             <div className="relative mb-6 overflow-hidden shadow-md">
               <img
