@@ -9,9 +9,9 @@ import "./style/globals.scss";
 ReactDOM.render(
   <React.StrictMode>
     <HelmetProvider>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>,
   document.getElementById("root")

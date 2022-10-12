@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
-import PostCard from "./PostCard";
-import { getPosts } from "../../services/services";
+import React from "react";
+import Header from "./Header";
 import Widgets from "./Widgets";
+import BlogNavigation from "../Blog/BlogNavigation";
 
 const Blog = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const _posts = getPosts().then((data) =>
-      setPosts(data.map((post) => post.node))
-    );
-
-    return () => _posts;
-  }, []);
-
   return (
-    <div className=" mb-16 flex flex-col items-end  px-10 ">
-      {posts.map((post) => (
-        <PostCard post={post} key={post.title} />
-      ))}
-    </div>
+    <>
+      <Header />
+      {/* <div className="relative flex content-center justify-center gap-6 px-8"> */}
+      <div className="grid grid-cols-1  text-center lg:grid-cols-12">
+        <div className="col-span-1 lg:col-span-8">
+          <BlogNavigation />
+        </div>
+        <div className="col-span-1 lg:col-span-4">
+          <Widgets />
+        </div>
+      </div>
+    </>
   );
 };
 

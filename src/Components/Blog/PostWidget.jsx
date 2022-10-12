@@ -39,11 +39,9 @@ const PostWidget = ({ slug, categories }) => {
         return (
           <Link
             to={`${post.language.slug}/${post.categories[0].slug}/${post.slug}`}
+            key={post.title}
           >
-            <div
-              key={post.title}
-              className="mb-4 flex w-full items-center rounded-lg p-3 hover:bg-[#9b99995b]"
-            >
+            <div className="mb-4 flex w-full items-center rounded-lg p-3 hover:bg-[#9b99995b]">
               <div className="w-16 flex-none">
                 <img
                   src={post.featuredImage.url}

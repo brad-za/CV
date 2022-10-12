@@ -8,8 +8,8 @@ import Iconburger from "../assets/nav/icon-hamburger.jsx";
 const Nav = () => {
   let [open, setopen] = useState(false);
   const menus = [
-    { name: "Home", href: "/", id: "home" },
-    { name: "Blog", href: "/blog", id: "blog" },
+    { name: "Home", href: "/", id: "home", end: true },
+    { name: "Blog", href: "/blog", id: "blog", end: false },
   ];
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-white hover:border-white md:py-5";
@@ -45,6 +45,7 @@ const Nav = () => {
               className={({ isActive }) =>
                 isActive ? activeClassName : inActiveClassName
               }
+              end={menu.end}
             >
               {menu.name}
             </NavLink>

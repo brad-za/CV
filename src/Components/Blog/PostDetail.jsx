@@ -1,89 +1,10 @@
 import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
+import RichText from "./RichText";
 import Widgets from "./Widgets";
 
 const PostDetails = ({ posts }) => {
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    // console.log(obj);
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
-
-      if (obj.code) {
-        modifiedText = (
-          <React.Fragment>
-            <code className=" bg-[#4949496a]" key={index}>
-              {text}
-            </code>
-          </React.Fragment>
-        );
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
-    }
-
-    switch (type) {
-      case "block-quote":
-        return (
-          <blockquote
-            key={index}
-            className="mb-4 border-l-4 border-[#2a2a2ac4] pl-4 text-xl"
-          >
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </blockquote>
-        );
-      case "heading-three":
-        return (
-          <h3 key={index} className="mb-4 text-xl font-semibold">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h3>
-        );
-      case "paragraph":
-        return (
-          <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        );
-      case "heading-four":
-        return (
-          <h4 key={index} className="text-md mb-4 font-semibold">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h4>
-        );
-      case "image":
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        );
-      default:
-        return modifiedText;
-    }
-  };
-
   return (
     <div className="flex justify-end  text-left text-black">
       <div className="mb-16 px-10 ">
@@ -152,8 +73,9 @@ const PostDetails = ({ posts }) => {
                   </div>
                 </div>
               </div>
-              <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
-              {post.content.raw.children.map((typeObj, index) => {
+              <h1 className="mb-8 pt-5 text-3xl font-semibold">{post.title}</h1>
+              <RichText contents={post.content.raw.children} />
+              {/* {post.content.raw.children.map((typeObj, index) => {
                 const children = typeObj.children.map((item, itemindex) =>
                   getContentFragment(itemindex, item.text, item)
                 );
@@ -163,7 +85,7 @@ const PostDetails = ({ posts }) => {
                   typeObj,
                   typeObj.type
                 );
-              })}
+              })} */}
             </div>
           </div>
         ))}
