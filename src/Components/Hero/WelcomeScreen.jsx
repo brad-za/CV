@@ -10,14 +10,14 @@ function WelcomeScreen({ changePoes, size }) {
     `}
     >
       <div
-        className={`text- bg-purple- rounded-xl font-bold text-white duration-[5000ms] ease-in-out ${
+        className={`text- bg-purple- rounded-xl font-bold text-chipWhite duration-[5000ms] ease-in-out ${
           !size ? " text-7xl leading-[60px]" : " min-w-[200px] text-2xl"
         }`}
       >
         <p className="mt-4">Welcome to my interactive CV</p>
       </div>
       <div
-        className={`bg-green- mt-24 flex flex-wrap content-center items-center rounded-xl text-white duration-[5000ms] ease-in-out ${
+        className={`bg-green- mt-24 flex flex-wrap content-center items-center rounded-xl text-chipWhite duration-[5000ms] ease-in-out ${
           !size ? " ml-10 text-2xl font-bold " : " justify-center"
         }`}
       >

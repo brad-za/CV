@@ -6,12 +6,12 @@ import Widgets from "./Widgets";
 
 const PostDetails = ({ posts, setTableOfContents }) => {
   return (
-    <div className="flex justify-end  text-left text-black">
+    <div className="flex justify-end  text-left text-chipWhite">
       <div className="mb-16 px-10 ">
         {posts.map((post) => (
           <div
             key={post.title}
-            className="mb-8 w-full rounded-lg bg-white pb-12 shadow-lg md:max-w-[650px] lg:max-w-[950px] lg:p-8"
+            className="mb-8 w-full rounded-lg bg-[#ffffff14] pb-12 shadow-lg md:max-w-[650px] lg:max-w-[950px] lg:p-8"
           >
             <div className="relative mb-6 overflow-hidden shadow-md">
               <img
@@ -31,7 +31,7 @@ const PostDetails = ({ posts, setTableOfContents }) => {
                       className="rounded-full align-middle shadow-xl"
                       src={post.author.photo.url}
                     />
-                    <p className="ml-2 inline align-middle text-lg font-medium text-gray-700">
+                    <p className="text-chipwhite ml-2 inline align-middle text-lg font-medium">
                       {post.author.name}
                     </p>
                   </div>
@@ -47,17 +47,17 @@ const PostDetails = ({ posts, setTableOfContents }) => {
                         className="rounded-full align-middle shadow-xl"
                         src={post.language.icon.url}
                       />
-                      <p className="ml-2 inline  text-lg font-medium text-gray-700">
+                      <p className="ml-2 inline  text-lg font-medium text-chipWhite">
                         {post.language.name}
                       </p>
                     </Link>
                   </div>
-                  <div className="ml-5 font-medium  text-gray-700">
+                  <div className="ml-5 font-medium  text-chipWhite">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className=" inline h-6 w-6 text-yellow-400"
+                      className=" mr-1 inline h-8 w-8 text-yellow-400"
                       fill="none"
-                      viewBox="0 0 24 24"
+                      viewBox="1 1 24 24"
                       stroke="currentColor"
                     >
                       <path

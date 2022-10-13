@@ -3,7 +3,7 @@ import Typical from "react-typical";
 
 function TextAnimation() {
   return (
-    <div className="bg-purple- m-auto flex content-center items-center justify-center font-bold text-white">
+    <div className="bg-purple- m-auto flex content-center items-center justify-center font-bold text-chipWhite">
       <div className=" bg-green- flex w-[800px] space-x-3 text-8xl ">
         <h1>I like to </h1>
         {/* Text to Animate */}

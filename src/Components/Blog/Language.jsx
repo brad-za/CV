@@ -17,7 +17,7 @@ const Language = () => {
   }, [language]);
 
   return (
-    <div className=" text-white">
+    <div className=" text-chipWhite">
       <div className=" mb-16 flex flex-col items-end  px-10 ">
         {posts.map((post) => (
           <PostCard post={post} key={post.title} />

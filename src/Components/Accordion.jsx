@@ -97,10 +97,10 @@ export default function Example() {
         <Accordion
           open={open === index + 1}
           onClick={() => handleOpen(index + 1)}
-          className="z-10 m-2 font-semibold text-white backdrop-blur-md"
+          className="z-10 m-2 font-semibold text-chipWhite backdrop-blur-md"
           key={index}
         >
-          <AccordionHeader className="leading-wide rounded-t-xl bg-[#ffffff11] p-4 text-3xl text-white shadow-md backdrop-blur-md ">
+          <AccordionHeader className="leading-wide rounded-t-xl bg-[#ffffff11] p-4 text-3xl text-chipWhite shadow-md backdrop-blur-md ">
             {`${index + 1}) ${faq.question}`}
           </AccordionHeader>
           <AccordionBody className="whitespace-pre-wrap rounded-b-xl  bg-[rgba(255,255,255,0.03)] p-10 text-xl font-semibold">

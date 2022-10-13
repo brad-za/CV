@@ -26,7 +26,7 @@ const RichText = ({ contents, setTableOfContents }) => {
       if (obj.code) {
         modifiedText = (
           <React.Fragment>
-            <code className=" bg-[#4949496a]" key={index}>
+            <code className="rounded-lg bg-[#ffffff25]" key={index}>
               {text}
             </code>
           </React.Fragment>
@@ -47,7 +47,7 @@ const RichText = ({ contents, setTableOfContents }) => {
         return (
           <blockquote
             key={index}
-            className="mb-4 border-l-4 border-yellow-400 pl-4 text-xl"
+            className="mb-4 border-l-4 border-yellow-400 bg-[#ffffff14] pl-4 text-xl"
           >
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
@@ -128,7 +128,7 @@ const RichText = ({ contents, setTableOfContents }) => {
         return (
           <blockquote
             key={index}
-            className="mb-4 rounded-lg border bg-gray-300 pl-4  outline outline-offset-4 outline-black"
+            className="mb-4 rounded-lg border bg-gray-300 pl-4 text-black outline outline-offset-4 outline-black"
           >
             {modifiedText.map((item, i) => (
               <code key={i}>{item}</code>
@@ -225,14 +225,19 @@ const RichText = ({ contents, setTableOfContents }) => {
       </div>
       {/* <IframeWrapper id="ce38588377fabc3bda4f3938baa47968" /> */}
       {tableOfContents.length ? (
-        <div className="m-3 mb-10 rounded-xl bg-gray-200 p-5">
-          <h1 className="text-xl font-bold underline underline-offset-2">
+        <div className="m-3 mb-10 rounded-xl bg-[#ffffff14] p-5">
+          <h1 className="mb-2 text-xl font-bold underline underline-offset-2">
             Table of contents
           </h1>
           <ol>
             {tableOfContents.map((content, i) => {
               return (
-                <li key={i} className={`ml-${content.indent * 2}`}>
+                <li
+                  key={i}
+                  className={`ml-${
+                    content.indent * 2
+                  } underline-white rounded-lg p-2 hover:bg-[#9b99995b] hover:underline`}
+                >
                   <Link
                     onClick={() => {
                       const anchorId = document.getElementById(content.id);

@@ -11,9 +11,9 @@ const Nav = ({ size, setopen, open }) => {
   //     { name: "x", href: "", id: "testing" },
   //   ];
   //   let inActiveClassName =
-  //     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-white hover:border-white md:py-5";
+  //     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
   //   let activeClassName =
-  //     "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-white border-white md:py-5";
+  //     "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
   return (
     <nav className="bg- relative z-50 flex w-full content-center items-center justify-between rounded-t-lg pt-[] ">
       {/* <div

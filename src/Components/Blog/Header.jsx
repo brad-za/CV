@@ -32,6 +32,11 @@ const Header = () => {
     // };
   }, [params]);
 
+  let inActiveClassName =
+    "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
+  let activeClassName =
+    "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
+
   useEffect(() => {
     const categories2 = getCategories().then((data) =>
       setLanguages(data.map((category) => category.node))
@@ -56,7 +61,6 @@ const Header = () => {
           ))}
         </div>
       </div>
-      {header ? <h1 className=" text-3xl font-semibold">{header}</h1> : <></>}
     </div>
   );
 };

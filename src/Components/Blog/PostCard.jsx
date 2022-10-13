@@ -6,7 +6,7 @@ const PostCard = ({ post }) => {
   const { language, category } = useParams();
 
   return (
-    <div className="group relative mb-8 w-full rounded-lg bg-white pb-12  text-black shadow-lg outline-yellow-400 transition duration-500 ease-in hover:-translate-y-1 hover:outline md:max-w-[650px] lg:max-w-[950px] lg:p-8">
+    <div className="group relative mb-8 w-full rounded-lg bg-[#ffffff14] pb-12 text-chipWhite shadow-lg  outline-yellow-400 transition duration-500 ease-in hover:-translate-y-1 hover:outline md:max-w-[650px] lg:max-w-[950px] lg:p-8">
       <Link
         className="absolute top-0 right-0 h-full w-full "
         to={
@@ -25,7 +25,7 @@ const PostCard = ({ post }) => {
         />
       </div>
 
-      <h1 className="mb-8 cursor-pointer text-center text-3xl font-semibold transition duration-200 group-hover:text-pink-600">
+      <h1 className="mb-8 cursor-pointer text-center text-3xl font-semibold transition duration-200 group-hover:text-yellow-400">
         <Link
           to={
             language
@@ -48,12 +48,12 @@ const PostCard = ({ post }) => {
             className="rounded-full align-middle shadow-xl"
             src={post.author.photo.url}
           />
-          <p className="ml-2 inline align-middle text-lg font-medium text-gray-700">
+          <p className="ml-2 inline align-middle text-lg font-medium text-chipWhite">
             {post.author.name}
           </p>
         </div>
 
-        <div className="mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 hover:bg-[#9b99995b] lg:mb-0 lg:w-auto">
+        <div className=" mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 lg:mb-0 lg:w-auto">
           <Link
             className=" z-10 mb-4 flex w-full cursor-pointer items-center justify-center  lg:mb-0 lg:w-auto"
             to={`/blog/${post.language.slug}`}
@@ -65,12 +65,12 @@ const PostCard = ({ post }) => {
               className="rounded-full align-middle shadow-xl"
               src={post.language.icon.url}
             />
-            <p className="ml-2 inline  text-lg font-medium text-gray-700">
+            <p className="ml-2 inline  text-lg font-medium text-chipWhite">
               {post.language.name}
             </p>
           </Link>
         </div>
-        <div className="ml-5 font-medium  text-gray-700">
+        <div className="ml-5 font-medium  text-chipWhite">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className=" inline h-6 w-6 text-yellow-400"
@@ -90,7 +90,7 @@ const PostCard = ({ post }) => {
           </span>
         </div>
       </div>
-      <p className="mb-8 px-4 text-center text-lg font-normal text-gray-700 lg:px-20">
+      <p className="mb-8 px-4 text-center text-lg font-normal text-chipWhite lg:px-20">
         {post.exerpt}
       </p>
     </div>

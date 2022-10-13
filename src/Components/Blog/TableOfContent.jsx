@@ -8,7 +8,7 @@ const TableOfContent = ({ tableOfContents }) => {
   return (
     <>
       {tableOfContents.length && loc.length == 5 ? (
-        <div className="mb-8 rounded-lg bg-white p-4 text-left text-black shadow-lg ">
+        <div className="mb-8 rounded-lg bg-[#ffffff14] p-4 text-left text-chipWhite shadow-lg ">
           <h3 className="mb-4 border-b pb-4 text-xl font-semibold">
             Table of content
           </h3>

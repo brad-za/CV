@@ -11,10 +11,11 @@ const Nav = () => {
     { name: "Home", href: "/", id: "home", end: true },
     { name: "Blog", href: "/blog", id: "blog", end: false },
   ];
+
   let inActiveClassName =
-    "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-white hover:border-white md:py-5";
+    "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
   let activeClassName =
-    "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-white border-white md:py-5";
+    "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
   return (
     <nav className="top-0 z-50 flex h-[135px] w-full items-center justify-between pt-[25px] pl-[30px]">
       <div
