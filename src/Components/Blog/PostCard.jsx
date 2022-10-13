@@ -53,9 +53,9 @@ const PostCard = ({ post }) => {
           </p>
         </div>
 
-        <div className=" mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 lg:mb-0 lg:w-auto">
+        <div className="z-10 mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 hover:bg-[#9b99995b] lg:mb-0 lg:w-auto">
           <Link
-            className=" z-10 mb-4 flex w-full cursor-pointer items-center justify-center  lg:mb-0 lg:w-auto"
+            className=" mb-4 flex w-full cursor-pointer items-center justify-center  lg:mb-0 lg:w-auto"
             to={`/blog/${post.language.slug}`}
           >
             <img
