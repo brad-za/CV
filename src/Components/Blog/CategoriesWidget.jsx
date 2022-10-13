@@ -21,8 +21,8 @@ const Categories = ({}) => {
     return () => categories2;
   }, [category2]);
   return (
-    <div className="mb-8 rounded-lg bg-white p-8 text-left text-black shadow-lg ">
-      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">Categories</h3>
+    <div className="mb-8 rounded-lg bg-white p-4 text-left text-black shadow-lg ">
+      <h3 className="mb-4 border-b pb-4 text-xl font-semibold">Categories</h3>
       {categories.map((language) => {
         {
           return language.categories.map((category) => {
@@ -32,7 +32,7 @@ const Categories = ({}) => {
                 key={category.slug}
                 to={`${language.slug}/${category.slug}`}
               >
-                <span className="flex-  bg-emerald- mb-3  flex cursor-pointer items-center justify-between rounded-lg p-2 text-black hover:bg-[#9b99995b]">
+                <span className="mb-3  flex cursor-pointer items-center justify-between rounded-lg p-2 text-black hover:bg-[#9b99995b]">
                   {category.name}
                   <img
                     alt={language.name}

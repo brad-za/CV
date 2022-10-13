@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import RichText from "./RichText";
 import Widgets from "./Widgets";
 
-const PostDetails = ({ posts }) => {
+const PostDetails = ({ posts, setTableOfContents }) => {
   return (
     <div className="flex justify-end  text-left text-black">
       <div className="mb-16 px-10 ">
@@ -74,7 +74,10 @@ const PostDetails = ({ posts }) => {
                 </div>
               </div>
               <h1 className="mb-8 pt-5 text-3xl font-semibold">{post.title}</h1>
-              <RichText contents={post.content.raw.children} />
+              <RichText
+                contents={post.content.raw.children}
+                setTableOfContents={setTableOfContents}
+              />
               {/* {post.content.raw.children.map((typeObj, index) => {
                 const children = typeObj.children.map((item, itemindex) =>
                   getContentFragment(itemindex, item.text, item)

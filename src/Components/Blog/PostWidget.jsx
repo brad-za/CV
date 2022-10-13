@@ -24,13 +24,11 @@ const PostWidget = ({ slug, categories }) => {
     } else {
       getRecentPosts().then((res) => setRelatedPosts(res));
     }
-
-    // console.log(relatedPosts);
   }, [slug2]);
 
   return (
-    <div className="mb-8 rounded-lg bg-white p-8 text-left text-black shadow-lg ">
-      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">
+    <div className="mb-8 rounded-lg bg-white p-4 text-left text-black shadow-lg ">
+      <h3 className="mb-4 border-b pb-4 text-xl font-semibold">
         {slug2 ? "Related posts" : "Recent posts"}
       </h3>
       {relatedPosts.map((post) => {

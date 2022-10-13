@@ -7,14 +7,17 @@ import Category from "./Category.jsx";
 import Language from "./Language.jsx";
 import Widgets from "./Widgets.jsx";
 
-const BlogLayout = () => {
+const BlogLayout = ({ setTableOfContents }) => {
   return (
     <Routes>
       <Route path="/">
         <Route path="" element={<Blog />} />
         <Route path="/:language" element={<Language />} />
         <Route path="/:language/:category" element={<Category />} />
-        <Route path="/:language/:category/:post" element={<Article />} />
+        <Route
+          path="/:language/:category/:post"
+          element={<Article setTableOfContents={setTableOfContents} />}
+        />
       </Route>
     </Routes>
   );

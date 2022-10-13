@@ -6,7 +6,7 @@ import PostCard from "./PostCard";
 import PostDetail from "./PostDetail";
 import Widgets from "./Widgets";
 
-const Article = () => {
+const Article = ({ setTableOfContents }) => {
   const [posts, setPosts] = useState([]);
   let { language, category, post } = useParams();
   //   console.log(language, category, post);
@@ -20,7 +20,7 @@ const Article = () => {
 
   return (
     <div className="mb-8">
-      <PostDetail posts={posts} />
+      <PostDetail posts={posts} setTableOfContents={setTableOfContents} />
       <Author />
     </div>
   );

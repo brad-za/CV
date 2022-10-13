@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import IframeWrapper from "./IframeWrapper";
 
-const RichText = ({ contents }) => {
+const RichText = ({ contents, setTableOfContents }) => {
   // might need to be statefull
   const tableOfContents = [];
+  useLayoutEffect(() => {
+    setTableOfContents(tableOfContents);
+
+    // return () => {
+    //   second
+    // };
+  }, []);
+
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
@@ -204,6 +212,7 @@ const RichText = ({ contents }) => {
         return modifiedText;
     }
   };
+
   return (
     <div className="flex flex-col-reverse items-start scroll-smooth">
       <div>
