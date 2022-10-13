@@ -1,10 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
+import { Link, NavLink, useParams } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { getCategories } from "../../services/services.js";
 
 const Header = () => {
   const [languages, setLanguages] = useState([]);
+  const [header, setHeader] = useState(0);
+  const [language, setlanguage] = useState();
+
+  let params = useParams();
+  let paramSplit = params["*"].split("/");
+
+  useEffect(() => {
+    switch (paramSplit.length) {
+      case 1:
+        // console.log("case one");
+        if (params["*"] !== "") {
+          return setHeader("language page");
+        } else {
+          return setHeader(0);
+        }
+      case 2:
+        // console.log("header should be category ish");
+        return setHeader("category page");
+      case 3:
+        return setHeader(0);
+    }
+
+    // return () => {
+    //   second
+    // };
+  }, [params]);
 
   useEffect(() => {
     const categories2 = getCategories().then((data) =>
@@ -30,6 +56,7 @@ const Header = () => {
           ))}
         </div>
       </div>
+      {header ? <h1 className=" text-3xl font-semibold">{header}</h1> : <></>}
     </div>
   );
 };

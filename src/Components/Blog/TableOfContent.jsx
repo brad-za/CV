@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const TableOfContent = ({ tableOfContents }) => {
   const location = useLocation();
-  console.log(location);
   const loc = location.pathname.split("/");
-  console.log(loc);
 
   return (
     <>

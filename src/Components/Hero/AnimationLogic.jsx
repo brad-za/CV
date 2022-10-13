@@ -46,7 +46,7 @@ function AnimationLogic({}) {
     perspective: "1000px",
   };
   return (
-    <div style={perspectiveStyle} className=" bg-blue-">
+    <div style={perspectiveStyle} className=" bg-blue- mb-24">
       <AnimationWindow perspectiveStyle={perspectiveStyle} size={size}>
         <div
           style={{ animationFillMode: "forwards" }}

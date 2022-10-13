@@ -37,7 +37,7 @@ function AnimationWindow({ children, size, perspectiveStyle }) {
                         : " h-[620px] w-[1000px] "
                     }`}
           >
-            {/* <BabyNavbar size={size} /> */}
+            <BabyNavbar size={size} />
             {children}
           </div>
         </div>

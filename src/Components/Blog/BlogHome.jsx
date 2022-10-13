@@ -16,7 +16,6 @@ const Blog = () => {
 
   return (
     <div className=" mb-16  px-10  ">
-      <h1 className="text-left">home</h1>
       <div className=" flex flex-col items-end  ">
         {posts.map((post) => (
           <PostCard post={post} key={post.title} />
