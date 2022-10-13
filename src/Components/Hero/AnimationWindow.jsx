@@ -27,7 +27,7 @@ function AnimationWindow({ children, size, perspectiveStyle }) {
           <div
             className={`absolute bottom-0 right-0 rounded-br-lg bg-yellow-400 px-8 py-6`}
           >
-            <p className="text-2xl font-bold text-chipWhite">scroll</p>
+            <p className="text-2xl font-bold text-black">scroll</p>
           </div>
           <div
             className={`bg-pink- rounded-xl border-2 border-black transition-multiple duration-[5000ms]
