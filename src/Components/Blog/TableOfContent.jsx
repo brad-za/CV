@@ -19,7 +19,7 @@ const TableOfContent = ({ tableOfContents }) => {
           </h3>
           <div className="ml-2 flex flex-col ">
             {tableOfContents.map((heading) => {
-              const customIndent = `ml-${heading.indent * 4}`;
+              const customIndent = `ml-${heading.indent * 5}`;
               console.log(customIndent, heading.text);
               return (
                 <div

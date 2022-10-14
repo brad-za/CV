@@ -256,7 +256,7 @@ const RichText = ({ contents, setTableOfContents }) => {
                 <li
                   key={i}
                   className={`ml-${
-                    content.indent * 2
+                    content.indent * 5
                   } underline-white rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
                 >
                   <Link
