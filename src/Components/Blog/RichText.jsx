@@ -16,9 +16,25 @@ const RichText = ({ contents, setTableOfContents }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
-    // console.log(type);
+    // console.log(obj);
 
     if (obj) {
+      if (obj.href) {
+        modifiedText = (
+          <div className=" flex ">
+            <div className="transition  duration-200  ease-in hover:-translate-y-1 hover:scale-[110%] ">
+              <a
+                className="text-yellow-400 underline underline-offset-2 "
+                href={obj.href}
+                target="_blank"
+                title={obj.title}
+              >
+                {obj.children[0].text}
+              </a>
+            </div>
+          </div>
+        );
+      }
       if (obj.bold) {
         modifiedText = <b key={index}>{text}</b>;
       }
@@ -45,18 +61,21 @@ const RichText = ({ contents, setTableOfContents }) => {
     switch (type) {
       case "block-quote":
         return (
-          <blockquote
-            key={index}
-            className="mb-4 border-l-4 border-yellow-400 bg-[#ffffff14] pl-4 text-xl"
-          >
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </blockquote>
+          <div className="flex">
+            <blockquote
+              key={index}
+              className="my-4 flex border-l-4 border-yellow-400 bg-[#ffffff14] pl-4 text-xl"
+            >
+              {modifiedText.map((item, i) => (
+                <React.Fragment key={i}>{item}</React.Fragment>
+              ))}
+            </blockquote>
+          </div>
         );
       case "class":
         switch (obj.className) {
           case "gist": {
+            // console.log(obj.children[0].children[0].text);
             return <IframeWrapper id={obj.children[0].children[0].text} />;
           }
           default:
@@ -126,14 +145,16 @@ const RichText = ({ contents, setTableOfContents }) => {
         }
       case "code-block":
         return (
-          <blockquote
-            key={index}
-            className="mb-4 rounded-lg border bg-gray-300 pl-4 text-black outline outline-offset-4 outline-black"
-          >
-            {modifiedText.map((item, i) => (
-              <code key={i}>{item}</code>
-            ))}
-          </blockquote>
+          <div className="flex">
+            <blockquote
+              key={index}
+              className="outline-offset-6 my-4 whitespace-pre-line rounded-lg border bg-[#ffffff14] pl-4 text-chipWhite outline outline-1 outline-yellow-400"
+            >
+              {modifiedText.map((item, i) => (
+                <code key={i}>{item}</code>
+              ))}
+            </blockquote>
+          </div>
         );
       case "heading-one":
         return (
@@ -223,7 +244,7 @@ const RichText = ({ contents, setTableOfContents }) => {
           return getContentFragment(index, children, typeObj, typeObj.type);
         })}
       </div>
-      {/* <IframeWrapper id="ce38588377fabc3bda4f3938baa47968" /> */}
+
       {tableOfContents.length ? (
         <div className="m-3 mb-10 rounded-xl bg-[#ffffff14] p-5">
           <h1 className="mb-2 text-xl font-bold underline underline-offset-2">
@@ -236,7 +257,7 @@ const RichText = ({ contents, setTableOfContents }) => {
                   key={i}
                   className={`ml-${
                     content.indent * 2
-                  } underline-white rounded-lg p-2 hover:bg-[#9b99995b] hover:underline`}
+                  } underline-white rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
                 >
                   <Link
                     onClick={() => {

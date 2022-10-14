@@ -5,7 +5,7 @@ const Dropdown = ({ language }) => {
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
   let activeClassName =
-    "inline-block h-full cursor-pointer border-b-2 py-3 text-[1.2em] font-normal tracking-wider text-yellow-400  px-4  border-yellow-400 md:py-5";
+    "inline-block h-full cursor-pointer border-transparent hover:border-yellow-400 border-b-2 py-3 text-[1.2em] font-normal tracking-wider text-yellow-400  px-4  md:py-5";
 
   return (
     <span className="group-one relative z-10 mt-2 ml-4 mr-20 cursor-pointer text-xl font-semibold text-chipWhite md:float-right">

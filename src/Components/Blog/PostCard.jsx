@@ -25,7 +25,7 @@ const PostCard = ({ post }) => {
         />
       </div>
 
-      <h1 className="mb-8 cursor-pointer text-center text-3xl font-semibold transition duration-200 group-hover:text-yellow-400">
+      <h1 className="mb-8 cursor-pointer text-center text-3xl font-semibold transition duration-200 ease-in group-hover:text-yellow-400">
         <Link
           to={
             language

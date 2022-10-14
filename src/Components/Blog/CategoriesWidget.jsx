@@ -32,7 +32,7 @@ const Categories = ({}) => {
                 key={category.slug}
                 to={`${language.slug}/${category.slug}`}
               >
-                <span className="mb-3  flex cursor-pointer items-center justify-between rounded-lg p-2 text-chipWhite hover:bg-[#9b99995b]">
+                <span className="mb-3  flex cursor-pointer items-center justify-between rounded-lg p-2 text-chipWhite duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b]">
                   {category.name}
                   <img
                     alt={language.name}

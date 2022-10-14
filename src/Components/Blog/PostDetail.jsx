@@ -6,7 +6,7 @@ import Widgets from "./Widgets";
 
 const PostDetails = ({ posts, setTableOfContents }) => {
   return (
-    <div className="flex justify-end  text-left text-chipWhite">
+    <div className="flex justify-end  text-left ">
       <div className="mb-16 px-10 ">
         {posts.map((post) => (
           <div
@@ -35,7 +35,7 @@ const PostDetails = ({ posts, setTableOfContents }) => {
                       {post.author.name}
                     </p>
                   </div>
-                  <div className="mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 transition duration-500 ease-in hover:-translate-y-1 hover:bg-[#9b99995b] lg:mb-0 lg:w-auto">
+                  <div className="mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2  duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] lg:mb-0 lg:w-auto">
                     <Link
                       className="mb-4 flex w-full cursor-pointer items-center justify-center  lg:mb-0 lg:w-auto"
                       to={`/blog/${post.language.slug}`}
