@@ -35,7 +35,7 @@ const Header = () => {
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
   let activeClassName =
-    "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
+    "inline-block h-full cursor-pointer border-b-2 py-3 text-[1.2em] font-normal tracking-wider text-yellow-400 border-yellow-400 md:py-5";
 
   useEffect(() => {
     const categories2 = getCategories().then((data) =>

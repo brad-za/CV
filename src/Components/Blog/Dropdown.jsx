@@ -5,7 +5,7 @@ const Dropdown = ({ language }) => {
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
   let activeClassName =
-    "inline-block h-full cursor-pointer border-b-2 py-3 text-[1.2em] font-normal tracking-wider text-yellow-400 bg-[#ffffff14] px-4 rounded-lg rounded-br-none border-white md:py-5";
+    "inline-block h-full cursor-pointer border-b-2 py-3 text-[1.2em] font-normal tracking-wider text-yellow-400  px-4  border-yellow-400 md:py-5";
 
   return (
     <span className="group-one relative z-10 mt-2 ml-4 mr-20 cursor-pointer text-xl font-semibold text-chipWhite md:float-right">
@@ -38,12 +38,12 @@ const Dropdown = ({ language }) => {
                       &rsaquo;
                     </div>
                   )}
-                  {category.name}
+                  <span className="text-white"> {category.name}</span>
                 </h1>
               </NavLink>
-              <div className="my-2 cursor-pointer  ">
+              <div className="my-2 ml-5  cursor-pointer">
                 {category.posts && (
-                  <div className="container ml-5 hidden flex-wrap ease-in-out group-two-hover:flex group-two-hover:delay-1000 ">
+                  <div className="container  hidden flex-wrap ease-in-out group-two-hover:flex group-two-hover:delay-1000 ">
                     {category.posts.map((post, index) => (
                       <NavLink
                         className={({ isActive }) =>
@@ -52,7 +52,10 @@ const Dropdown = ({ language }) => {
                         key={index}
                         to={`${language.slug}/${category.slug}/${post.slug}`}
                       >
-                        <span>&#8226; {post.title}</span>
+                        <span>
+                          &#8226;
+                          <span className="text-white"> {post.title}</span>
+                        </span>
                       </NavLink>
                     ))}
                   </div>

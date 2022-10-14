@@ -35,7 +35,7 @@ const PostDetails = ({ posts, setTableOfContents }) => {
                       {post.author.name}
                     </p>
                   </div>
-                  <div className="mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 hover:bg-[#9b99995b] lg:mb-0 lg:w-auto">
+                  <div className="mb-4 flex w-full cursor-pointer items-center justify-center rounded-lg p-2 transition duration-500 ease-in hover:-translate-y-1 hover:bg-[#9b99995b] lg:mb-0 lg:w-auto">
                     <Link
                       className="mb-4 flex w-full cursor-pointer items-center justify-center  lg:mb-0 lg:w-auto"
                       to={`/blog/${post.language.slug}`}
