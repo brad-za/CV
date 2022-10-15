@@ -146,8 +146,57 @@ export const getSimilarPosts = async (categories2, slug2) => {
       }
     `;
     const result = await request(graphqlAPI, query, { slug2, categories2 });
+    console.log(result, "result");
     return result.posts;
-    // console.log(result.postsConnection.edges);
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getSimilarPosts2 = async (categories2, slug2, language) => {
+  try {
+    const query = gql`
+      query GetSimilarPosts2(
+        $slug2: String!
+        $language: String!
+        $categories2: String!
+      ) {
+        posts(
+          where: {
+            slug_not: $slug2
+            OR: [
+              { categories_some: { slug: $categories2 } }
+              { language: { slug: $language } }
+            ]
+          }
+        ) {
+          title
+          slug
+          createdAt
+          language {
+            name
+            slug
+            icon {
+              url
+            }
+          }
+          featuredImage {
+            url
+          }
+          categories {
+            name
+            slug
+          }
+        }
+      }
+    `;
+    const result = await request(graphqlAPI, query, {
+      slug2,
+      categories2,
+      language,
+    });
+    console.log(result, "result");
+    return result.posts;
   } catch (error) {
     return error;
   }

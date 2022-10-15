@@ -1,36 +1,43 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Link, useParams, useResolvedPath } from "react-router-dom";
-import { getRecentPosts, getSimilarPosts } from "../../services/services";
+import {
+  getRecentPosts,
+  getSimilarPosts,
+  getSimilarPosts2,
+} from "../../services/services";
 
 const PostWidget = ({ slug, categories }) => {
   const loc = useParams();
   //   console.log(loc);
 
+  const [relatedPosts, setRelatedPosts] = useState([]);
+  const [heading, setHeading] = useState("Recent posts");
+
   let locArr = loc["*"].split("/");
 
+  let language = locArr[0] || "";
   let categories2 = locArr[1] || "";
   let slug2 = locArr[2];
-
-  const [relatedPosts, setRelatedPosts] = useState([]);
+  console.log(language);
   useEffect(() => {
-    if (slug2) {
-      getSimilarPosts(categories2, slug2).then((res) => {
-        if (!res.length) {
-          getRecentPosts().then((res) => setRelatedPosts(res));
-        }
+    getSimilarPosts2(categories2, slug2, language).then((res) => {
+      console.log("similar posts", slug2, categories2, res);
+      if (!res.length) {
+        getRecentPosts().then((res) => {
+          setRelatedPosts(res);
+          setHeading("Recent posts");
+        });
+      } else {
         setRelatedPosts(res);
-      });
-    } else {
-      getRecentPosts().then((res) => setRelatedPosts(res));
-    }
+        setHeading("Related posts");
+      }
+    });
   }, [slug2]);
 
-  return (
+  return relatedPosts.length ? (
     <div className="mb-8 rounded-lg bg-[#ffffff14] p-4 text-left text-chipWhite shadow-lg ">
-      <h3 className="mb-4 border-b pb-4 text-xl font-semibold">
-        {slug2 ? "Related posts" : "Recent posts"}
-      </h3>
+      <h3 className="mb-4 border-b pb-4 text-xl font-semibold">{heading}</h3>
       {relatedPosts.map((post) => {
         // console.log(post.language.icon.url);
         // post.language.slug
@@ -69,6 +76,8 @@ const PostWidget = ({ slug, categories }) => {
         );
       })}
     </div>
+  ) : (
+    <></>
   );
 };
 
