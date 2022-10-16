@@ -1,10 +1,15 @@
-import React, { useLayoutEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useLayoutEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import IframeWrapper from "./IframeWrapper";
+
+import SyntaxHighlighted from "./SyntaxHighlighted";
 
 const RichText = ({ contents, setTableOfContents }) => {
   // might need to be statefull
   const tableOfContents = [];
+
+  const { language } = useParams();
+
   useLayoutEffect(() => {
     setTableOfContents(tableOfContents);
 
@@ -42,7 +47,10 @@ const RichText = ({ contents, setTableOfContents }) => {
       if (obj.code) {
         modifiedText = (
           <React.Fragment>
-            <code className="rounded-lg bg-[#ffffff25]" key={index}>
+            <code
+              className=" rounded-lg bg-[#ffffff25] p-1" // whitespace-nowrap
+              key={index}
+            >
               {text}
             </code>
           </React.Fragment>
@@ -84,22 +92,26 @@ const RichText = ({ contents, setTableOfContents }) => {
         }
       case "code-block":
         return (
-          <div className="flex">
+          <div
+            className="flex w-full justify-center md:justify-start"
+            id="code-block"
+          >
             <blockquote
               key={index}
-              className="outline-offset-6 my-4 whitespace-pre-line rounded-lg border bg-[#ffffff14] pl-4 text-chipWhite outline outline-1 outline-yellow-400"
+              className="my-4 mb-12 rounded-lg bg-[#272822] outline outline-1 outline-yellow-400"
             >
-              {modifiedText.map((item, i) => (
-                <code key={i}>{item}</code>
-              ))}
+              {modifiedText.map((item, i) => {
+                console.log(language);
+                return (
+                  <SyntaxHighlighted code={item} language={language} key={i} />
+                );
+              })}
             </blockquote>
           </div>
         );
       case "heading-one":
-        console.log(modifiedText);
-        console.log(type);
         return (
-          <React.Fragment key={index} className="">
+          <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
               tableOfContents.push({
                 text: item,
@@ -107,7 +119,7 @@ const RichText = ({ contents, setTableOfContents }) => {
                 indent: 0,
               });
               return (
-                <h1 className="mb-4 text-3xl font-semibold" key={i} id={item}>
+                <h1 className="mb-4  text-3xl font-semibold" key={i} id={item}>
                   {item}
                 </h1>
               );
@@ -116,8 +128,6 @@ const RichText = ({ contents, setTableOfContents }) => {
         );
 
       case "heading-two":
-        console.log(modifiedText);
-        console.log(type);
         return (
           <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
@@ -127,7 +137,11 @@ const RichText = ({ contents, setTableOfContents }) => {
                 indent: 1,
               });
               return (
-                <h2 className="mb-4 text-2xl font-semibold" key={i} id={item}>
+                <h2
+                  className="mb-4 ml-2 text-2xl font-semibold"
+                  key={i}
+                  id={item}
+                >
                   {item}
                 </h2>
               );
@@ -136,8 +150,6 @@ const RichText = ({ contents, setTableOfContents }) => {
         );
 
       case "heading-three":
-        console.log(modifiedText);
-        console.log(type);
         return (
           <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
@@ -147,7 +159,11 @@ const RichText = ({ contents, setTableOfContents }) => {
                 indent: 2,
               });
               return (
-                <h3 className="mb-4 text-xl font-semibold" key={i} id={item}>
+                <h3
+                  className="mb-4 ml-3 text-xl font-semibold"
+                  key={i}
+                  id={item}
+                >
                   {item}
                 </h3>
               );
@@ -155,8 +171,6 @@ const RichText = ({ contents, setTableOfContents }) => {
           </React.Fragment>
         );
       case "heading-four":
-        console.log(modifiedText);
-        console.log(type);
         return (
           <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
@@ -166,7 +180,11 @@ const RichText = ({ contents, setTableOfContents }) => {
                 indent: 3,
               });
               return (
-                <h4 className="mb-4 text-lg font-semibold" key={i} id={item}>
+                <h4
+                  className="mb-4 ml-4 text-lg font-semibold"
+                  key={i}
+                  id={item}
+                >
                   {item}
                 </h4>
               );
@@ -176,7 +194,7 @@ const RichText = ({ contents, setTableOfContents }) => {
 
       case "paragraph":
         return (
-          <p key={index} className="mb-8">
+          <p key={index} className="mb-8 ml-4">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}

@@ -64,7 +64,7 @@ const PostWidget = () => {
                     alt={post.language.name}
                     height="20px"
                     width="20px"
-                    className="rounded-full  shadow-xl"
+                    className="ml-4 rounded-full shadow-xl"
                     src={post.language.icon.url}
                   />
                 </div>
