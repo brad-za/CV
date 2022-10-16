@@ -7,7 +7,7 @@ import {
   getSimilarPosts2,
 } from "../../services/services";
 
-const PostWidget = ({ slug, categories }) => {
+const PostWidget = () => {
   const loc = useParams();
   //   console.log(loc);
 
@@ -19,20 +19,21 @@ const PostWidget = ({ slug, categories }) => {
   let language = locArr[0] || "";
   let categories2 = locArr[1] || "";
   let slug2 = locArr[2];
-  console.log(language);
+
   useEffect(() => {
-    getSimilarPosts2(categories2, slug2, language).then((res) => {
-      console.log("similar posts", slug2, categories2, res);
-      if (!res.length) {
-        getRecentPosts().then((res) => {
+    getSimilarPosts2(categories2, slug2, language)
+      .then((res) => {
+        if (!res.length) {
+          getRecentPosts().then((res) => {
+            setRelatedPosts(res);
+            setHeading("Recent posts");
+          });
+        } else {
           setRelatedPosts(res);
-          setHeading("Recent posts");
-        });
-      } else {
-        setRelatedPosts(res);
-        setHeading("Related posts");
-      }
-    });
+          setHeading("Related posts");
+        }
+      })
+      .catch((err) => console.log(err));
   }, [slug2]);
 
   return relatedPosts.length ? (

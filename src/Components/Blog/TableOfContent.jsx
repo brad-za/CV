@@ -19,12 +19,13 @@ const TableOfContent = ({ tableOfContents }) => {
           </h3>
           <div className="ml-2 flex flex-col ">
             {tableOfContents.map((heading, i) => {
-              const customIndent = `ml-${heading.indent * 5}`;
-              //   console.log(customIndent, heading.text);
+              const customIndent = `ml-${heading.indent * 4}`;
+              console.log(customIndent, heading.text);
               return (
                 <div
                   key={i}
-                  className={`${customIndent} my-1 rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
+                  style={{ marginLeft: heading.indent * 17.5 }}
+                  className={` my-1 rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
                 >
                   <NavLink
                     className={({ isActive }) => {

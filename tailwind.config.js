@@ -22,8 +22,11 @@ module.exports = {
         gradient3: "#142533",
         gradient4: "#203c52",
       },
+
       spacing: {
         ".1": "10%",
+        // prettier-ignore
+        '15': "3.75em",
       },
       transitionProperty: {
         multiple: "width , height",

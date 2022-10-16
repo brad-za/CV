@@ -195,7 +195,7 @@ export const getSimilarPosts2 = async (categories2, slug2, language) => {
       categories2,
       language,
     });
-    console.log(result, "result");
+    // console.log(result, "result");
     return result.posts;
   } catch (error) {
     return error;

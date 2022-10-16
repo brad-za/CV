@@ -80,67 +80,6 @@ const RichText = ({ contents, setTableOfContents }) => {
           }
           default:
             switch (obj.children[0].type) {
-              case "heading-one":
-                // console.log(obj.className);
-                tableOfContents.push({
-                  text: obj.children[0].children[0].text,
-                  id: obj.className,
-                  indent: 0,
-                });
-                return (
-                  <h1
-                    id={obj.className}
-                    key={index}
-                    className="mb-4 text-2xl font-semibold"
-                  >
-                    {obj.children[0].children[0].text}
-                  </h1>
-                );
-              case "heading-two":
-                tableOfContents.push({
-                  text: obj.children[0].children[0].text,
-                  id: obj.className,
-                  indent: 1,
-                });
-                return (
-                  <h2
-                    id={obj.className}
-                    key={index}
-                    className="mb-4 text-2xl font-semibold"
-                  >
-                    {obj.children[0].children[0].text}
-                  </h2>
-                );
-              case "heading-three":
-                tableOfContents.push({
-                  text: obj.children[0].children[0].text,
-                  id: obj.className,
-                  indent: 2,
-                });
-                return (
-                  <h3
-                    id={obj.className}
-                    key={index}
-                    className="mb-4 text-2xl font-semibold"
-                  >
-                    {obj.children[0].children[0].text}
-                  </h3>
-                );
-              case "heading-four":
-                tableOfContents.push({
-                  text: obj.children[0].children[0].text,
-                  id: obj.className,
-                  indent: 3,
-                });
-                return (
-                  <h4
-                    id={obj.className}
-                    key={index}
-                    className="mb-4 text-2xl font-semibold"
-                  >
-                    {obj.children[0].children[0].text}
-                  </h4>
-                );
             }
         }
       case "code-block":
@@ -157,40 +96,82 @@ const RichText = ({ contents, setTableOfContents }) => {
           </div>
         );
       case "heading-one":
+        console.log(modifiedText);
+        console.log(type);
         return (
-          <h1 key={index} className="text-md mb-4 font-semibold">
+          <React.Fragment key={index} className="">
             {modifiedText.map((item, i) => {
-              //   console.log(item);
-              return <React.Fragment key={i}>{item}</React.Fragment>;
+              tableOfContents.push({
+                text: item,
+                id: item,
+                indent: 0,
+              });
+              return (
+                <h1 className="mb-4 text-3xl font-semibold" key={i} id={item}>
+                  {item}
+                </h1>
+              );
             })}
-          </h1>
+          </React.Fragment>
         );
+
       case "heading-two":
+        console.log(modifiedText);
+        console.log(type);
         return (
-          <h2 key={index} className="text-md mb-4 font-semibold">
+          <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
-              //   console.log(item);
-              return <React.Fragment key={i}>{item}</React.Fragment>;
+              tableOfContents.push({
+                text: item,
+                id: item,
+                indent: 1,
+              });
+              return (
+                <h2 className="mb-4 text-2xl font-semibold" key={i} id={item}>
+                  {item}
+                </h2>
+              );
             })}
-          </h2>
+          </React.Fragment>
         );
+
       case "heading-three":
+        console.log(modifiedText);
+        console.log(type);
         return (
-          <h3 key={index} className="text-md mb-4 font-semibold">
+          <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
-              //   console.log(item);
-              return <React.Fragment key={i}>{item}</React.Fragment>;
+              tableOfContents.push({
+                text: item,
+                id: item,
+                indent: 2,
+              });
+              return (
+                <h3 className="mb-4 text-xl font-semibold" key={i} id={item}>
+                  {item}
+                </h3>
+              );
             })}
-          </h3>
+          </React.Fragment>
         );
       case "heading-four":
+        console.log(modifiedText);
+        console.log(type);
         return (
-          <h4 key={index} className="text-md mb-4 font-semibold">
+          <React.Fragment key={index}>
             {modifiedText.map((item, i) => {
-              //   console.log(item);
-              return <React.Fragment key={i}>{item}</React.Fragment>;
+              tableOfContents.push({
+                text: item,
+                id: item,
+                indent: 3,
+              });
+              return (
+                <h4 className="mb-4 text-lg font-semibold" key={i} id={item}>
+                  {item}
+                </h4>
+              );
             })}
-          </h4>
+          </React.Fragment>
         );
 
       case "paragraph":
@@ -255,9 +236,8 @@ const RichText = ({ contents, setTableOfContents }) => {
               return (
                 <li
                   key={i}
-                  className={`ml-${
-                    content.indent * 5
-                  } underline-white rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
+                  style={{ marginLeft: content.indent * 17.5 }}
+                  className={` underline-white rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
                 >
                   <Link
                     onClick={() => {
