@@ -12,7 +12,7 @@ export default defineConfig({
         "line-numbers",
         "show-language",
         "highlight-keywords",
-        "toolbar",
+
         "copy-to-clipboard",
         "download-button",
         "previewers",

@@ -260,7 +260,11 @@ const RichText = ({ contents, setTableOfContents }) => {
                   <Link
                     onClick={() => {
                       const anchorId = document.getElementById(content.id);
-                      anchorId.scrollIntoView();
+                      anchorId.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "nearest",
+                      });
                     }}
                     to={`#${content.id}`}
                   >

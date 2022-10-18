@@ -8,7 +8,7 @@ const TableOfContent = ({ tableOfContents }) => {
   let inActiveClassName =
     "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
   let activeClassName =
-    "inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
+    "inline-block h-full cursor-pointer border-b-2 bg-green-200 py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
 
   return (
     <>
@@ -32,7 +32,11 @@ const TableOfContent = ({ tableOfContents }) => {
                     }}
                     onClick={() => {
                       const anchorId = document.getElementById(heading.id);
-                      anchorId.scrollIntoView();
+                      anchorId.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "nearest",
+                      });
                     }}
                     to={`#${heading.id}`}
                   >
