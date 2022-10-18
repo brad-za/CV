@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     prismjs({
-      languages: ["json", "rust", "javascript"],
+      languages: ["json", "rust", "javascript", "regex"],
       plugins: [
         "line-highlight",
         "line-numbers",
