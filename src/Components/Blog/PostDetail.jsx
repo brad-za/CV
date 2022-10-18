@@ -2,7 +2,6 @@ import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
 import RichText from "./RichText";
-import Widgets from "./Widgets";
 
 const PostDetails = ({ posts, setTableOfContents }) => {
   return (
