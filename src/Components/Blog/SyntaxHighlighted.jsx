@@ -10,7 +10,7 @@ const SyntaxHighlighted = ({ code, language }) => {
     };
   }, []);
   return (
-    <div>
+    <div className="max-w-[400px] md:max-w-none">
       <pre>
         <div className="bg-[#272822]2 bg-pink- relative -ml-11 mb-2 h-4 border-b border-[#999] ">
           <div className="absolute -top-1  h-[10px] w-[10px] rounded-full bg-green-400" />

@@ -48,7 +48,7 @@ const RichText = ({ contents, setTableOfContents }) => {
         modifiedText = (
           <React.Fragment>
             <code
-              className=" rounded-lg bg-[#ffffff25] p-1" // whitespace-nowrap
+              className="whitespace-nowrap rounded-lg bg-[#ffffff25] p-1" // whitespace-nowrap
               key={index}
             >
               {text}
@@ -92,10 +92,7 @@ const RichText = ({ contents, setTableOfContents }) => {
         }
       case "code-block":
         return (
-          <div
-            className="flex w-full justify-center md:justify-start"
-            id="code-block"
-          >
+          <div className="flex justify-center md:justify-start" id="code-block">
             <blockquote
               key={index}
               className="my-4 mb-12 rounded-lg bg-[#272822] outline outline-1 outline-yellow-400"
@@ -119,7 +116,7 @@ const RichText = ({ contents, setTableOfContents }) => {
                 indent: 0,
               });
               return (
-                <h1 className="mb-4  text-3xl font-semibold" key={i} id={item}>
+                <h1 className="mb-4 text-3xl font-semibold" key={i} id={item}>
                   {item}
                 </h1>
               );
@@ -194,7 +191,7 @@ const RichText = ({ contents, setTableOfContents }) => {
 
       case "paragraph":
         return (
-          <p key={index} className="mb-8 ml-4">
+          <p key={index} className=" bg-gray- mb-8 ml-4">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -234,8 +231,8 @@ const RichText = ({ contents, setTableOfContents }) => {
   };
 
   return (
-    <div className="flex flex-col-reverse items-start scroll-smooth">
-      <div>
+    <div className=" bg-red- flex flex-col-reverse flex-wrap items-start">
+      <div className="bg-green- flex w-full flex-shrink-0 flex-col md:justify-start">
         {contents.map((typeObj, index) => {
           const children = typeObj.children.map((item, itemindex) =>
             getContentFragment(itemindex, item.text, item)
