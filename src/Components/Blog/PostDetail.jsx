@@ -6,11 +6,11 @@ import RichText from "./RichText";
 const PostDetails = ({ posts, setTableOfContents }) => {
   return (
     <div className="bg-emerald- flex justify-center text-left  md:justify-end ">
-      <div className="mb-16 px-10 ">
+      <div className="px- mb-16 ">
         {posts.map((post) => (
           <div
             key={post.title}
-            className="bg-lime- mb-8 w-full rounded-lg bg-[#94939314] pb-12 shadow-lg md:max-w-[750px] lg:max-w-[950px] lg:p-8"
+            className="bg-lime- mb-8 flex  flex-col rounded-lg bg-[#94939314] pb-12 shadow-lg md:max-w-[750px] lg:max-w-[950px] lg:p-8"
           >
             <div className="relative mb-6 overflow-hidden shadow-md">
               <img
