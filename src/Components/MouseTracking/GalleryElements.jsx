@@ -4,6 +4,7 @@ import github from "../../assets/links/icons8-github.svg";
 import me from "../../assets/links/me.jpg";
 import blog from "../../assets/links/blog.svg";
 import Skills from "../Skills";
+import TextAnimation from "../Hero/TextAnimation";
 
 const GalleryElements = ({ panAmount }) => {
 	const [mousePosition, setMousePosition] = useState({});
@@ -19,19 +20,6 @@ const GalleryElements = ({ panAmount }) => {
 		"inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text- border-black md:py-5";
 	return (
 		<React.Fragment>
-			{/* text animation can be placed here for a paralax effect or in mouseTracking for static position. */}
-			{/* <div
-				style={{
-					transform: `translate(${panAmount.panX * 0.2 * -1}px, ${
-						panAmount.panY * 0.2 * -1
-					}px)`,
-				}}
-				className="ease bg-blue- flex h-full w-full items-center justify-center transition duration-75"
-			>
-				<div className=" bg- ml-64 w-full">
-					<TextAnimation textSize={6} />
-				</div>
-			</div> */}
 			{/* [&>*]: is an arbitrary selector that styles all children */}
 			<div className="[&>*]:rounded-3xl">
 				<div className="group absolute top-[2%] right-[4%]  h-[34%] w-[12%]  bg-[#FFEC45] text-3xl font-extrabold text-black ">

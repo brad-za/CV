@@ -118,7 +118,7 @@ const MouseTracking = ({ children }) => {
 					style={{
 						transform: `translate(${panAmount.panX}px, ${panAmount.panY}px)`,
 					}}
-					className="ease relative h-[140vh] w-[140vw] overflow-hidden transition duration-75"
+					className="ease relative h-[140vh] w-[140vw] overflow-hidden  duration-150"
 					// className="ease relative h-[100vh] w-[100vw] transition duration-75"
 					onClick={() => {
 						console.log(
