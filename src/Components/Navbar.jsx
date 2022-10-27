@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Whitelogo from "../assets/chip/whiteLogo.jsx";
 import Clogo from "../assets/chip/clogo.jsx";
 import Iconclose from "../assets/nav/icon-close.jsx";
@@ -10,6 +10,7 @@ const Nav = () => {
   const menus = [
     { name: "Home", href: "/", id: "home", end: true },
     { name: "Blog", href: "/blog", id: "blog", end: false },
+    { name: "Mouse", href: "/mouse", id: "mouse", end: true },
   ];
 
   let inActiveClassName =

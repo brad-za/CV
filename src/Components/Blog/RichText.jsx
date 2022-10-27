@@ -67,13 +67,43 @@ const RichText = ({ contents, setTableOfContents }) => {
     }
 
     switch (type) {
+      case "table":
+        // console.log("raw obj", obj);
+        return (
+          <table key={index} className="mb-8 bg-white text-black">
+            {obj.children.map((tableData, i) => {
+              if (tableData.type == "table_head") {
+                return (
+                  <thead key={i} className="bg-violet-400 ">
+                    <tr>
+                      {tableData.children[0].children.map((head, i) => (
+                        //   console.log("head", head.children[0].children[0])
+                        <td key={i}>{head.children[0].children[0].text}</td>
+                      ))}
+                    </tr>
+                  </thead>
+                );
+              }
+              if (tableData.type == "table_body") {
+                return (
+                  <tbody key={i}>
+                    {tableData.children.map((row, i) => (
+                      <tr key={i}>
+                        {row.children.map((body) => (
+                          <td>{body.children[0].children[0].text}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                );
+              }
+            })}
+          </table>
+        );
       case "block-quote":
         return (
-          <div className="flex">
-            <blockquote
-              key={index}
-              className="my-4 flex border-l-4 border-yellow-400 bg-[#ffffff14] pl-4 text-xl"
-            >
+          <div key={index} className="flex">
+            <blockquote className="my-4 flex border-l-4 border-yellow-400 bg-[#ffffff14] pl-4 text-xl">
               {modifiedText.map((item, i) => (
                 <React.Fragment key={i}>{item}</React.Fragment>
               ))}
@@ -84,7 +114,12 @@ const RichText = ({ contents, setTableOfContents }) => {
         switch (obj.className) {
           case "gist": {
             // console.log(obj.children[0].children[0].text);
-            return <IframeWrapper id={obj.children[0].children[0].text} />;
+            return (
+              <IframeWrapper
+                key={index}
+                id={obj.children[0].children[0].text}
+              />
+            );
           }
           default:
             switch (obj.children[0].type) {
@@ -92,11 +127,12 @@ const RichText = ({ contents, setTableOfContents }) => {
         }
       case "code-block":
         return (
-          <div className="flex justify-center md:justify-start" id="code-block">
-            <blockquote
-              key={index}
-              className="my-4 mb-12 rounded-lg bg-[#272822] outline outline-1 outline-yellow-400"
-            >
+          <div
+            key={index}
+            className="flex justify-center md:justify-start"
+            id="code-block"
+          >
+            <blockquote className="my-4 mb-12 rounded-lg bg-[#272822] outline outline-1 outline-yellow-400">
               {modifiedText.map((item, i) => {
                 console.log(language);
                 return (

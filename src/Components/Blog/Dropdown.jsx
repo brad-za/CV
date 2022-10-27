@@ -22,11 +22,8 @@ const Dropdown = ({ language }) => {
           className={`ease relative h-0 min-w-[100px] flex-col rounded-xl border-solid bg-[#292f31a7] backdrop-blur-lg duration-200 group-one-hover:h-full group-one-hover:p-5`}
         >
           {language.categories.map((category) => (
-            <div className="hidden group-one-hover:block">
-              <div
-                key={category.slug}
-                className="group-two ease bg- relative whitespace-nowrap font-semibold text-chipWhite duration-200 "
-              >
+            <div key={category.slug} className="hidden group-one-hover:block">
+              <div className="group-two ease bg- relative whitespace-nowrap font-semibold text-chipWhite duration-200 ">
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? activeClassName : inActiveClassName
@@ -45,12 +42,11 @@ const Dropdown = ({ language }) => {
                 <div className="my-2 ml-5 cursor-pointer">
                   {category.posts &&
                     category.posts.map((post, index) => (
-                      <div className="hidden group-two-hover:flex">
+                      <div key={index} className="hidden group-two-hover:flex">
                         <NavLink
                           className={({ isActive }) =>
                             isActive ? activeClassName : inActiveClassName
                           }
-                          key={index}
                           to={`${language.slug}/${category.slug}/${post.slug}`}
                         >
                           <span>
