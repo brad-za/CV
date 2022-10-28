@@ -23,13 +23,15 @@ const MouseTracking = ({ children }) => {
 	//     });
 	//   };
 
+	let gallerySize;
+
 	useLayoutEffect(() => {
 		console.log({
 			panX: (window.innerWidth / 4) * -1,
 			panY: (window.innerHeight / 4) * -1,
 		});
 		// get the size of the viewing window in pixels
-		const gallerySize = {
+		gallerySize = {
 			width: galleryRef.current.offsetWidth,
 			height: galleryRef.current.offsetHeight,
 		};
@@ -61,16 +63,21 @@ const MouseTracking = ({ children }) => {
 		return { panX, panY };
 	};
 
-	useEffect(
-		() =>
-			setPanAmount(
-				getPanAmount(
-					getDecimalMousePosition(mousePosition.x, mousePosition.y),
-					maxGallerySize
-				)
-			),
-		[mousePosition]
-	);
+	useEffect(() => {
+		console.log(windowSize);
+		console.log(windowSize.height - 40);
+		console.log(
+			mousePosition.y <= windowSize.height - 60
+				? windowSize.height - 60
+				: mousePosition.y
+		);
+		return setPanAmount(
+			getPanAmount(
+				getDecimalMousePosition(mousePosition.x, mousePosition.y),
+				maxGallerySize
+			)
+		);
+	}, [mousePosition]);
 
 	return (
 		<div className="overflow-hidden bg-chipDarkBlue">
@@ -89,21 +96,20 @@ const MouseTracking = ({ children }) => {
 			<div
 				style={{
 					transform: `translate(${
-						mousePosition.x <= 40
-							? mousePosition.x
-							: mousePosition.x - 40
+						mousePosition.x >= windowSize.width - 40
+							? windowSize.width - 40
+							: mousePosition.x
 					}px, ${
-						mousePosition.y <= 40
-							? mousePosition.y
-							: mousePosition.y - 40
+						mousePosition.y >= windowSize.height - 40
+							? windowSize.height - 40
+							: mousePosition.y
 					}px)`,
 				}}
-				className={` absolute z-20  h-10 w-10 rounded-full bg-white `}
+				className={`ease absolute z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white duration-75 `}
 			/>
-
 			<div
 				onMouseMove={e => {
-					console.log(e.pageX);
+					console.log(e.pageX, e.pageY);
 					setMousePosition({
 						x: e.pageX,
 						y: e.pageY,

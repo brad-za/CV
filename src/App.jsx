@@ -23,7 +23,7 @@ function App() {
 					<Footer />
 				</React.Fragment>
 			) : (
-				<React.Fragment className="overflow-hidden">
+				<React.Fragment>
 					<Routes>
 						<Route path="/mouse" element={<MouseTracking />} />
 					</Routes>
