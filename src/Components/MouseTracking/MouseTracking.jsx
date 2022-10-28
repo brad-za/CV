@@ -10,6 +10,10 @@ const MouseTracking = ({ children }) => {
 		panX: (window.innerWidth / 4) * -1,
 		panY: (window.innerHeight / 4) * -1,
 	});
+	const [textPanAmount, setTextPanAmount] = useState({
+		panX: -2000,
+		panY: 800,
+	});
 	const [maxGallerySize, setMaxGallerySize] = useState({});
 	const [windowSize, setWindowSize] = useState({
 		width: window.innerWidth,
@@ -71,7 +75,13 @@ const MouseTracking = ({ children }) => {
 				? windowSize.height - 60
 				: mousePosition.y
 		);
-		return setPanAmount(
+		setTextPanAmount(
+			getPanAmount(
+				getDecimalMousePosition(mousePosition.x, mousePosition.y),
+				maxGallerySize
+			)
+		);
+		setPanAmount(
 			getPanAmount(
 				getDecimalMousePosition(mousePosition.x, mousePosition.y),
 				maxGallerySize
@@ -81,18 +91,6 @@ const MouseTracking = ({ children }) => {
 
 	return (
 		<div className="overflow-hidden bg-chipDarkBlue">
-			<div
-				// style={{
-				// 	transform: `translate(${panAmount.panX * 0.2 * -1}px, ${
-				// 		panAmount.panY * 0.2 * -1
-				// 	}px)`,
-				// }}
-				className="ease bg-blue- absolute flex h-full w-full items-center justify-center transition duration-75"
-			>
-				<div className=" bg- mb-[6%] ml-[15%] w-full">
-					<TextAnimation />
-				</div>
-			</div>
 			<div
 				style={{
 					transform: `translate(${
@@ -116,9 +114,21 @@ const MouseTracking = ({ children }) => {
 					});
 				}}
 				ref={viewWindowRef}
-				className=" h-[100vh] w-[100vw] overflow-hidden"
+				className=" relative h-[100vh] w-[100vw] overflow-hidden"
 				// className="-mt-[40px] h-[100vh] w-[100vw] overflow-hidden"
 			>
+				<div
+					style={{
+						transform: `translate(${
+							textPanAmount.panX * 0.1 * -1
+						}px, ${textPanAmount.panY * 0.1 * -1}px)`,
+					}}
+					className="bg-blue- duration-250 absolute flex h-full w-full items-center justify-center  ease-in-out"
+				>
+					<div className="">
+						<TextAnimation />
+					</div>
+				</div>
 				<div
 					ref={galleryRef}
 					style={{
