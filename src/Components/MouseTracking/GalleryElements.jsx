@@ -21,16 +21,16 @@ const GalleryElements = ({ panAmount }) => {
 	return (
 		<React.Fragment>
 			{/* [&>*]: is an arbitrary selector that styles all children */}
-			<div className="[&>*]:rounded-3xl">
+			<div className="[&>*]:rounded-3xl ">
 				{/* NAV */}
-				<div className="group absolute top-[2%] right-[4%]  h-[34%] w-[12%]  overflow-hidden bg-[#FFEC45] text-3xl font-extrabold text-black">
-					<div className="flex h-full w-0 items-center justify-center duration-200 ease-in group-hover:w-full">
-						<ul className="bg- bg- bg-green- hidden h-full flex-col justify-evenly group-hover:flex">
+				<div className="group top-[2%] right-[4%] block overflow-hidden  bg-[#FFEC45] text-3xl  font-extrabold text-black md:absolute md:h-[34%] md:w-[12%]">
+					<div className="flex h-full items-center justify-center duration-200 ease-in md:w-0 md:group-hover:w-full">
+						<ul className="bg-green- flex h-full md:hidden  md:flex-col md:justify-evenly md:group-hover:flex">
 							{menus.map((menu, index) => (
 								<li
 									onClick={() => setopen(false)}
 									key={index}
-									className={`flex text-black duration-300  md:inline-block`}
+									className={`mx-5 flex text-black duration-300 md:inline-block`}
 								>
 									<NavLink
 										to={menu.href}
@@ -46,30 +46,24 @@ const GalleryElements = ({ panAmount }) => {
 								</li>
 							))}
 						</ul>
-						<div className="ease bg-red- absolute bottom-2 left-3 flex h-full items-end duration-200 group-hover:translate-y-[10%]">
+						<div className="ease  absolute bottom-2 left-3 flex h-full items-end duration-200 group-hover:translate-y-[10%]">
 							<p className="">NAV</p>
 						</div>
 					</div>
 				</div>
-				{/* CONTACT */}
-				<div className="group absolute bottom-[8%] right-[4%] flex h-[9%] w-[30%] items-center justify-center overflow-hidden bg-[#33D056] text-3xl font-extrabold text-black">
-					<div className="ease bg-red- absolute top-2 left-3  duration-200 group-hover:translate-y-[-100%]">
-						<p className="">CONTACT</p>
-					</div>
-				</div>
 				{/* REACT */}
-				<div className="group-one absolute bottom-[25%] right-[4%] flex h-[32%] w-[20%] items-center justify-center overflow-hidden bg-[#FF511B] px-10 text-3xl font-extrabold text-black">
-					<div className="relative h-full w-full opacity-0 duration-200 ease-in group-one-hover:opacity-100">
-						<div className="absolute top-[50%] hidden w-full translate-y-[-50%] delay-150 group-one-hover:block">
+				<div className="group-one bottom-[25%] right-[4%] block items-center justify-center overflow-hidden bg-[#FF511B] px-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[32%] md:w-[20%]">
+					<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-y-[-110%]">
+						<p className="">SKILLS</p>
+					</div>
+					<div className="relative h-full w-full duration-200 ease-in group-one-hover:opacity-100 md:opacity-0">
+						<div className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block">
 							<Skills col />
 						</div>
 					</div>
-					<div className="ease bg-red- absolute left-3 top-2 duration-200 group-one-hover:translate-y-[-110%]">
-						<p className="">SKILLS</p>
-					</div>
 				</div>
 				{/* GITHUB */}
-				<div className="group absolute bottom-[23%] right-[28%] flex h-[17%] w-[12%] items-center justify-center overflow-hidden bg-[#54EAFF] px-6 font-extrabold text-black">
+				<div className="group bottom-[23%] right-[28%] flex items-center justify-center overflow-hidden bg-[#54EAFF] px-6 font-extrabold text-black md:absolute md:h-[17%] md:w-[12%]">
 					{/* github goes here boet */}
 					<a
 						target="_blank"
@@ -109,7 +103,7 @@ const GalleryElements = ({ panAmount }) => {
 					</a>
 				</div>
 				{/* TEAM */}
-				<div className="group absolute bottom-[13%] right-[43%] flex h-[19%] w-[32%] items-center justify-center overflow-hidden bg-[#C2FF42] text-3xl font-extrabold text-black">
+				<div className="group bottom-[13%] right-[43%] flex items-center justify-center overflow-hidden bg-[#C2FF42] text-3xl font-extrabold text-black md:absolute md:h-[19%] md:w-[32%]">
 					<div className=" bg-green- grid h-full w-full place-items-center rounded-3xl  leading-10 opacity-0 duration-150 ease-in group-hover:opacity-100">
 						<svg
 							width="90%"
@@ -141,7 +135,7 @@ const GalleryElements = ({ panAmount }) => {
 					</div>
 				</div>
 				{/* SKILLS */}
-				<div className="group absolute bottom-[10%] left-[3.75%] flex h-[40%] w-[18%] items-center justify-center overflow-hidden bg-[#C059FF] text-3xl font-extrabold text-black">
+				<div className="group bottom-[10%] left-[3.75%] flex items-center justify-center overflow-hidden bg-[#C059FF] text-3xl font-extrabold text-black md:absolute md:h-[40%] md:w-[18%]">
 					<div className="ease bg-red- absolute top-2 right-3 duration-200 group-hover:translate-y-[-110%]">
 						<p className="">REACT</p>
 					</div>
@@ -155,7 +149,7 @@ const GalleryElements = ({ panAmount }) => {
 					</div> */}
 				</div>
 				{/* ABOUT 2 */}
-				<div className="text- group absolute top-[13%] left-[8%] flex h-[22%] w-[22%] items-center justify-center overflow-hidden bg-[#FF4179] font-extrabold text-black">
+				<div className="text- group top-[13%] left-[8%] flex items-center justify-center overflow-hidden bg-[#FF4179] font-extrabold text-black md:absolute md:h-[22%] md:w-[22%]">
 					<div className=" bg-green- leading- rounded- grid h-full w-full  place-items-center opacity-0 duration-150 ease-in group-hover:opacity-100">
 						<svg
 							width="90%"
@@ -187,7 +181,7 @@ const GalleryElements = ({ panAmount }) => {
 					</div>
 				</div>
 				{/* BIO */}
-				<div className="items- group absolute top-[4%] left-[35%] flex h-[32%] w-[14%] flex-col justify-center bg-[#55FFAD]  text-3xl font-extrabold text-black group-hover:justify-evenly">
+				<div className="items- group top-[4%] left-[35%] flex flex-col justify-center bg-[#55FFAD] text-3xl font-extrabold text-black  group-hover:justify-evenly md:absolute md:h-[32%] md:w-[14%]">
 					<div className="grid place-items-center">
 						<img
 							src={me}
@@ -230,7 +224,7 @@ const GalleryElements = ({ panAmount }) => {
 					</div>
 				</div>
 				{/* ABOUT */}
-				<div className="group absolute top-[10%] right-[20%] flex h-[20%] w-[24%] items-center justify-center overflow-hidden bg-[#FF4ED8] text-3xl font-extrabold text-black">
+				<div className="group top-[10%] right-[20%] flex items-center justify-center overflow-hidden bg-[#FF4ED8] text-3xl font-extrabold text-black md:absolute md:h-[20%] md:w-[24%]">
 					<div className=" bg-green- grid h-full w-full place-items-center rounded-3xl  leading-10 opacity-0 duration-150 ease-in group-hover:opacity-100">
 						<svg
 							width="90%"
@@ -261,7 +255,7 @@ const GalleryElements = ({ panAmount }) => {
 					</div>
 				</div>
 				{/* BLOG */}
-				<div className="group absolute top-[42%] left-[26%] flex h-[20%] w-[14%] items-center justify-center bg-[#54ADFF]  text-[2vh] font-extrabold text-black">
+				<div className="group top-[42%] left-[26%] flex items-center justify-center bg-[#54ADFF] text-[2vh] font-extrabold text-black  md:absolute md:h-[20%] md:w-[14%]">
 					<Link
 						to={"/blog"}
 						className="bg- flex h-full w-full items-center justify-center rounded-2xl  "
@@ -298,6 +292,12 @@ const GalleryElements = ({ panAmount }) => {
 							</svg>
 						</div>
 					</Link>
+				</div>
+				{/* CONTACT */}
+				<div className="h- group bottom-[8%] right-[4%] block items-center justify-center overflow-hidden bg-[#33D056] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[30%]">
+					<div className="ease bg-red- top-2 left-3 duration-200  group-hover:translate-y-[-100%] md:absolute">
+						<p className="">CONTACT</p>
+					</div>
 				</div>
 			</div>
 		</React.Fragment>
