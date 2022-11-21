@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import IframeWrapper from "./IframeWrapper";
 
@@ -10,24 +10,17 @@ const RichText = ({ contents, setTableOfContents }) => {
 
 	const { language } = useParams();
 
-	useLayoutEffect(() => {
-		setTableOfContents(tableOfContents);
-
-		// return () => {
-		//   second
-		// };
-	}, []);
+	useLayoutEffect(() => setTableOfContents(tableOfContents), []);
 
 	const getContentFragment = (index, text, obj, type) => {
 		let modifiedText = text;
 
-		// console.log(obj);
-
 		if (obj) {
+			// todo - fix this causing bad linebreaks
 			if (obj.href) {
 				modifiedText = (
-					<div className=" flex ">
-						<div className="transition  duration-200  ease-in hover:-translate-y-1 hover:scale-[110%] ">
+					<div className="inline-block ">
+						<div className="transition  duration-200  ease-in hover:-translate-y-1 hover:scale-[105%] ">
 							<a
 								className="text-yellow-400 underline underline-offset-2 "
 								href={obj.href}
@@ -68,7 +61,6 @@ const RichText = ({ contents, setTableOfContents }) => {
 
 		switch (type) {
 			case "table":
-				// console.log("raw obj", obj);
 				return (
 					<table key={index} className="mb-8 bg-white text-black">
 						{obj.children.map((tableData, i) => {
@@ -78,7 +70,6 @@ const RichText = ({ contents, setTableOfContents }) => {
 										<tr>
 											{tableData.children[0].children.map(
 												(head, i) => (
-													//   console.log("head", head.children[0].children[0])
 													<td key={i}>
 														{
 															head.children[0]
@@ -127,7 +118,6 @@ const RichText = ({ contents, setTableOfContents }) => {
 			case "class":
 				switch (obj.className) {
 					case "gist": {
-						// console.log(obj.children[0].children[0].text);
 						return (
 							<IframeWrapper
 								key={index}
@@ -148,7 +138,6 @@ const RichText = ({ contents, setTableOfContents }) => {
 					>
 						<blockquote className="my-4 mb-12 rounded-lg bg-[#272822] outline outline-1 outline-yellow-400">
 							{modifiedText.map((item, i) => {
-								console.log(language);
 								return (
 									<SyntaxHighlighted
 										code={item}
@@ -266,23 +255,7 @@ const RichText = ({ contents, setTableOfContents }) => {
 						src={obj.src}
 					/>
 				);
-			//   case "numbered-list":
-			//     console.log(obj);
-			//     console.log(obj.children);
 
-			//     return (
-			//       <ol type="1" key={index} className="mb-4 pl-4 text-xl">
-			//         {obj.children.map((item, i) => {
-			//           return item.children.map((listItem, i) => {
-			//             return listItem.children.map((listItem2, i) => {
-			//               console.log(listItem2, "listItem2");
-
-			//               return <li key={i}>{`${index}) ${listItem2.text}`}</li>;
-			//             });
-			//           });
-			//         })}
-			//       </ol>
-			//     );
 			default:
 				return modifiedText;
 		}
@@ -295,6 +268,7 @@ const RichText = ({ contents, setTableOfContents }) => {
 					const children = typeObj.children.map((item, itemindex) =>
 						getContentFragment(itemindex, item.text, item)
 					);
+
 					return getContentFragment(
 						index,
 						children,

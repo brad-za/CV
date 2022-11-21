@@ -26,7 +26,6 @@ export const getCategories = async () => {
 		`;
 		const result = await request(graphqlAPI, query);
 
-		// console.log(result);
 		return result.languagesConnection.edges;
 	} catch (error) {
 		return error;
@@ -76,7 +75,6 @@ export const getPosts = async () => {
 		`;
 		const result = await request(graphqlAPI, query);
 		return result.postsConnection.edges;
-		// console.log(result.postsConnection.edges);
 	} catch (error) {
 		return error;
 	}
@@ -109,7 +107,6 @@ export const getRecentPosts = async () => {
     `;
 		const result = await request(graphqlAPI, query);
 		return result.posts;
-		// console.log(result.postsConnection.edges);
 	} catch (error) {
 		return error;
 	}
@@ -146,7 +143,7 @@ export const getSimilarPosts = async (categories2, slug2) => {
 			}
 		`;
 		const result = await request(graphqlAPI, query, { slug2, categories2 });
-		console.log(result, "result");
+
 		return result.posts;
 	} catch (error) {
 		return error;
@@ -195,7 +192,6 @@ export const getSimilarPosts2 = async (categories2, slug2, language) => {
 			categories2,
 			language,
 		});
-		// console.log(result, "result");
 		return result.posts;
 	} catch (error) {
 		return error;
@@ -224,7 +220,6 @@ export const getCategoriesSimple = async category => {
 			}
 		`;
 		const result = await request(graphqlAPI, query, { category });
-		// console.log(result);
 		return result.languagesConnection.edges;
 	} catch (error) {
 		return error;
@@ -273,7 +268,6 @@ export const getLanguagePosts = async slug => {
 			}
 		`;
 		const result = await request(graphqlAPI, query, { slug });
-		// console.log(result);
 		return result.postsConnection.edges;
 	} catch (error) {
 		return error;
@@ -322,7 +316,6 @@ export const getCategoryPosts = async slug => {
 			}
 		`;
 		const result = await request(graphqlAPI, query, { slug });
-		// console.log(result);
 		return result.postsConnection.edges;
 	} catch (error) {
 		return error;
@@ -370,7 +363,6 @@ export const getPostDetails = async slug => {
 			}
 		`;
 		const result = await request(graphqlAPI, query, { slug });
-		// console.log(result.posts);
 		return result.posts;
 	} catch (error) {
 		return error;

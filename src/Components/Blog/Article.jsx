@@ -8,8 +8,7 @@ import Widgets from "./Widgets";
 
 const Article = ({ setTableOfContents }) => {
 	const [posts, setPosts] = useState([]);
-	let { language, category, post } = useParams();
-	//   console.log(language, category, post);
+	let { post } = useParams();
 
 	useEffect(() => {
 		const _post = getPostDetails(post).then(data =>

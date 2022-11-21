@@ -6,11 +6,10 @@ import Home from "./Components/Home.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import MouseTracking from "./Components/MouseTracking/MouseTracking.jsx";
 import React from "react";
-import GalleryElements from "./Components/MouseTracking/GalleryElements.jsx";
+import Balls from "./Components/Balls/Balls.jsx";
 
 function App() {
 	const route = useLocation();
-	//   console.log(route);
 	return (
 		<div className="bg-green- flex min-h-screen flex-col justify-between">
 			{route.pathname !== "/mouse" ? (
@@ -19,6 +18,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/blog/*" element={<Blog />} />
+						<Route path="/balls" element={<Balls />} />
 					</Routes>
 					<Footer />
 				</React.Fragment>
