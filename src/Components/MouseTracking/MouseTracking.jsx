@@ -30,13 +30,15 @@ const MouseTracking = ({ children }) => {
 			height: galleryRef.current.offsetHeight,
 		};
 
-		setMaxGallerySize({
-			width: gallerySize.width - windowSize.width,
-			height: gallerySize.height - windowSize.height,
+		setMaxGallerySize(() => {
+			return {
+				width: gallerySize.width - windowSize.width,
+				height: gallerySize.height - windowSize.height,
+			};
 		});
 
 		return () => {};
-	}, []);
+	}, [gallerySize]);
 
 	const getDecimalMousePosition = (x, y) => {
 		const decimalX = x / windowSize.width;
@@ -52,36 +54,34 @@ const MouseTracking = ({ children }) => {
 	};
 
 	useEffect(() => {
-		setTextPanAmount(
-			getPanAmount(
+		setTextPanAmount(() => {
+			return getPanAmount(
 				getDecimalMousePosition(mousePosition.x, mousePosition.y),
 				maxGallerySize
-			)
-		);
+			);
+		});
 		if (windowSize.width > "1024") {
-			setPanAmount(
-				getPanAmount(
+			setPanAmount(() => {
+				return getPanAmount(
 					getDecimalMousePosition(mousePosition.x, mousePosition.y),
 					maxGallerySize
-				)
-			);
+				);
+			});
 		} else {
-			setPanAmount({
-				panX: 0,
-				panY: 0,
+			setPanAmount(() => {
+				return { panX: 0, panY: 0 };
 			});
 		}
 	}, [mousePosition]);
 
+	const onMousePosChange = event => {
+		setMousePosition(() => {
+			return { x: event.pageX, y: event.pageY };
+		});
+	};
+
 	return (
-		<div
-			onMouseMove={e => {
-				setMousePosition({
-					x: e.pageX,
-					y: e.pageY,
-				});
-			}}
-		>
+		<div onMouseMove={onMousePosChange}>
 			<div className="bg-chipDarkBlue md:overflow-hidden">
 				<div
 					ref={viewWindowRef}

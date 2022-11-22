@@ -19,7 +19,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 		"inline-block fixed cursor-pointer border-b-2  text-[3vmin] font-normal tracking-wider text- border-black z-30";
 	return (
 		<React.Fragment>
-			<div className="">
+			<div className="z-30 cursor-none">
 				<div
 					style={{
 						mixBlendMode: "difference",
@@ -36,7 +36,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 								  mousePosition.y - panAmount.panY
 						}px)`,
 					}}
-					className={`ease absolute -top-20 -left-20 z-10 h-40 w-40 cursor-none  rounded-full bg-white duration-75 `}
+					className={` ease fixed -left-20 -top-20 z-10 h-40 w-40  rounded-full  bg-white duration-[10] `}
 				/>
 			</div>
 
@@ -50,7 +50,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 							<ul className="bg-green- flex h-full w-full  md:hidden md:flex-col md:justify-evenly md:group-hover:flex">
 								{menus.map((menu, index) => (
 									<li
-										onClick={() => setopen(false)}
+										// onClick={() => setopen(false)}
 										key={index}
 										className={`grid h-10 w-full place-items-center text-black duration-300 `}
 									>
