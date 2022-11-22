@@ -14,9 +14,9 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 	];
 
 	let inActiveClassName =
-		"inline-block fixed cursor-pointer border-b-2 border-transparent  text-[3vmin] font-normal tracking-wider text- hover:border-black z-30";
+		"inline-block fixed cursor-pointer  bg- w-40 h-6 text-[3vmin] font-normal tracking-wider text-  hover:border-black border-b-2 border-transparent z-30";
 	let activeClassName =
-		"inline-block fixed cursor-pointer border-b-2  text-[3vmin] font-normal tracking-wider text- border-black z-30";
+		"inline-block fixed cursor-pointer border-b-2  text-[3vmin] font-normal w-40 h-6 bg- tracking-wider text- border-black z-30";
 	return (
 		<React.Fragment>
 			<div className="z-30 cursor-none">
@@ -54,21 +54,33 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 										key={index}
 										className={`grid h-10 w-full place-items-center text-black duration-300 `}
 									>
-										<NavLink
+										<Link
 											to={menu.href}
-											className={({ isActive }) =>
-												isActive
-													? activeClassName
-													: inActiveClassName
+											onClick={() =>
+												console.log(menu.name.length)
 											}
+											style={{
+												width:
+													menu.name.length * 2.6 +
+													"vmin",
+											}}
+											className={
+												"bg- text- bg- fixed z-30 inline-block  h-9 cursor-pointer border-b-2 border-transparent text-[3vmin] font-normal tracking-wider hover:border-white "
+											}
+											// className={({ isActive }) => {
+											// 	return isActive
+											// 		? activeClassName
+											// 		: inActiveClassName;
+											// }}
 											end={menu.end}
-										>
+										/>
+										<div className="z-0 border-b-2 border-transparent hover:border-black">
 											{menu.name}
-										</NavLink>
+										</div>
 									</li>
 								))}
 							</ul>
-							<div className="ease  absolute bottom-2 left-3 flex h-full items-end duration-200 group-hover:translate-y-[10%]">
+							<div className="ease absolute bottom-2 left-3 flex h-full items-end duration-200 group-hover:translate-y-[10%]">
 								<p className="">NAV</p>
 							</div>
 						</div>
