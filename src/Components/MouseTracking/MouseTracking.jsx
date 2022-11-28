@@ -12,8 +12,8 @@ const MouseTracking = ({ children }) => {
 		panY: (window.innerHeight / 4) * -1,
 	});
 	const [textPanAmount, setTextPanAmount] = useState({
-		panX: -2000,
-		panY: 800,
+		panX: -1600,
+		panY: 600,
 	});
 	const [maxGallerySize, setMaxGallerySize] = useState({});
 	const [windowSize, setWindowSize] = useState({

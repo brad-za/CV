@@ -4,6 +4,7 @@ import github from "../../assets/links/icons8-github.svg";
 import me from "../../assets/links/me.jpg";
 import blog from "../../assets/links/blog.svg";
 import Skills from "../Skills";
+import Tools from "../Tools";
 import TextAnimation from "../Hero/TextAnimation";
 
 const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
@@ -36,7 +37,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 								  mousePosition.y - panAmount.panY
 						}px)`,
 					}}
-					className={`ease fixed -left-20 -top-20 z-40 h-40 w-40  rounded-full  bg-white duration-[75ms] `}
+					className={`fixed -left-20 -top-20 z-40 h-40 w-40 rounded-full bg-white duration-[75ms] `}
 				/>
 			</div>
 
@@ -75,13 +76,13 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 						</div>
 					</div>
 				</div>
-				{/* REACT */}
+				{/* SKILLS */}
 				<div className="group-one">
-					<div className="group-one bottom-[25%] right-[4%] block items-center justify-center overflow-hidden rounded-3xl bg-[#FF511B] px-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[32%] md:w-[20%]">
+					<div className="group-one bottom-[25%] right-[8%] block items-center justify-center overflow-hidden rounded-3xl bg-[#33D056] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[32%] md:w-[16%]">
 						<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-y-[-110%]">
 							<p className="">SKILLS</p>
 						</div>
-						<div className="relative h-full w-full duration-200 ease-in group-one-hover:opacity-100 md:opacity-0">
+						<div className="relative h-full w-full text-2xl duration-200 ease-in group-one-hover:opacity-100 md:opacity-0">
 							<div className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block">
 								<Skills col />
 							</div>
@@ -131,11 +132,11 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 				</div>
 				{/* TEAM */}
 				<div className="group">
-					<div className="group bottom-[13%] right-[43%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#C2FF42] text-3xl font-extrabold text-black md:absolute md:h-[19%] md:w-[32%]">
+					<div className="group bottom-[12%] right-[43%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#C2FF42] text-3xl font-extrabold text-black md:absolute md:h-[19%] md:w-[16%]">
 						<div className=" bg-green- grid h-full w-full place-items-center rounded-3xl  leading-10 opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
 								width="90%"
-								height="90%"
+								height="100%"
 								viewBox="0 0 100% 100%"
 								preserveAspectRatio="xMinYMin meet"
 							>
@@ -151,8 +152,8 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 										<p className="">
 											I enjoy working on a team and
 											learning from my peers and leaders.
-											I believe I am a fast learner and I
-											am ready to take on any challenge.
+											I am a fast learner and I am ready
+											to take on any challenge.
 										</p>
 									</div>
 								</foreignObject>
@@ -163,29 +164,28 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 						</div>
 					</div>
 				</div>
-				{/* SKILLS */}
-				<div className="group">
-					<div className="group bottom-[10%] left-[3.75%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#C059FF] text-3xl font-extrabold text-black md:absolute md:h-[40%] md:w-[18%]">
-						<div className="ease bg-red- absolute top-2 right-3 duration-200 group-hover:translate-y-[-110%]">
-							<p className="">REACT</p>
+				{/* TOOLS */}
+
+				<div className="group-one">
+					<div className="group-one bottom-[10%] left-[3.75%] block items-center justify-center overflow-hidden rounded-3xl bg-[#C059FF] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[40%] md:w-[18%]">
+						<div className="ease bg-red- right-3 top-2 duration-200 md:absolute md:group-one-hover:translate-x-[120%]">
+							<p className="">SKILLS</p>
 						</div>
-						{/* <div className="relative h-full w-full opacity-0 duration-200 ease-in group-one-hover:opacity-100">
-						<div className="absolute top-[50%] hidden w-full translate-y-[-50%] delay-150 group-one-hover:block">
-							<Skills col />
+						<div className="relative h-full w-full text-2xl duration-200 ease-in group-one-hover:opacity-100 md:opacity-0">
+							<div className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block">
+								<Tools col />
+							</div>
 						</div>
-					</div>
-					<div className="ease bg-red- absolute right-3  top-2 duration-200 group-one-hover:translate-y-[-110%]">
-						<p className="">SKILLS</p>
-					</div> */}
 					</div>
 				</div>
+
 				{/* ABOUT 2 */}
 				<div className="group">
 					<div className="text- group top-[13%] left-[8%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4179] font-extrabold text-black md:absolute md:h-[22%] md:w-[22%]">
 						<div className=" bg-green- leading- rounded- grid h-full w-full  place-items-center opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
 								width="90%"
-								height="90%"
+								height="100%"
 								viewBox="0 0 100% 100%"
 								className=" lg:text-3xl"
 								preserveAspectRatio="xMinYMin meet"
@@ -293,7 +293,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 				</div>
 				{/* BLOG */}
 				<div className="group">
-					<div className="group top-[42%] left-[26%] flex items-center justify-center rounded-3xl bg-[#54ADFF] text-[2vh] font-extrabold text-black  md:absolute md:h-[20%] md:w-[14%]">
+					<div className="group bottom-[6%] left-[24.5%] flex items-center justify-center rounded-3xl bg-[#54ADFF] text-[2vh] font-extrabold text-black  md:absolute md:h-[20%] md:w-[14%]">
 						<Link
 							to={"/blog"}
 							className="bg- flex h-full w-full items-center justify-center rounded-2xl  "
@@ -331,11 +331,17 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 						</Link>
 					</div>
 				</div>
-				{/* CONTACT */}
-
+				{/* THREE */}
 				<div className="group">
-					<div className="bg-[]  bottom-[8%] right-[4%]  md:absolute md:h-[9%] md:w-[30%]"></div>
-					<div className=" bottom-[8%] right-[4%]  block items-center justify-center overflow-hidden  rounded-3xl bg-[#33D056] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[30%]">
+					<div className="group bottom-[35%] left-[25%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#ff7519] text-3xl font-extrabold text-black  md:absolute md:h-[24%] md:w-[18%]">
+						<div className="ease md:group-hover: bg-red- right-3 bottom-2 duration-200 md:absolute md:group-hover:translate-x-[120%]">
+							<p className="">THREE</p>
+						</div>
+					</div>
+				</div>
+				{/* CONTACT */}
+				<div className="group">
+					<div className=" bottom-[8%] right-[17%]  block items-center justify-center overflow-hidden  rounded-3xl bg-[#FF511B] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[20%]">
 						<div className=" p-3 duration-200 group-hover:translate-y-[-100%]">
 							<p className="">CONTACT</p>
 						</div>
