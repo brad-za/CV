@@ -1,18 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
-import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
 import "./style/globals.scss";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </HelmetProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const container = document.getElementById("root");
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App tab="home" />);
