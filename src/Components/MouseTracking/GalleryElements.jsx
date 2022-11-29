@@ -20,6 +20,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 		"inline-block fixed cursor-pointer border-b-2  text-[3vmin] font-normal tracking-wider text- border-black";
 	return (
 		<React.Fragment>
+			{/* Mouse Ball */}
 			<div className="pointer-events-none z-30 cursor-none">
 				<div
 					style={{
@@ -40,7 +41,6 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					className={`fixed -left-20 -top-20 z-40 h-40 w-40 rounded-full bg-white duration-[75ms] `}
 				/>
 			</div>
-
 			{/* [&>*]: is an arbitrary selector that styles all children */}
 			<div className="[&>*]:rounded-3xl ">
 				{/* NAV */}
@@ -78,7 +78,7 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 				</div>
 				{/* SKILLS */}
 				<div className="group-one">
-					<div className="group-one bottom-[25%] right-[8%] block items-center justify-center overflow-hidden rounded-3xl bg-[#33D056] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[32%] md:w-[16%]">
+					<div className="group-one bottom-[25%] right-[6%] block items-center justify-center overflow-hidden rounded-3xl bg-[#33D056] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[32%] md:w-[16%]">
 						<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-y-[-110%]">
 							<p className="">SKILLS</p>
 						</div>
@@ -86,6 +86,14 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 							<div className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block">
 								<Skills col />
 							</div>
+						</div>
+					</div>
+				</div>
+				{/* FUN */}
+				<div className="group-one">
+					<div className="group-one top-[35%] right-[24%] block items-center justify-center overflow-hidden rounded-3xl bg-[#df2b2b] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[20%] md:w-[10%]">
+						<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-x-[-120%]">
+							<p className="">FUN</p>
 						</div>
 					</div>
 				</div>
@@ -165,7 +173,6 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* TOOLS */}
-
 				<div className="group-one">
 					<div className="group-one bottom-[10%] left-[3.75%] block items-center justify-center overflow-hidden rounded-3xl bg-[#C059FF] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[40%] md:w-[18%]">
 						<div className="ease bg-red- right-3 top-2 duration-200 md:absolute md:group-one-hover:translate-x-[120%]">
@@ -178,7 +185,6 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 						</div>
 					</div>
 				</div>
-
 				{/* ABOUT 2 */}
 				<div className="group">
 					<div className="text- group top-[13%] left-[8%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4179] font-extrabold text-black md:absolute md:h-[22%] md:w-[22%]">
