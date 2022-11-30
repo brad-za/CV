@@ -5,9 +5,9 @@ import me from "../../assets/links/me.jpg";
 import blog from "../../assets/links/blog.svg";
 import Skills from "../Skills";
 import Tools from "../Tools";
-import TextAnimation from "../Hero/TextAnimation";
 
 const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
+	const [mouseLabel, setMouseLabel] = useState(null);
 	const menus = [
 		{ name: "Home", href: "/", id: "home", end: true },
 		{ name: "Blog", href: "/blog", id: "blog", end: false },
@@ -18,6 +18,11 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 		"inline-block fixed cursor-pointer border-b-2 border-transparent  text-[3vmin] font-normal tracking-wider text- hover:border-black ";
 	let activeClassName =
 		"inline-block fixed cursor-pointer border-b-2  text-[3vmin] font-normal tracking-wider text- border-black";
+
+	let mouseOverElementHandler = element => {
+		setMouseLabel(() => element);
+	};
+
 	return (
 		<React.Fragment>
 			{/* Mouse Ball */}
@@ -38,14 +43,27 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 								  mousePosition.y - panAmount.panY
 						}px)`,
 					}}
-					className={`fixed -left-20 -top-20 z-40 h-40 w-40 rounded-full bg-white duration-[75ms] `}
-				/>
+					className={`fixed -left-20 -top-20 z-40 grid  h-40 w-40 place-items-center  rounded-full bg-white duration-[75ms] `}
+				>
+					<p className="mt-16 text-3xl font-black text-black">
+						{mouseLabel}
+					</p>
+				</div>
 			</div>
 			{/* [&>*]: is an arbitrary selector that styles all children */}
 			<div className="[&>*]:rounded-3xl ">
 				{/* NAV */}
-				<div className="group">
-					<div className="group top-[2%] right-[4%] block overflow-hidden rounded-3xl  bg-[#FFEC45] text-3xl  font-extrabold text-black md:absolute md:h-[34%] md:w-[12%]">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("Nav");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
+					<div
+						// onMouseOut
+						className="group top-[2%] right-[4%] block overflow-hidden rounded-3xl  bg-[#FFEC45] text-3xl  font-extrabold text-black md:absolute md:h-[34%] md:w-[12%]"
+					>
 						<div className="items- justify- flex h-full duration-200 ease-in md:w-0 md:group-hover:w-full">
 							<ul className="bg-green- flex h-full w-full  md:hidden md:flex-col md:justify-evenly md:group-hover:flex">
 								{menus.map((menu, index) => (
@@ -55,6 +73,9 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 										className={`grid h-10 w-full place-items-center text-black duration-300 `}
 									>
 										<NavLink
+											onMouseMove={() => {
+												mouseOverElementHandler(null);
+											}}
 											to={menu.href}
 											className={({ isActive }) => {
 												return isActive
@@ -77,20 +98,37 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* SKILLS */}
-				<div className="group-one">
+				<div
+					className="group-one"
+					onMouseOver={() => {
+						mouseOverElementHandler("Skills");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="group-one bottom-[25%] right-[6%] block items-center justify-center overflow-hidden rounded-3xl bg-[#33D056] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[32%] md:w-[16%]">
 						<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-y-[-110%]">
 							<p className="">SKILLS</p>
 						</div>
 						<div className="relative h-full w-full text-2xl duration-200 ease-in group-one-hover:opacity-100 md:opacity-0">
-							<div className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block">
+							<div
+								onMouseMove={() =>
+									mouseOverElementHandler(null)
+								}
+								className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block"
+							>
 								<Skills col />
 							</div>
 						</div>
 					</div>
 				</div>
 				{/* FUN */}
-				<div className="group-one">
+				<div
+					className="group-one"
+					onMouseOver={() => {
+						mouseOverElementHandler("Fun");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="group-one top-[35%] right-[24%] block items-center justify-center overflow-hidden rounded-3xl bg-[#df2b2b] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[20%] md:w-[10%]">
 						<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-x-[-120%]">
 							<p className="">FUN</p>
@@ -98,10 +136,17 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* GITHUB */}
-				<div className="group">
-					<div className="group bottom-[23%] right-[28%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#54EAFF] px-6 font-extrabold text-black md:absolute md:h-[17%] md:w-[12%]">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("Github");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
+					<div className="group bottom-[23%] right-[25%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#54EAFF] px-6 font-extrabold text-black md:absolute md:h-[17%] md:w-[15%]">
 						{/* github goes here boet */}
 						<a
+							onMouseMove={() => mouseOverElementHandler(null)}
 							target="_blank"
 							href="https://github.com/putintin420"
 							className="bg- flex h-full w-full items-center justify-center rounded-2xl  p-2"
@@ -139,12 +184,21 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* TEAM */}
-				<div className="group">
-					<div className="group bottom-[12%] right-[43%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#C2FF42] text-3xl font-extrabold text-black md:absolute md:h-[19%] md:w-[16%]">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("Team");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
+					<div className="group bottom-[6%] right-[43%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#C2FF42] text-3xl font-extrabold text-black md:absolute md:h-[26%] md:w-[16%]">
 						<div className=" bg-green- grid h-full w-full place-items-center rounded-3xl  leading-10 opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
+								onMouseMove={() =>
+									mouseOverElementHandler(null)
+								}
 								width="90%"
-								height="100%"
+								height="80%"
 								viewBox="0 0 100% 100%"
 								preserveAspectRatio="xMinYMin meet"
 							>
@@ -173,25 +227,45 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* TOOLS */}
-				<div className="group-one">
+				<div
+					className="group-one"
+					onMouseOver={() => {
+						mouseOverElementHandler("Tools");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="group-one bottom-[10%] left-[3.75%] block items-center justify-center overflow-hidden rounded-3xl bg-[#C059FF] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[40%] md:w-[18%]">
 						<div className="ease bg-red- right-3 top-2 duration-200 md:absolute md:group-one-hover:translate-x-[120%]">
-							<p className="">SKILLS</p>
+							<p className="">Tools</p>
 						</div>
 						<div className="relative h-full w-full text-2xl duration-200 ease-in group-one-hover:opacity-100 md:opacity-0">
-							<div className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block">
+							<div
+								onMouseMove={() =>
+									mouseOverElementHandler(null)
+								}
+								className="w-full delay-150 md:absolute md:top-[50%] md:hidden md:translate-y-[-50%] md:group-one-hover:block"
+							>
 								<Tools col />
 							</div>
 						</div>
 					</div>
 				</div>
 				{/* ABOUT 2 */}
-				<div className="group">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("Quality");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="text- group top-[13%] left-[8%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4179] font-extrabold text-black md:absolute md:h-[22%] md:w-[22%]">
 						<div className=" bg-green- leading- rounded- grid h-full w-full  place-items-center opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
+								onMouseMove={() =>
+									mouseOverElementHandler(null)
+								}
 								width="90%"
-								height="100%"
+								height="50%"
 								viewBox="0 0 100% 100%"
 								className=" lg:text-3xl"
 								preserveAspectRatio="xMinYMin meet"
@@ -221,7 +295,13 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* BIO */}
-				<div className="group">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("About me");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="items- group top-[4%] left-[35%] flex flex-col justify-center rounded-3xl bg-[#55FFAD] text-3xl font-extrabold text-black  group-hover:justify-evenly md:absolute md:h-[32%] md:w-[14%]">
 						<div className="grid place-items-center">
 							<img
@@ -265,12 +345,21 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* ABOUT */}
-				<div className="group">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("Me");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="group top-[10%] right-[20%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4ED8] text-3xl font-extrabold text-black md:absolute md:h-[20%] md:w-[24%]">
 						<div className=" bg-green- grid h-full w-full place-items-center rounded-3xl  leading-10 opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
+								onMouseMove={() =>
+									mouseOverElementHandler(null)
+								}
 								width="90%"
-								height="90%"
+								height="60%"
 								viewBox="0 0 100% 100%"
 								preserveAspectRatio="xMinYMin meet"
 							>
@@ -338,7 +427,13 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* THREE */}
-				<div className="group">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("THREE");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className="group bottom-[35%] left-[25%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#ff7519] text-3xl font-extrabold text-black  md:absolute md:h-[24%] md:w-[18%]">
 						<div className="ease md:group-hover: bg-red- right-3 bottom-2 duration-200 md:absolute md:group-hover:translate-x-[120%]">
 							<p className="">THREE</p>
@@ -346,7 +441,13 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 					</div>
 				</div>
 				{/* CONTACT */}
-				<div className="group">
+				<div
+					className="group"
+					onMouseOver={() => {
+						mouseOverElementHandler("call me ;)");
+					}}
+					onMouseOut={() => mouseOverElementHandler(null)}
+				>
 					<div className=" bottom-[8%] right-[17%]  block items-center justify-center overflow-hidden  rounded-3xl bg-[#FF511B] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[20%]">
 						<div className=" p-3 duration-200 group-hover:translate-y-[-100%]">
 							<p className="">CONTACT</p>
