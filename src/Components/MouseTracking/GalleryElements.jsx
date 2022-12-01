@@ -6,8 +6,7 @@ import blog from "../../assets/links/blog.svg";
 import Skills from "../Skills";
 import Tools from "../Tools";
 
-const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
-	const [mouseLabel, setMouseLabel] = useState(null);
+const GalleryElements = ({ mouseOverElementHandler }) => {
 	const menus = [
 		{ name: "Home", href: "/", id: "home", end: true },
 		{ name: "Blog", href: "/blog", id: "blog", end: false },
@@ -19,37 +18,8 @@ const GalleryElements = ({ mousePosition, windowSize, panAmount }) => {
 	let activeClassName =
 		"inline-block fixed cursor-pointer border-b-2  text-[3vmin] font-normal tracking-wider text- border-black";
 
-	let mouseOverElementHandler = element => {
-		setMouseLabel(() => element);
-	};
-
 	return (
 		<React.Fragment>
-			{/* Mouse Ball */}
-			<div className="pointer-events-none z-30 cursor-none">
-				<div
-					style={{
-						mixBlendMode: "difference",
-						transform: `translate(${
-							mousePosition.x >= windowSize.width - 80
-								? windowSize.width - panAmount.panX - 80
-								: mousePosition.x >= 80 &&
-								  mousePosition.x - panAmount.panX
-							// : console.log("this")
-						}px, ${
-							mousePosition.y >= windowSize.height - 80
-								? windowSize.height - panAmount.panY - 80
-								: mousePosition.y >= 80 &&
-								  mousePosition.y - panAmount.panY
-						}px)`,
-					}}
-					className={`fixed -left-20 -top-20 z-40 grid  h-40 w-40 place-items-center  rounded-full bg-white duration-[75ms] `}
-				>
-					<p className="mt-16 text-3xl font-black text-black">
-						{mouseLabel}
-					</p>
-				</div>
-			</div>
 			{/* [&>*]: is an arbitrary selector that styles all children */}
 			<div className="[&>*]:rounded-3xl ">
 				{/* NAV */}

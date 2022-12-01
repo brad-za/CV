@@ -3,7 +3,7 @@ import TextAnimation from "../Hero/TextAnimation";
 import GalleryElements from "./GalleryElements";
 
 const MouseTracking = ({ children }) => {
-	4;
+	const [mouseLabel, setMouseLabel] = useState(null);
 	const viewWindowRef = useRef(null);
 	const galleryRef = useRef(null);
 	const [mousePosition, setMousePosition] = useState({});
@@ -57,14 +57,14 @@ const MouseTracking = ({ children }) => {
 		setTextPanAmount(() => {
 			return getPanAmount(
 				getDecimalMousePosition(mousePosition.x, mousePosition.y),
-				maxGallerySize
+				maxGallerySize,
 			);
 		});
 		if (windowSize.width > "1024") {
 			setPanAmount(() => {
 				return getPanAmount(
 					getDecimalMousePosition(mousePosition.x, mousePosition.y),
-					maxGallerySize
+					maxGallerySize,
 				);
 			});
 		} else {
@@ -80,8 +80,38 @@ const MouseTracking = ({ children }) => {
 		});
 	};
 
+	let mouseOverElementHandler = element => {
+		setMouseLabel(() => element);
+	};
+
 	return (
 		<div onMouseMove={onMousePosChange}>
+			{/* Mouse Ball */}
+			<div className=" pointer-events-none z-30 cursor-none ">
+				<div
+					style={{
+						mixBlendMode: "difference",
+						transform: `translate(${
+							mousePosition.x >= windowSize.width - 80
+								? windowSize.width - 80
+								: mousePosition.x >= 80
+								? mousePosition.x
+								: 80
+						}px, ${
+							mousePosition.y >= windowSize.height - 80
+								? windowSize.height - 80
+								: mousePosition.y >= 80
+								? mousePosition.y
+								: 80
+						}px)`,
+					}}
+					className={`fixed -left-20 -top-20 z-40 grid  h-40 w-40 place-items-center  rounded-full bg-white duration-[75ms] `}
+				>
+					<p className="mt-16 text-3xl font-black text-black">
+						{mouseLabel}
+					</p>
+				</div>
+			</div>
 			<div className="bg-chipDarkBlue md:overflow-hidden">
 				<div
 					ref={viewWindowRef}
@@ -109,9 +139,7 @@ const MouseTracking = ({ children }) => {
 						// className="ease relative h-[100vh] w-[100vw] transition duration-75"
 					>
 						<GalleryElements
-							panAmount={panAmount}
-							mousePosition={mousePosition}
-							windowSize={windowSize}
+							mouseOverElementHandler={mouseOverElementHandler}
 						/>
 					</div>
 				</div>
