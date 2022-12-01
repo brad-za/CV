@@ -3,8 +3,8 @@ import TextAnimation from "../Hero/TextAnimation";
 import GalleryElements from "./GalleryElements";
 
 const MouseTracking = ({ children }) => {
+	const windowRef = useRef(null);
 	const [mouseLabel, setMouseLabel] = useState(null);
-	const viewWindowRef = useRef(null);
 	const galleryRef = useRef(null);
 	const [mousePosition, setMousePosition] = useState({});
 	const [panAmount, setPanAmount] = useState({
@@ -21,14 +21,19 @@ const MouseTracking = ({ children }) => {
 		height: window.innerHeight,
 	});
 
-	let gallerySize;
+	const [gallerySize, setGallerySize] = useState({
+		width: window.innerWidth * 1.4,
+		height: window.innerHeight * 1.4,
+	});
 
 	useLayoutEffect(() => {
 		// get the size of the viewing window in pixels
-		gallerySize = {
-			width: galleryRef.current.offsetWidth,
-			height: galleryRef.current.offsetHeight,
-		};
+		setGallerySize(() => {
+			return {
+				width: gallerySize.width - windowSize.width,
+				height: gallerySize.height - windowSize.height,
+			};
+		});
 
 		setMaxGallerySize(() => {
 			return {
@@ -38,7 +43,7 @@ const MouseTracking = ({ children }) => {
 		});
 
 		return () => {};
-	}, [gallerySize]);
+	}, []);
 
 	const getDecimalMousePosition = (x, y) => {
 		const decimalX = x / windowSize.width;
@@ -84,6 +89,40 @@ const MouseTracking = ({ children }) => {
 		setMouseLabel(() => element);
 	};
 
+	useEffect(() => {
+		const setDimension = () => {
+			setWindowSize({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+			setGallerySize(() => {
+				return {
+					width: gallerySize.width - windowSize.width,
+					height: gallerySize.height - windowSize.height,
+				};
+			});
+
+			setMaxGallerySize(() => {
+				return {
+					width: gallerySize.width - windowSize.width,
+					height: gallerySize.height - windowSize.height,
+				};
+			});
+
+			setPanAmount(() => {
+				return {
+					panX: (window.innerWidth / 4) * -1,
+					panY: (window.innerHeight / 4) * -1,
+				};
+			});
+		};
+
+		window.addEventListener("resize", setDimension);
+		return () => {
+			window.removeEventListener("resize", setDimension);
+		};
+	}, []);
+
 	return (
 		<div onMouseMove={onMousePosChange}>
 			{/* Mouse Ball */}
@@ -112,9 +151,8 @@ const MouseTracking = ({ children }) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-chipDarkBlue md:overflow-hidden">
+			<div ref={windowRef} className="bg-chipDarkBlue md:overflow-hidden">
 				<div
-					ref={viewWindowRef}
 					className=" h- relative w-[100vw] md:h-[100vh] md:overflow-hidden"
 					// className="-mt-[40px] h-[100vh] w-[100vw] overflow-hidden"
 				>
@@ -127,6 +165,7 @@ const MouseTracking = ({ children }) => {
 						className="bg-blue- duration-250 absolute hidden h-full  w-full items-center justify-center ease-in-out  md:flex"
 					>
 						<div className="">
+							{/*  */}
 							<TextAnimation />
 						</div>
 					</div>
@@ -139,6 +178,7 @@ const MouseTracking = ({ children }) => {
 						// className="ease relative h-[100vh] w-[100vw] transition duration-75"
 					>
 						<GalleryElements
+							panAmount={panAmount}
 							mouseOverElementHandler={mouseOverElementHandler}
 						/>
 					</div>
