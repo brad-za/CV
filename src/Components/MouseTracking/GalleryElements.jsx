@@ -11,6 +11,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 		{ name: "Home", href: "/", id: "home", end: true },
 		{ name: "Blog", href: "/blog", id: "blog", end: false },
 		{ name: "Mouse", href: "/mouse", id: "mouse", end: true },
+		{ name: "Keyboard", href: "/keyboard", id: "keyboard", end: true },
 	];
 
 	let inActiveClassName =

@@ -11,6 +11,7 @@ const Nav = () => {
 		{ name: "Home", href: "/", id: "home", end: true },
 		{ name: "Blog", href: "/blog", id: "blog", end: false },
 		{ name: "Mouse", href: "/mouse", id: "mouse", end: true },
+		{ name: "Keyboard", href: "/keyboard", id: "keyboard", end: true },
 		// { name: "Balls", href: "/balls", id: "balls", end: true },
 	];
 

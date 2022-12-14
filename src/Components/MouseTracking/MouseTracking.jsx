@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import TextAnimation from "../Hero/TextAnimation";
 import GalleryElements from "./GalleryElements";
 
-const MouseTracking = ({ children }) => {
+const MouseTracking = () => {
 	const windowRef = useRef(null);
 	const [mouseLabel, setMouseLabel] = useState(null);
 	const galleryRef = useRef(null);
@@ -144,7 +144,7 @@ const MouseTracking = ({ children }) => {
 								: 80
 						}px)`,
 					}}
-					className={`fixed -left-20 -top-20 z-40 grid  h-40 w-40 place-items-center  rounded-full bg-white duration-[75ms] `}
+					className={`fixed -left-20 -top-20 z-40 grid  h-40 w-40 place-items-center rounded-full bg-white`}
 				>
 					<p className="mt-16 text-3xl font-black text-black">
 						{mouseLabel}
@@ -162,7 +162,7 @@ const MouseTracking = ({ children }) => {
 								textPanAmount.panX * 0.1 * -1
 							}px, ${textPanAmount.panY * 0.1 * -1}px)`,
 						}}
-						className="bg-blue- duration-250 absolute hidden h-full  w-full items-center justify-center ease-in-out  md:flex"
+						className="absolute hidden h-full w-full  items-center justify-center  ease-in-out  md:flex"
 					>
 						<div className="">
 							{/*  */}
@@ -174,7 +174,7 @@ const MouseTracking = ({ children }) => {
 						style={{
 							transform: `translate(${panAmount.panX}px, ${panAmount.panY}px)`,
 						}}
-						className="ease h- relative w-full overflow-hidden duration-150 lg:h-[140vh]  lg:w-[140vw]"
+						className="relative w-full overflow-hidden  ease-linear lg:h-[140vh]  lg:w-[140vw]"
 						// className="ease relative h-[100vh] w-[100vw] transition duration-75"
 					>
 						<GalleryElements

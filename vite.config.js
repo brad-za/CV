@@ -25,4 +25,6 @@ export default defineConfig({
 			usePolling: true,
 		},
 	},
+	publicDir: "/src/assets",
+	assetsInclude: ["**/*.glb"],
 });
