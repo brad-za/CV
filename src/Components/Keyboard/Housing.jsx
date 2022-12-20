@@ -22,7 +22,7 @@ export default function Model(props) {
 		},
 		color: "#c0c0c0",
 		emissive: "#000000",
-		roughness: { value: 0, min: 0, max: 1, step: 0.01 },
+		roughness: { value: 1, min: 0, max: 1, step: 0.01 },
 		metalness: { value: 1, min: 0, max: 1, step: 0.01 },
 		specularColor: "#ffffff",
 		fog: true,
