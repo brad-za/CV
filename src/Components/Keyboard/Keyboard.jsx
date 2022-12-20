@@ -1,42 +1,52 @@
 import React from "react";
 import { Perf } from "r3f-perf";
-import { Canvas, useLoader } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import { PlaneGeometry } from "three";
-import keybR from "../../assets/keyboard/rightKeyb.glb";
-import keybL from "../../assets/keyboard/leftKeyb.glb";
+import { Canvas } from "@react-three/fiber";
+import { Center, Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Group } from "three";
+
+import RightKeycaps from "./RightKeycaps";
+import StemClick from "./StemClick";
+import BottomHousing from "./BottomHousing";
+import Stem from "./Stem";
+import Contacts from "./Contacts";
+import Springs from "./Springs";
+import TopHousing from "./TopHousing";
+import Rotary from "./Rotary";
+import Housing from "./Housing";
 
 const Keyboard = () => {
-	const rightKeyb = useGLTF(keybR);
-	const leftKeyb = useGLTF(keybL);
-
 	return (
 		<div className="h-screen ">
 			<Canvas>
+				<color attach="background" args={["white"]} />
 				<Perf position="top-left" />
-
+				<Environment preset="forest" background />
 				<OrbitControls makeDefault />
-
 				<directionalLight
 					castShadow
 					position={[1, 2, 3]}
 					intensity={1.5}
 				/>
-				<ambientLight intensity={0.5} />
-				{/* 
-				<mesh
-					receiveShadow
-					position-y={-1}
-					rotation-x={-Math.PI * 0.5}
-					scale={10}
-				>
-					<planeGeometry />
-					<meshStandardMaterial color="greenyellow" />
-				</mesh> */}
-				<primitive object={rightKeyb.scene} scale={0.02} />
-				<primitive object={leftKeyb.scene} scale={0.02} />
+				<directionalLight
+					castShadow
+					position={[3, 2, 3]}
+					intensity={1.5}
+				/>
+				{/* <ambientLight intensity={0.5} /> */}
+
+				<Center>
+					<group scale={0.02}>
+						<RightKeycaps />
+						<StemClick />
+						<BottomHousing />
+						<Stem />
+						<Contacts />
+						<Springs />
+						<TopHousing />
+						<Rotary />
+						<Housing />
+					</group>
+				</Center>
 			</Canvas>
 		</div>
 	);
