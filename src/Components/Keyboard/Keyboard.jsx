@@ -2,7 +2,6 @@ import React from "react";
 import { Perf } from "r3f-perf";
 import { Canvas } from "@react-three/fiber";
 import { Center, Environment, OrbitControls, useGLTF } from "@react-three/drei";
-import { Group } from "three";
 
 import RightKeycaps from "./RightKeycaps";
 import StemClick from "./StemClick";
@@ -22,18 +21,6 @@ const Keyboard = () => {
 				<Perf position="top-left" />
 				<Environment preset="forest" background />
 				<OrbitControls makeDefault />
-				<directionalLight
-					castShadow
-					position={[1, 2, 3]}
-					intensity={1.5}
-				/>
-				<directionalLight
-					castShadow
-					position={[3, 2, 3]}
-					intensity={1.5}
-				/>
-				{/* <ambientLight intensity={0.5} /> */}
-
 				<Center>
 					<group scale={0.02}>
 						<RightKeycaps />
