@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { Perf } from "r3f-perf";
-import {  Environment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import RightKeycaps from "./Parts/RightKeycaps";
 import StemClick from "./Parts/StemClick";
 import BottomHousing from "./Parts/BottomHousing";
@@ -13,6 +13,7 @@ import Rotary from "./Parts/Rotary";
 import Housing from "./Parts/Housing";
 import { useControls } from "leva";
 import Animations from "./Animations";
+import useResetOrigin from "../../Hooks/useResetOrigin";
 
 const Parts = ({ storyRef }) => {
 	const keybRef = useRef();
@@ -45,9 +46,10 @@ const Parts = ({ storyRef }) => {
 				// 	keybRef = node;
 				// }}
 				ref={keybRef}
-				rotation-x={1.5708}
-				rotation-z={0.2}
-				position={[-1.5, 0, 0]}
+				rotation-x={1.3}
+				rotation-z={0.1}
+				rotation-y={0}
+				position={[0, 1, 0]}
 				scale={0.04}
 			>
 				<RightKeycaps keyCapsRef={keyCapsRef} />

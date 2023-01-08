@@ -8,7 +8,6 @@ const Animations = ({ keybRef, storyRef, keyCapsRef }) => {
 
 	useEffect(() => {
 		const keyCapsR = keyCapsRef.current;
-		// console.log(keyCapsR.children);
 
 		if (keybRef.current) {
 			const keyb = keybRef.current;
@@ -16,8 +15,7 @@ const Animations = ({ keybRef, storyRef, keyCapsRef }) => {
 			contextRef.current = gsap.context(() => {
 				gsap.registerPlugin(ScrollTrigger);
 
-				gsap.to(keyb.position, {
-					x: -5,
+				let startingP = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#starting",
 						markers: true,
@@ -27,6 +25,14 @@ const Animations = ({ keybRef, storyRef, keyCapsRef }) => {
 						id: "starting",
 					},
 				});
+
+				startingP.to(keyb.position, { x: "-=5" });
+
+				startingP.to(keyb.rotation, {
+					x: "+=0.27",
+					z: "-=0.1",
+				});
+
 				let tl = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#decisions",
@@ -39,40 +45,29 @@ const Animations = ({ keybRef, storyRef, keyCapsRef }) => {
 				});
 
 				tl.to(keyb.position, {
-					x: -1,
-					z: -2,
+					x: "+=5",
+					z: "-=2",
 				});
 
 				tl.to(
 					keyb.rotation,
 					{
-						x: -0.2,
-						z: 0,
+						x: "-=1.57",
 					},
 					">",
 				);
 
 				keyCapsR.children.forEach(child => {
-					// if (child.className == "thumbKey") {
-					// 	console.log(child);
-					// 	tl.to(
-					// 		child.position,
-					// 		{
-					// 			y: 1,
-					// 		},
-					// 		"+=50%",
-					// 	);
-					// }
 					if (
 						child.className == "thumbCluster" ||
 						child.className == "thumbKey"
 					) {
 						count.current++;
-						// console.log(count.current, child);
+
 						tl.to(
 							child.position,
 							{
-								y: count.current,
+								y: `+= ${count.current * 1.4}`,
 							},
 							">",
 						);
