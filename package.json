@@ -13,6 +13,7 @@
     "@react-three/fiber": "^8.9.1",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
+    "gsap": "^3.11.4",
     "html-react-parser": "^3.0.4",
     "leva": "^0.9.34",
     "moment": "^2.29.4",

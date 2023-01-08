@@ -1,4 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import useMousePosition from "../../Hooks/useMousePosition";
+import useWindowSize from "../../Hooks/useWindowSize";
 import TextAnimation from "../Hero/TextAnimation";
 import GalleryElements from "./GalleryElements";
 
@@ -6,7 +8,8 @@ const MouseTracking = () => {
 	const windowRef = useRef(null);
 	const [mouseLabel, setMouseLabel] = useState(null);
 	const galleryRef = useRef(null);
-	const [mousePosition, setMousePosition] = useState({});
+
+	const mousePosition = useMousePosition();
 	const [panAmount, setPanAmount] = useState({
 		panX: (window.innerWidth / 4) * -1,
 		panY: (window.innerHeight / 4) * -1,
@@ -15,12 +18,8 @@ const MouseTracking = () => {
 		panX: -1600,
 		panY: 600,
 	});
+	const windowSize = useWindowSize();
 	const [maxGallerySize, setMaxGallerySize] = useState({});
-	const [windowSize, setWindowSize] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight,
-	});
-
 	const [gallerySize, setGallerySize] = useState({
 		width: window.innerWidth * 1.4,
 		height: window.innerHeight * 1.4,
@@ -79,22 +78,12 @@ const MouseTracking = () => {
 		}
 	}, [mousePosition]);
 
-	const onMousePosChange = event => {
-		setMousePosition(() => {
-			return { x: event.pageX, y: event.pageY };
-		});
-	};
-
 	let mouseOverElementHandler = element => {
 		setMouseLabel(() => element);
 	};
 
 	useEffect(() => {
 		const setDimension = () => {
-			setWindowSize({
-				width: window.innerWidth,
-				height: window.innerHeight,
-			});
 			setGallerySize(() => {
 				return {
 					width: gallerySize.width - windowSize.width,
@@ -124,7 +113,7 @@ const MouseTracking = () => {
 	}, []);
 
 	return (
-		<div onMouseMove={onMousePosChange}>
+		<div>
 			{/* Mouse Ball */}
 			<div className=" pointer-events-none z-30 cursor-none ">
 				<div

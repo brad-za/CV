@@ -10,11 +10,11 @@ import Keyboard from "./Components/Keyboard/Keyboard";
 const myRoutes = () => {
 	const route = useLocation();
 	return (
-		<div className="bg-green- flex  min-h-screen flex-col justify-between">
+		<div className="">
 			{route.pathname !== "/mouse" ? (
 				<React.Fragment>
 					<Navbar className="z-30" />
-					<Routes className="h-full">
+					<Routes className="">
 						<Route path="/" element={<Home />} />
 						<Route path="/blog/*" element={<Blog />} />
 						<Route path="/keyboard/" element={<Keyboard />} />

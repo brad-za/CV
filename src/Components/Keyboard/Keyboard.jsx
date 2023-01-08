@@ -1,41 +1,24 @@
-import React from "react";
-import { Perf } from "r3f-perf";
-import { Canvas } from "@react-three/fiber";
-import { Center, Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import React, { Suspense, useRef } from "react";
 
-import RightKeycaps from "./RightKeycaps";
-import StemClick from "./StemClick";
-import BottomHousing from "./BottomHousing";
-import Stem from "./Stem";
-import Contacts from "./Contacts";
-import Springs from "./Springs";
-import TopHousing from "./TopHousing";
-import Rotary from "./Rotary";
-import Housing from "./Housing";
+import Scene from "./Scene";
+import Decisions from "./Info/Decisions";
+import Intro from "./Info/Intro";
+import StartingPoint from "./Info/StartingPoint";
 
 const Keyboard = () => {
+	const storyRef = useRef();
+
 	return (
-		<div className="h-screen ">
-			<Canvas>
-				<color attach="background" args={["white"]} />
-				<Perf position="top-left" />
-				<Environment preset="forest" background />
-				<OrbitControls makeDefault />
-				<Center>
-					<group scale={0.02}>
-						<RightKeycaps />
-						<StemClick />
-						<BottomHousing />
-						<Stem />
-						<Contacts />
-						<Springs />
-						<TopHousing />
-						<Rotary />
-						<Housing />
-					</group>
-				</Center>
-			</Canvas>
+		// <Suspense fallback={null}>
+		<div ref={storyRef} className="relative h-[300vh]">
+			<Scene storyRef={storyRef} />
+			<div className="story">
+				<Intro />
+				<StartingPoint />
+				<Decisions />
+			</div>
 		</div>
+		// </Suspense>
 	);
 };
 
