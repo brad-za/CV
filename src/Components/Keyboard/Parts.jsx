@@ -18,6 +18,7 @@ import useResetOrigin from "../../Hooks/useResetOrigin";
 const Parts = ({ storyRef }) => {
 	const keybRef = useRef();
 	const keyCapsRef = useRef();
+	const rotaryRef = useRef();
 
 	const config = useControls("background config", {
 		preset: {
@@ -47,10 +48,10 @@ const Parts = ({ storyRef }) => {
 				// }}
 				ref={keybRef}
 				rotation-x={1.3}
-				rotation-z={0.1}
+				rotation-z={0}
 				rotation-y={0}
-				position={[0, 1, 0]}
-				scale={0.04}
+				position={[-20, 1, 0]}
+				scale={0.05}
 			>
 				<RightKeycaps keyCapsRef={keyCapsRef} />
 				<StemClick />
@@ -59,13 +60,14 @@ const Parts = ({ storyRef }) => {
 				<Contacts />
 				<Springs />
 				<TopHousing />
-				<Rotary />
+				<Rotary rotaryRef={rotaryRef} />
 				<Housing />
 			</group>
 			<Animations
 				storyRef={storyRef}
 				keybRef={keybRef}
 				keyCapsRef={keyCapsRef}
+				rotaryRef={rotaryRef}
 			/>
 		</>
 	);

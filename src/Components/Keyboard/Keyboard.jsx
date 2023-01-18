@@ -1,7 +1,7 @@
 import React, { Suspense, useRef } from "react";
 
 import Scene from "./Scene";
-import Decisions from "./Info/Decisions";
+import Rotary from "./Info/Decisions";
 import Intro from "./Info/Intro";
 import StartingPoint from "./Info/StartingPoint";
 import { Leva } from "leva";
@@ -19,7 +19,7 @@ const Keyboard = () => {
 			<div className="story">
 				<Intro />
 				<StartingPoint />
-				<Decisions />
+				<Rotary />
 			</div>
 		</div>
 		// </Suspense>

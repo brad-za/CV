@@ -13,7 +13,7 @@ import roughness from "../../../assets/keyboard/brushedMetal/Metal009_1K_Roughne
 import metal from "../../../assets/keyboard/brushedMetal/Metal009_1K_Metalness.jpg";
 import ao from "../../../assets/keyboard/brushedMetal/Metal_Steel_Brushed_001_ambientOcclusion.jpg";
 
-export default function Model(props) {
+export default function Model({ rotaryRef }) {
 	const { nodes, materials } = useGLTF(rotary);
 
 	const brushedMetal = useTexture({
@@ -31,18 +31,10 @@ export default function Model(props) {
 		aoMap: ao,
 	});
 
-	// useLayoutEffect(() => {
-	// Object.assign(nodes.Cylinder.material, {
-	// 	...brushedMetal,
-	// 	// });
-	// 	Object.assign(nodes.imagetostl_mesh001.material, {
-	// 		...brushedMetalS,
-	// 	});
-	// });
-
 	return (
-		<group {...props} dispose={null}>
+		<group ref={rotaryRef} dispose={null}>
 			<mesh
+				className="rotaryKnob"
 				geometry={nodes.Cylinder.geometry}
 				// material={nodes.Cylinder.material}
 				position={[24.57, -14.18, 11.95]}
@@ -52,6 +44,7 @@ export default function Model(props) {
 				<meshStandardMaterial {...brushedMetal} metalness={1} />
 			</mesh>
 			<mesh
+				className="rotaryEncoder"
 				geometry={nodes.imagetostl_mesh001.geometry}
 				// material={nodes.imagetostl_mesh001.material}
 				position={[24.57, -21.41, 12.89]}
@@ -60,6 +53,7 @@ export default function Model(props) {
 				<meshStandardMaterial {...brushedMetalS} metalness={1} />
 			</mesh>
 			<mesh
+				className="rotaryEncoder"
 				// two contact
 				geometry={nodes.imagetostl_mesh002.geometry}
 				material={nodes.imagetostl_mesh002.material}
@@ -67,6 +61,7 @@ export default function Model(props) {
 				rotation={[1.57, 0, 0]}
 			/>
 			<mesh
+				className="rotaryEncoder"
 				// two contact
 				geometry={nodes.imagetostl_mesh003.geometry}
 				material={nodes.imagetostl_mesh003.material}
@@ -74,6 +69,7 @@ export default function Model(props) {
 				rotation={[1.57, 0, 0]}
 			/>
 			<mesh
+				className="rotaryEncoder"
 				// three contact
 				geometry={nodes.imagetostl_mesh004.geometry}
 				material={nodes.imagetostl_mesh004.material}

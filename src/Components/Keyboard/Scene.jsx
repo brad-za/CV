@@ -2,6 +2,7 @@ import React, { Suspense, useLayoutEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import Parts from "./Parts";
+import { OrbitControls } from "@react-three/drei";
 
 const Scene = ({ storyRef }) => {
 	return (
@@ -16,6 +17,7 @@ const Scene = ({ storyRef }) => {
 					}}
 					className=" "
 				>
+					{/* <OrbitControls /> */}
 					<Parts storyRef={storyRef} />
 				</Canvas>
 			</div>
