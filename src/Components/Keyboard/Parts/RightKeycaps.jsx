@@ -10,40 +10,40 @@ import { useControls } from "leva";
 export default function Model({ keyCapsRef }) {
 	const { nodes, materials } = useGLTF(rightKeycaps);
 
-	// const config = useControls("keycaps", {
-	// 	visible: true,
-	// 	transparent: true,
-	// 	opacity: { value: 0.4, min: 0, max: 1, step: 0.01 },
-	// 	depthTest: true,
-	// 	depthWrite: false,
-	// 	alphaTest: { value: 0, min: 0, max: 1, step: 0.01 },
-	// 	side: {
-	// 		value: "THREE.DoubleSided",
-	// 		options: ["THREE.FrontSide", "THREE.BackSide"],
-	// 	},
-	// 	color: "#c0c0c0",
-	// 	emissive: "#000000",
-	// 	roughness: { value: 0, min: 0, max: 1, step: 0.01 },
-	// 	metalness: { value: 1, min: 0, max: 1, step: 0.01 },
-	// 	specularColor: "#ffffff",
-	// 	fog: true,
-	// });
-
-	const config2 = useControls("physical material - keycaps", {
-		color: "#ffffff",
-		metalness: { value: 0, min: 0, max: 1, step: 0.01 },
-		roughness: { value: 0, min: 0, max: 1, step: 0.01 },
-		transmission: { value: 1, min: 0, max: 2, step: 0.05 },
-		ior: { value: 1.5, min: 0, max: 2, step: 0.01 },
-		thickness: { value: 0.5, min: 0, max: 2, step: 0.01 },
-		specularIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
-		specularColor: "#ffffff",
-		envMapIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
-		lightIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
-		exposure: { value: 1, min: 0, max: 2, step: 0.01 },
+	const config = useControls("keycaps", {
+		visible: true,
+		transparent: true,
+		opacity: { value: 0.4, min: 0, max: 1, step: 0.01 },
 		depthTest: true,
 		depthWrite: true,
+		alphaTest: { value: 0, min: 0, max: 1, step: 0.01 },
+		side: {
+			value: "THREE.DoubleSided",
+			options: ["THREE.FrontSide", "THREE.BackSide"],
+		},
+		color: "#6c6c6c",
+		emissive: "#000000",
+		roughness: { value: 0, min: 0, max: 1, step: 0.01 },
+		metalness: { value: 1, min: 0, max: 1, step: 0.01 },
+		specularColor: "#ffffff",
+		fog: true,
 	});
+
+	// const config = useControls("physical material - keycaps", {
+	// 	color: "#ffffff",
+	// 	metalness: { value: 0, min: 0, max: 1, step: 0.01 },
+	// 	roughness: { value: 0, min: 0, max: 1, step: 0.01 },
+	// 	transmission: { value: 1, min: 0, max: 2, step: 0.05 },
+	// 	ior: { value: 1.5, min: 0, max: 2, step: 0.01 },
+	// 	thickness: { value: 0.5, min: 0, max: 2, step: 0.01 },
+	// 	specularIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
+	// 	specularColor: "#ffffff",
+	// 	envMapIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
+	// 	lightIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
+	// 	exposure: { value: 1, min: 0, max: 2, step: 0.01 },
+	// 	depthTest: true,
+	// 	depthWrite: true,
+	// });
 
 	return (
 		<group ref={keyCapsRef} dispose={null}>
@@ -54,8 +54,8 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				{/*  <meshStandardMaterial {...config2} /> */}
-				<meshPhysicalMaterial {...config2} />
+				{/*  <meshStandardMaterial {...config} /> */}
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps001.geometry}
@@ -64,7 +64,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps002.geometry}
@@ -73,7 +73,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps003.geometry}
@@ -82,7 +82,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps004.geometry}
@@ -91,7 +91,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps005.geometry}
@@ -100,7 +100,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps006.geometry}
@@ -109,7 +109,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps007.geometry}
@@ -118,7 +118,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps008.geometry}
@@ -127,7 +127,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps009.geometry}
@@ -136,7 +136,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps010.geometry}
@@ -145,7 +145,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps011.geometry}
@@ -154,7 +154,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps012.geometry}
@@ -163,7 +163,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps013.geometry}
@@ -172,7 +172,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps014.geometry}
@@ -181,7 +181,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps015.geometry}
@@ -190,7 +190,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps016.geometry}
@@ -199,7 +199,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps017.geometry}
@@ -208,7 +208,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.5}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps018.geometry}
@@ -217,7 +217,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps019.geometry}
@@ -226,7 +226,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps020.geometry}
@@ -235,7 +235,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps021.geometry}
@@ -244,7 +244,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps022.geometry}
@@ -253,7 +253,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				geometry={nodes.XDA_Keycaps023.geometry}
@@ -262,7 +262,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				// thumb keycap
@@ -273,7 +273,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, 1.11]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				// thumb cluster
@@ -284,7 +284,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, 2.93]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				// thumb cluster
@@ -295,7 +295,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, 3.09]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				// thumb cluster
@@ -306,7 +306,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -3.05]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				// thumb cluster
@@ -317,7 +317,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, -2.86]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 			<mesh
 				// pinky control
@@ -328,7 +328,7 @@ export default function Model({ keyCapsRef }) {
 				rotation={[Math.PI / 2, 0, Math.PI]}
 				scale={24.64}
 			>
-				<meshPhysicalMaterial {...config2} />
+				<meshPhysicalMaterial {...config} />
 			</mesh>
 		</group>
 	);

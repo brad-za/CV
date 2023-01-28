@@ -13,6 +13,12 @@ import roughness from "../../../assets/keyboard/brushedMetal/Metal009_1K_Roughne
 import metal from "../../../assets/keyboard/brushedMetal/Metal009_1K_Metalness.jpg";
 import ao from "../../../assets/keyboard/brushedMetal/Metal_Steel_Brushed_001_ambientOcclusion.jpg";
 
+import colourC from "../../../assets/keyboard/copperMetal/Metal047A_1K_Color.jpg";
+import normalC from "../../../assets/keyboard/copperMetal/Metal047A_1K_NormalGL.jpg";
+import roughnessC from "../../../assets/keyboard/copperMetal/Metal047A_1K_Roughness.jpg";
+import metalC from "../../../assets/keyboard/copperMetal/Metal047A_1K_Metalness.jpg";
+// import aoC from "../../../assets/keyboard/brushedMetal/Metal_Steel_Brushed_001_ambientOcclusion.jpg";
+
 export default function Model({ rotaryRef }) {
 	const { nodes, materials } = useGLTF(rotary);
 
@@ -29,6 +35,14 @@ export default function Model({ rotaryRef }) {
 		roughnessMap: roughness,
 		metalnessMap: metal,
 		aoMap: ao,
+	});
+
+	const copperMetal = useTexture({
+		map: colourC, // colour map
+		normalMap: normalC,
+		roughnessMap: roughnessC,
+		metalnessMap: metalC,
+		// aoMap: aoC,
 	});
 
 	return (
@@ -59,7 +73,9 @@ export default function Model({ rotaryRef }) {
 				material={nodes.imagetostl_mesh002.material}
 				position={[24.57, -21.41, 12.89]}
 				rotation={[1.57, 0, 0]}
-			/>
+			>
+				<meshStandardMaterial {...copperMetal} metalness={1} />
+			</mesh>
 			<mesh
 				className="rotaryEncoder"
 				// two contact
@@ -67,7 +83,9 @@ export default function Model({ rotaryRef }) {
 				material={nodes.imagetostl_mesh003.material}
 				position={[24.57, -21.41, 12.89]}
 				rotation={[1.57, 0, 0]}
-			/>
+			>
+				<meshStandardMaterial {...copperMetal} metalness={1} />
+			</mesh>
 			<mesh
 				className="rotaryEncoder"
 				// three contact
@@ -75,7 +93,9 @@ export default function Model({ rotaryRef }) {
 				material={nodes.imagetostl_mesh004.material}
 				position={[24.57, -21.41, 12.89]}
 				rotation={[1.57, 0, 0]}
-			/>
+			>
+				<meshStandardMaterial {...copperMetal} metalness={1} />
+			</mesh>
 		</group>
 	);
 }

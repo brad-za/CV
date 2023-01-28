@@ -83,22 +83,50 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 					}
 				});
 
-				// keyCapsR.children.forEach(child => {
-				// 	if (
-				// 		child.className == "thumbCluster" ||
-				// 		child.className == "thumbKey"
-				// 	) {
-				// 		count.current++;
+				let thumbTimeLine = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#ThumbCluster",
+						markers: true,
+						scrub: true,
+						start: "top bottom",
+						end: "middle middle",
+						id: "thumbCluster",
+					},
+				});
 
-				// 		tl.to(
-				// 			child.position,
-				// 			{
-				// 				y: `${count.current * 1.4}`,
-				// 			},
-				// 			">",
-				// 		);
-				// 	}
-				// });
+				rotaryR.children.forEach(child => {
+					if (child.className == "rotaryEncoder") {
+						thumbTimeLine.to(
+							child.position,
+							{
+								y: "-=25",
+							},
+							"<",
+						);
+					}
+					if (child.className == "rotaryKnob") {
+						thumbTimeLine.to(child.position, {
+							y: "-=45",
+						});
+					}
+				});
+
+				keyCapsR.children.forEach(child => {
+					if (
+						child.className == "thumbCluster" ||
+						child.className == "thumbKey"
+					) {
+						count.current++;
+
+						thumbTimeLine.to(
+							child.position,
+							{
+								y: `+=${count.current * 2}`,
+							},
+							">",
+						);
+					}
+				});
 			}, storyRef.current);
 		}
 		return () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import { Perf } from "r3f-perf";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import RightKeycaps from "./Parts/RightKeycaps";
 import StemClick from "./Parts/StemClick";
 import BottomHousing from "./Parts/BottomHousing";
@@ -11,6 +11,7 @@ import Springs from "./Parts/Springs";
 import TopHousing from "./Parts/TopHousing";
 import Rotary from "./Parts/Rotary";
 import Housing from "./Parts/Housing";
+import ProMicro from "./Parts/ProMicro";
 import { useControls } from "leva";
 import Animations from "./Animations";
 import useResetOrigin from "../../Hooks/useResetOrigin";
@@ -42,6 +43,7 @@ const Parts = ({ storyRef }) => {
 			{/* <OrbitControls /> */}
 			<Perf position="bottom-left" />
 			<Environment {...config} />
+
 			<group
 				// ref={node => {
 				// 	keybRef = node;
@@ -53,16 +55,20 @@ const Parts = ({ storyRef }) => {
 				position={[-20, 1, 0]}
 				scale={0.05}
 			>
-				<RightKeycaps keyCapsRef={keyCapsRef} />
-				<StemClick />
-				<BottomHousing />
-				<Stem />
-				<Contacts />
-				<Springs />
-				<TopHousing />
-				<Rotary rotaryRef={rotaryRef} />
-				<Housing />
+				<group position={[0, 0, 0]}>
+					<RightKeycaps keyCapsRef={keyCapsRef} />
+					<StemClick />
+					<BottomHousing />
+					<Stem />
+					<Contacts />
+					<Springs />
+					<TopHousing />
+					<Rotary rotaryRef={rotaryRef} />
+					<Housing />
+					<ProMicro />
+				</group>
 			</group>
+
 			<Animations
 				storyRef={storyRef}
 				keybRef={keybRef}
