@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 	const contextRef = useRef();
-	const count = useRef(0);
+	let count = 0;
+	// const count = useRef({ count: 0 });
 
 	useEffect(() => {
 		const keyCapsR = keyCapsRef.current;
@@ -23,7 +24,7 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 						scrub: true,
 						start: "top bottom",
 						end: "bottom bottom",
-						id: "starting",
+						// id: "starting",
 					},
 				});
 
@@ -37,6 +38,8 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 					},
 					"<",
 				);
+
+				// rotatry encoder
 
 				let tl = gsap.timeline({
 					scrollTrigger: {
@@ -54,6 +57,12 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 					// z: "-2",
 				});
 
+				tl.to(keyb.position, {
+					y: "-0.2",
+				});
+
+				// console.log(keyb.position.z);
+
 				tl.to(keyb.rotation, {
 					x: "0.3",
 				});
@@ -68,20 +77,24 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 
 				rotaryR.children.forEach(child => {
 					if (child.className == "rotaryEncoder") {
+						console.log(child.position.y);
+
 						tl.to(
 							child.position,
 							{
-								y: "+=25",
+								y: "18",
 							},
 							"<",
 						);
 					}
 					if (child.className == "rotaryKnob") {
 						tl.to(child.position, {
-							y: "+=45",
+							y: "50",
 						});
 					}
 				});
+
+				// thumb cluster
 
 				let thumbTimeLine = gsap.timeline({
 					scrollTrigger: {
@@ -89,9 +102,13 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 						markers: true,
 						scrub: true,
 						start: "top bottom",
-						end: "middle middle",
+						end: "top middle",
 						id: "thumbCluster",
 					},
+				});
+
+				thumbTimeLine.to(keyb.position, {
+					y: "1.2",
 				});
 
 				rotaryR.children.forEach(child => {
@@ -99,15 +116,19 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 						thumbTimeLine.to(
 							child.position,
 							{
-								y: "-=25",
+								y: "-21.41",
 							},
 							"<",
 						);
 					}
 					if (child.className == "rotaryKnob") {
-						thumbTimeLine.to(child.position, {
-							y: "-=45",
-						});
+						thumbTimeLine.to(
+							child.position,
+							{
+								y: "-14.18",
+							},
+							">",
+						);
 					}
 				});
 
@@ -116,17 +137,84 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 						child.className == "thumbCluster" ||
 						child.className == "thumbKey"
 					) {
-						count.current++;
+						// console.log(count.current.count);
+						count++;
+						// count.current.count++;
+						// console.log(count.current.count);
+
+						thumbTimeLine.to(child.material, {
+							opacity: 0.9,
+							roughness: 0.4,
+						});
 
 						thumbTimeLine.to(
 							child.position,
 							{
-								y: `+=${count.current * 2}`,
+								y: `+=${count * 2}`,
 							},
 							">",
 						);
 					}
 				});
+				// Columnar
+
+				let columnTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#Columnar",
+						markers: true,
+						scrub: true,
+						start: "top bottom",
+						end: "bottom bottom",
+						id: "Columnar",
+					},
+				});
+
+				columnTL.to(keyb.rotation, {
+					x: "1.3",
+				});
+
+				columnTL.to(keyb.position, {
+					x: "-6",
+				});
+
+				columnTL.to(
+					keyb.position,
+					{
+						z: "0",
+					},
+					">",
+				);
+
+				// 	tl.to(keyb.rotation, {
+				// 	x: "0.3",
+				// });
+				keyCapsR.children
+					.slice()
+					.reverse()
+					.forEach(child => {
+						if (
+							child.className == "thumbCluster" ||
+							child.className == "thumbKey"
+						) {
+							// console.log(count.current.count);
+							count--;
+							// count.current.count++;
+							// console.log(count.current.count);
+
+							columnTL.to(child.material, {
+								opacity: 0.4,
+								roughness: 0,
+							});
+
+							columnTL.to(
+								child.position,
+								{
+									y: `-=${count * 2}`,
+								},
+								"<",
+							);
+						}
+					});
 			}, storyRef.current);
 		}
 		return () => {

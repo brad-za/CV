@@ -14,18 +14,14 @@ const ThumbCluster = () => {
 					<div className="mt-10 text-2xl [&>h3]:mt-3">
 						<h3>While thumb clusters are all the rage</h3>
 						<h3>very few keyboards have control and shift</h3>
-						<h3>in normal places.</h3>
-						{/* <h3>I felt it odd that so few keyboards have</h3>
-						<h3>
-							proper support for ctrl, shift and tab on the
-							pinkies
-						</h3> */}
+						<h3>in normal places. You know? By your pinkies</h3>
+
 						<h3>
 							This is the main reason I took on the task of
 							building
 						</h3>
 						<h3>
-							from scratch instead of soldering a preexisting
+							from scratch instead of soldering a pre-existing
 							build
 						</h3>
 						<h3>The sweep is perfectly designed for my reach</h3>

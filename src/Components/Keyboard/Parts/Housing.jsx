@@ -33,24 +33,40 @@ export default function Model(props) {
 	// 	});
 	// });
 
-	const config = useControls("housing middle", {
-		visible: true,
-		transparent: true,
-		opacity: { value: 0.4, min: 0, max: 1, step: 0.01 },
-		depthTest: true,
-		depthWrite: false,
-		alphaTest: { value: 0, min: 0, max: 1, step: 0.01 },
-		side: {
-			value: "THREE.DoubleSided",
-			options: ["THREE.FrontSide", "THREE.BackSide"],
-		},
-		color: "#c0c0c0",
-		emissive: "#000000",
-		roughness: { value: 1, min: 0, max: 1, step: 0.01 },
+	const config = useControls("middle housing", {
+		color: "#ffffff",
 		metalness: { value: 0, min: 0, max: 1, step: 0.01 },
+		roughness: { value: 0, min: 0, max: 1, step: 0.01 },
+		transmission: { value: 1, min: 0, max: 2, step: 0.05 },
+		ior: { value: 1.5, min: 0, max: 2, step: 0.01 },
+		thickness: { value: 0.5, min: 0, max: 2, step: 0.01 },
+		specularIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
 		specularColor: "#ffffff",
-		fog: true,
+		envMapIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
+		lightIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
+		exposure: { value: 1, min: 0, max: 2, step: 0.01 },
+		depthTest: true,
+		depthWrite: true,
 	});
+
+	// const config = useControls("housing middle", {
+	// 	visible: true,
+	// 	transparent: true,
+	// 	opacity: { value: 0.4, min: 0, max: 1, step: 0.01 },
+	// 	depthTest: true,
+	// 	depthWrite: false,
+	// 	alphaTest: { value: 0, min: 0, max: 1, step: 0.01 },
+	// 	side: {
+	// 		value: "THREE.DoubleSided",
+	// 		options: ["THREE.FrontSide", "THREE.BackSide"],
+	// 	},
+	// 	color: "#c0c0c0",
+	// 	emissive: "#000000",
+	// 	roughness: { value: 1, min: 0, max: 1, step: 0.01 },
+	// 	metalness: { value: 0, min: 0, max: 1, step: 0.01 },
+	// 	specularColor: "#ffffff",
+	// 	fog: true,
+	// });
 	return (
 		<group {...props} dispose={null}>
 			<mesh
