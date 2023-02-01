@@ -7,8 +7,10 @@ const Columnar = () => {
 			className="bg-emerald- absolute top-[400vh] right-0 flex h-[100vh] w-1/2 flex-col  text-right text-3xl"
 		>
 			<span className="Columnar" />
-			<div className="mt-20">
-				<h2 className="text-3xl">Columns are better, hear me out.</h2>
+			<div className="-mt-20 flex h-full flex-col items-center justify-center ">
+				<h2 className="text-right text-3xl">
+					Columns are better, hear me out.
+				</h2>
 				<h3 className="bold italic "> its more than visual</h3>
 				<div className="mt-10 text-2xl [&>h3]:mt-3">
 					<h3>Take a look at your keyboard.</h3>

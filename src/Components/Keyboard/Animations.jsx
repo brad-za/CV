@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 	const contextRef = useRef();
 	let count = 0;
+	let colCount = 0;
 	// const count = useRef({ count: 0 });
 
 	useEffect(() => {
@@ -152,7 +153,7 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 							{
 								y: `+=${count * 2}`,
 							},
-							">",
+							"<",
 						);
 					}
 				});
@@ -170,20 +171,8 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 				});
 
 				columnTL.to(keyb.rotation, {
-					x: "1.3",
+					x: "1.2",
 				});
-
-				columnTL.to(keyb.position, {
-					x: "-6",
-				});
-
-				columnTL.to(
-					keyb.position,
-					{
-						z: "0",
-					},
-					">",
-				);
 
 				// 	tl.to(keyb.rotation, {
 				// 	x: "0.3",
@@ -210,6 +199,47 @@ const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
 								child.position,
 								{
 									y: `-=${count * 2}`,
+								},
+								"<",
+							);
+						}
+					});
+
+				columnTL.to(keyb.position, {
+					x: "-7",
+				});
+
+				columnTL.to(
+					keyb.position,
+					{
+						z: "0",
+					},
+					">",
+				);
+
+				keyCapsR.children
+					.slice()
+					.reverse()
+					.forEach(child => {
+						console.log(
+							child.material.opacity,
+							child.material.roughness,
+						);
+						if (child.className == "column") {
+							// console.log(count.current.count);
+							colCount++;
+							// count.current.count++;
+							// console.log(count.current.count);
+
+							columnTL.to(child.material, {
+								opacity: 0.9,
+								roughness: 0.4,
+							});
+
+							columnTL.to(
+								child.position,
+								{
+									y: `+=${colCount * 1}`,
 								},
 								"<",
 							);

@@ -20,6 +20,7 @@ const Parts = ({ storyRef }) => {
 	const keybRef = useRef();
 	const keyCapsRef = useRef();
 	const rotaryRef = useRef();
+	const columnsRef = useRef();
 
 	const config = useControls("background config", {
 		preset: {
