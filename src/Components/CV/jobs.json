@@ -1,0 +1,40 @@
+[
+    {
+        "position": "Data Capture",
+        "date": "2017",
+        "company": "Handles Inc - Johannesburg",
+        "about": "What started as a part time job helping family input data turned into a career in tech, websites, data and management. My love for uniformity really was a benefit here.",
+        "duties": [
+            "Uploaded or transmitted data using secure protocols.",
+            "Coded and processed applications into required electronic formats."
+        ]
+    },
+    {
+        "position": "Website Manager",
+        "date": "2018 - Current",
+        "company": "Handles Inc - Johannesburg",
+        "about": "A website for Handles Inc was next, this was a big task seeing as the almost 15 year old database was vastly unsorted. I quickly learned SQL to fill in the gaps that our softwares front end exports left. My favourite part was making codes and products for the website, bringing order to the section I could control.",
+        "duties": [
+            "Collected and responded to user feedback through iterative improvements to site structure and content.",
+            "Collaborated with business development personnel to verify compliance with customer requirements.",
+            "Incorporated SEO techniques to verify maximal site exposure to search engine robots and crawlers.",
+            "Tested and debugged site updates and prevented functional flaws from impacting public visitors.",
+            "Created all product pages on the website.",
+            "Organised and managed the photography of all products.",
+            "Created SKUs on the database for new products.",
+            "Managed new features being created and added to the website to further customer experience"
+        ]
+    },
+    {
+        "position": "React Developer",
+        "date": "2021 - Current",
+        "company": "",
+        "about": "With an emphasis on live data displays and graphs, react was the perfect option for me for a few reasons. The community is massive and information is freely available to those looking for it, I found learning about my mistakes from community members to be a vital part of my journey. Components and JSX made sense to me - complexity could come later. When I found out I could write declarative instead of imperative code, the world seemed to open up in front of me.",
+        "duties": [
+            "Collected and managed incoming data streams.",
+            "Designed and tested dynamic and live graphs to show historical blockchain data.",
+            "Automated advanced trading processes via API.",
+            "Committed to several open source community projects."
+        ]
+    }
+]

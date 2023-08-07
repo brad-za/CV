@@ -1,0 +1,22 @@
+[
+    {
+        "year": "2021",
+        "subject": "Solidity",
+        "about": "The next step in my crypto + coding journey was to start coding smart contracts and moving funds around the blockchain on a more automated level. I used Solidity, Ethers and React to make a number of bots to automate tasks for myself and my friends using Crypto. I also made a few NFT collections and release a couple of ERC-20 tokens to become more proficient and feel the waters."
+    },
+    {
+        "year": "2020",
+        "subject": "React",
+        "about": "With my new found love for crypto and ever growing amounts of data collected I needed a way to package and share what I had created. React seemed like a natural progression, I knew basic HTML and was proficient at Javascript. I learned the basics and then I was off, the rest could be learned on the way. It has been 3 years and I am still learning new ways to solve problems everyday."
+    },
+    {
+        "year": "2020",
+        "subject": "Cryptocurrency",
+        "about": "The ever growing DEFI space kept me completely enthralled. Seeing trust be removed and replaced with code and community struck something in me that is hard to explain. I knew I needed to try and understand this space. So started my journey to write smart contracts and aggregate data directly from the blockchain."
+    },
+    {
+        "year": "2019",
+        "subject": "Javascript",
+        "about": "I started learning javascript to try and automate some of my day to day tasks at work, this soon changed when the pandemic started and I became obsessed with all things crypto."
+    }
+]
