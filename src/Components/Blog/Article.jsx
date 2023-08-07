@@ -12,7 +12,7 @@ const Article = ({ setTableOfContents }) => {
 
 	useEffect(() => {
 		const _post = getPostDetails(post).then(data =>
-			setPosts(data.map(post => post))
+			setPosts(data.map(post => post)),
 		);
 		return () => _post;
 	}, [post]);

@@ -1,11 +1,12 @@
 import { request, gql } from "graphql-request";
 
-const graphqlAPI = import.meta.env.VITE_API;
+const graphqlAPI =
+	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cl8wysww80qjm01t7flfe9olh/master";
 
 export const getCategories = async () => {
 	try {
 		const query = gql`
-			query getCategories {
+			query {
 				languagesConnection {
 					edges {
 						node {
@@ -35,7 +36,7 @@ export const getCategories = async () => {
 export const getPosts = async () => {
 	try {
 		const query = gql`
-			query getPostPreviews {
+			query {
 				postsConnection(orderBy: publishedAt_DESC) {
 					edges {
 						node {
@@ -83,28 +84,28 @@ export const getPosts = async () => {
 export const getRecentPosts = async () => {
 	try {
 		const query = gql`
-    query GetPostDetails() {
-        posts(
-        orderBy: createdAt_ASC
-        last:3
-        ){
-    title
-    slug
-    createdAt
-    language {
-      name
-      slug    
-      icon {url}
-    }
-    categories {
-      name
-      slug
-    }
-    featuredImage{url}
-  }
-    }
-
-    `;
+			query {
+				posts(orderBy: createdAt_ASC, last: 3) {
+					title
+					slug
+					createdAt
+					language {
+						name
+						slug
+						icon {
+							url
+						}
+					}
+					categories {
+						name
+						slug
+					}
+					featuredImage {
+						url
+					}
+				}
+			}
+		`;
 		const result = await request(graphqlAPI, query);
 		return result.posts;
 	} catch (error) {
@@ -115,7 +116,7 @@ export const getRecentPosts = async () => {
 export const getSimilarPosts = async (categories2, slug2) => {
 	try {
 		const query = gql`
-			query GetSimilarPosts($slug2: String!, $categories2: String!) {
+			query ($slug2: String!, $categories2: String!) {
 				posts(
 					where: {
 						slug_not: $slug2
@@ -153,11 +154,7 @@ export const getSimilarPosts = async (categories2, slug2) => {
 export const getSimilarPosts2 = async (categories2, slug2, language) => {
 	try {
 		const query = gql`
-			query GetSimilarPosts2(
-				$slug2: String!
-				$language: String!
-				$categories2: String!
-			) {
+			query ($slug2: String!, $language: String!, $categories2: String!) {
 				posts(
 					where: {
 						slug_not: $slug2
@@ -201,7 +198,7 @@ export const getSimilarPosts2 = async (categories2, slug2, language) => {
 export const getCategoriesSimple = async category => {
 	try {
 		const query = gql`
-			query GetCategoriesSimple($category: String!) {
+			query ($category: String!) {
 				languagesConnection {
 					edges {
 						node {
@@ -229,7 +226,7 @@ export const getCategoriesSimple = async category => {
 export const getLanguagePosts = async slug => {
 	try {
 		const query = gql`
-			query GetLanguagePosts($slug: String!) {
+			query ($slug: String!) {
 				postsConnection(where: { language: { slug: $slug } }) {
 					edges {
 						node {
@@ -277,7 +274,7 @@ export const getLanguagePosts = async slug => {
 export const getCategoryPosts = async slug => {
 	try {
 		const query = gql`
-			query GetCategoryPosts($slug: String!) {
+			query ($slug: String!) {
 				postsConnection(where: { categories_some: { slug: $slug } }) {
 					edges {
 						node {
@@ -325,7 +322,7 @@ export const getCategoryPosts = async slug => {
 export const getPostDetails = async slug => {
 	try {
 		const query = gql`
-			query GetPostDetails($slug: String!) {
+			query ($slug: String!) {
 				posts(where: { slug: $slug }) {
 					exerpt
 					slug

@@ -77,7 +77,7 @@ const RichText = ({ contents, setTableOfContents }) => {
 																.text
 														}
 													</td>
-												)
+												),
 											)}
 										</tr>
 									</thead>
@@ -266,14 +266,14 @@ const RichText = ({ contents, setTableOfContents }) => {
 			<div className="bg-green- md:justify- flex  w-full flex-col">
 				{contents.map((typeObj, index) => {
 					const children = typeObj.children.map((item, itemindex) =>
-						getContentFragment(itemindex, item.text, item)
+						getContentFragment(itemindex, item.text, item),
 					);
 
 					return getContentFragment(
 						index,
 						children,
 						typeObj,
-						typeObj.type
+						typeObj.type,
 					);
 				})}
 			</div>
@@ -297,7 +297,7 @@ const RichText = ({ contents, setTableOfContents }) => {
 										onClick={() => {
 											const anchorId =
 												document.getElementById(
-													content.id
+													content.id,
 												);
 											anchorId.scrollIntoView({
 												behavior: "smooth",

@@ -1,5 +1,5 @@
 module.exports = {
-	content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
+	content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,html}"],
 	variants: {
 		extend: {
 			display: ["group-hover"],
@@ -32,15 +32,26 @@ module.exports = {
 				multiple: "width , height",
 			},
 			animation: {
-				moveScreenUp: "moveScreenUp 5s ",
-				moveScreenDown: "moveScreenDown 5s ",
+				moveScreenUp: "moveScreenUp 1s ",
+				moveScreenDown: "moveScreenDown 1s ",
 				scrollWheel: "scrollWheel 2s infinite",
 				moveUp: "moveUp 3s ",
 				moveDown: "moveDown 3s",
 				moveScreen: "moveScreen 24s infinite",
 				moveButtonRight: "moveButtonRight 2s",
+				blink: "blink 1s infinite",
+				spin720: "spin720 1s ",
 			},
 			keyframes: {
+				spin720: {
+					"0%": { transform: "rotate(0deg)" },
+					"100%": { transform: "rotate(720deg)" },
+				},
+				blink: {
+					"0%": { opacity: "1" },
+					"50%": { opacity: "0" },
+					"100%": { opacity: "1" },
+				},
 				scrollWheel: {
 					"0%": {
 						transform: "translateY(0%)",

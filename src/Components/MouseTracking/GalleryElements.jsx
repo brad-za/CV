@@ -33,7 +33,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 				>
 					<div
 						// onMouseOut
-						className="group top-[2%] right-[4%] block overflow-hidden rounded-3xl  bg-[#FFEC45] text-3xl  font-extrabold text-black md:absolute md:h-[34%] md:w-[12%]"
+						className="group right-[4%] top-[2%] block overflow-hidden rounded-3xl  bg-[#FFEC45] text-3xl  font-extrabold text-black md:absolute md:h-[34%] md:w-[12%]"
 					>
 						<div className="items- justify- flex h-full duration-200 ease-in md:w-0 md:group-hover:w-full">
 							<ul className="bg-green- flex h-full w-full  md:hidden md:flex-col md:justify-evenly md:group-hover:flex">
@@ -100,7 +100,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 					}}
 					onMouseOut={() => mouseOverElementHandler(null)}
 				>
-					<div className="group-one top-[35%] right-[24%] block items-center justify-center overflow-hidden rounded-3xl bg-[#df2b2b] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[20%] md:w-[10%]">
+					<div className="group-one right-[24%] top-[35%] block items-center justify-center overflow-hidden rounded-3xl bg-[#df2b2b] px-14 py-10 text-3xl font-extrabold text-black md:absolute md:flex md:h-[20%] md:w-[10%]">
 						<div className="ease bg-red- left-3 top-2 duration-200 md:absolute md:group-one-hover:translate-x-[-120%]">
 							<p className="">FUN</p>
 						</div>
@@ -192,7 +192,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 								</foreignObject>
 							</svg>
 						</div>
-						<div className="ease bg-red- absolute top-2 right-3  duration-200 group-hover:translate-y-[-110%]">
+						<div className="ease bg-red- absolute right-3 top-2  duration-200 group-hover:translate-y-[-110%]">
 							<p className="">TEAM</p>
 						</div>
 					</div>
@@ -229,7 +229,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 					}}
 					onMouseOut={() => mouseOverElementHandler(null)}
 				>
-					<div className="text- group top-[13%] left-[8%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4179] font-extrabold text-black md:absolute md:h-[22%] md:w-[22%]">
+					<div className="text- group left-[8%] top-[13%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4179] font-extrabold text-black md:absolute md:h-[22%] md:w-[22%]">
 						<div className=" bg-green- leading- rounded- grid h-full w-full  place-items-center opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
 								onMouseMove={() =>
@@ -273,7 +273,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 					}}
 					onMouseOut={() => mouseOverElementHandler(null)}
 				>
-					<div className="items- group top-[4%] left-[35%] flex flex-col justify-center rounded-3xl bg-[#55FFAD] text-3xl font-extrabold text-black  group-hover:justify-evenly md:absolute md:h-[32%] md:w-[14%]">
+					<div className="items- group left-[35%] top-[4%] flex flex-col justify-center rounded-3xl bg-[#55FFAD] text-3xl font-extrabold text-black  group-hover:justify-evenly md:absolute md:h-[32%] md:w-[14%]">
 						<div className="grid place-items-center">
 							<img
 								src={me}
@@ -323,7 +323,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 					}}
 					onMouseOut={() => mouseOverElementHandler(null)}
 				>
-					<div className="group top-[10%] right-[20%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4ED8] text-3xl font-extrabold text-black md:absolute md:h-[20%] md:w-[24%]">
+					<div className="group right-[20%] top-[10%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#FF4ED8] text-3xl font-extrabold text-black md:absolute md:h-[20%] md:w-[24%]">
 						<div className=" bg-green- grid h-full w-full place-items-center rounded-3xl  leading-10 opacity-0 duration-150 ease-in group-hover:opacity-100">
 							<svg
 								onMouseMove={() =>
@@ -406,7 +406,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
 					onMouseOut={() => mouseOverElementHandler(null)}
 				>
 					<div className="group bottom-[35%] left-[25%] flex items-center justify-center overflow-hidden rounded-3xl bg-[#ff7519] text-3xl font-extrabold text-black  md:absolute md:h-[24%] md:w-[18%]">
-						<div className="ease md:group-hover: bg-red- right-3 bottom-2 duration-200 md:absolute md:group-hover:translate-x-[120%]">
+						<div className="ease md:group-hover: bg-red- bottom-2 right-3 duration-200 md:absolute md:group-hover:translate-x-[120%]">
 							<p className="">THREE</p>
 						</div>
 					</div>

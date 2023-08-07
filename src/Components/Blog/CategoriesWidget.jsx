@@ -14,8 +14,8 @@ const Categories = ({}) => {
 			setCategories(
 				data.map(category => {
 					return category.node;
-				})
-			)
+				}),
+			),
 		);
 
 		return () => categories2;

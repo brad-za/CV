@@ -20,7 +20,7 @@ const Nav = () => {
 	let activeClassName =
 		"inline-block h-full cursor-pointer border-b-2  py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
 	return (
-		<nav className="top-0 z-50 flex h-[135px] w-full items-center justify-between pt-[25px] pl-[30px]">
+		<nav className="top-0 z-50 flex h-[135px] w-full items-center justify-between pl-[30px] pt-[25px]">
 			<div
 				className="full fixed right-10 top-11 z-50 cursor-pointer rounded-2xl bg-[#ffffff14] p-3 md:hidden"
 				onClick={() => setopen(!open)}
@@ -34,7 +34,7 @@ const Nav = () => {
 
 			<ul
 				//   h-screen can go here to make the blur full length
-				className={`h- fixed top-0 z-40 mt-2 mr-2 rounded-3xl bg-[#ffffff14] pr-28 backdrop-blur-md duration-500 ease-linear md:static md:mt-0 md:mr-0 md:h-auto md:rounded-l-3xl md:rounded-r-none md:pl-10 ${
+				className={`h- fixed top-0 z-40 mr-2 mt-2 rounded-3xl bg-[#ffffff14] pr-28 backdrop-blur-md duration-500 ease-linear md:static md:mr-0 md:mt-0 md:h-auto md:rounded-l-3xl md:rounded-r-none md:pl-10 ${
 					!open ? "right-[-100%] " : "right-0 pt-10"
 				}`}
 			>

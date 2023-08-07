@@ -6,6 +6,7 @@ import Blog from "./Components/Blog/Blog";
 import MouseTracking from "./Components/MouseTracking/MouseTracking";
 import Footer from "./Components/Footer";
 import Keyboard from "./Components/Keyboard/Keyboard";
+import Hero from "./Components/Hero";
 
 const myRoutes = () => {
 	const route = useLocation();
@@ -18,6 +19,8 @@ const myRoutes = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/blog/*" element={<Blog />} />
 						<Route path="/keyboard/" element={<Keyboard />} />
+						<Route path="/hero/" element={<Hero />} />
+
 						{/* <Route path="/balls" element={<Balls />} /> */}
 					</Routes>
 					<Footer />

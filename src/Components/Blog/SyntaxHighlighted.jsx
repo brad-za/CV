@@ -14,7 +14,7 @@ const SyntaxHighlighted = ({ code, language }) => {
 			<pre>
 				<div className="bg-[#272822]2 bg-pink- relative -ml-11 mb-2 h-4 border-b border-[#999] ">
 					<div className="absolute -top-1  h-[10px] w-[10px] rounded-full bg-green-400" />
-					<div className="left absolute left-5 -top-1 h-[10px] w-[10px] rounded-full bg-yellow-400" />
+					<div className="left absolute -top-1 left-5 h-[10px] w-[10px] rounded-full bg-yellow-400" />
 					<div className="absolute -top-1 left-10 h-[10px] w-[10px] rounded-full bg-red-400" />
 				</div>
 				<code
