@@ -5,6 +5,10 @@ import Skills from "./Skills";
 import aboutMe from "./CV/aboutMe.json";
 import jobs from "./CV/jobs.json";
 import education from "./CV/education.json";
+import Separator from "./Seperator.jsx";
+import Seperator from "./Seperator.jsx";
+import Heading from "./CV/Heading";
+import List from "./CV/List";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,106 +25,117 @@ const CV = () => {
 			behavior: "smooth",
 		});
 	};
-
 	return (
-		<div className="h- bg- grid grid-cols-1 gap-y-40 md:grid-cols-3 md:px-20">
-			<div
-				ref={sectionRefs.current["About Me"]}
-				onClick={() => handleClick("About Me")}
-				className="bg-gray- animate items- flex cursor-pointer justify-center p-4 md:col-span-1"
-			>
-				<h1 className="text-3xl font-bold underline underline-offset-4">
-					A little bit about me
-				</h1>
-			</div>
-			<div className="bg-gray- overflow-auto p-4 md:col-span-2">
-				<div className="flex flex-col gap-2">
-					{aboutMe.map(paragraph => {
-						return <p className="">{paragraph}</p>;
-					})}
+		<div className="mx-28 my-10 w-2/3 p-4">
+			<div className=" grid  grid-cols-3  gap-4 gap-y-32 ">
+				{/* About Me */}
+				<div className="relative col-span-1 ">
+					<h1
+						ref={sectionRefs.current["About Me"]}
+						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+					>
+						About Me
+					</h1>
 				</div>
-			</div>
-
-			<div
-				ref={sectionRefs.current["Technical Profile"]}
-				onClick={() => handleClick("Technical Profile")}
-				className="bg-gray- animate items- flex cursor-pointer justify-center p-4 md:col-span-1"
-			>
-				<h1 className="text-3xl font-bold underline underline-offset-4">
-					Technical Profile
-				</h1>
-			</div>
-			<div className="bg-gray- overflow-auto p-4 md:col-span-2">
-				<div className="flex flex-col gap-2">
+				<div className="col-span-2">
+					{aboutMe.map(paragraph => (
+						<div key={paragraph}>
+							{paragraph}
+							<br />
+							<br />
+						</div>
+					))}
+					<p>
+						Please explore my{" "}
+						<a
+							className="text-blue-500"
+							target="_blank"
+							href="https://github.com/putintin420"
+						>
+							github
+						</a>{" "}
+						profile to see some of the work I have done and the
+						progress I have made in my coding journey.
+					</p>
+					<br />
+					<p>
+						I am especially happy with my performance in the 2022
+						Advent of Code challenge,{" "}
+						<a
+							className="text-blue-500"
+							target="_blank"
+							href="https://github.com/putintin420/AOC"
+						>
+							found here
+						</a>
+					</p>
+				</div>
+				<Seperator />
+				{/* Technical Profile */}
+				<div className="relative col-span-1">
+					<h1
+						ref={sectionRefs.current["Technical Profile"]}
+						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+					>
+						Technical Profile
+					</h1>
+				</div>
+				<div className="col-span-2">
 					<Skills />
 				</div>
-			</div>
-
-			<div
-				ref={sectionRefs.current["Education"]}
-				onClick={() => handleClick("Education")}
-				className="bg-gray- animate items- flex cursor-pointer justify-center p-4 md:col-span-1"
-			>
-				<h1 className="text-3xl font-bold underline underline-offset-4">
-					Education
-				</h1>
-			</div>
-			<div className="bg-gray- overflow-auto p-4 md:col-span-2">
-				<div className="flex flex-col gap-4">
-					{education.map(topic => {
-						return (
-							<div className="flex flex-col gap-x-2">
-								<div className="bg-green- mb-2 flex w-full justify-between gap-x-4">
-									<h1 className="text-xl font-semibold underline underline-offset-2">
-										{topic.subject}
-									</h1>
-									<p className="text-sm">{topic.year}</p>
-								</div>
-								<p className="text- px-2 pr-5">{topic.about}</p>
-							</div>
-						);
-					})}
+				<Seperator />
+				{/* Education */}
+				<div className="relative col-span-1">
+					<h1
+						ref={sectionRefs.current["Education"]}
+						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+					>
+						Education
+					</h1>
 				</div>
-			</div>
-
-			<div
-				ref={sectionRefs.current["Work History"]}
-				onClick={() => handleClick("Work History")}
-				className="bg-gray- animate items- flex cursor-pointer justify-center px-4 md:col-span-1"
-			>
-				<h1 className="text-3xl font-bold underline underline-offset-4">
-					Work History
-				</h1>
-			</div>
-			<div className="bg-gray- overflow-auto p-4 md:col-span-2">
-				<div className="flex flex-col gap-4">
-					{jobs.map(job => {
-						return (
-							<div className="flex flex-col gap-x-2">
-								<div className="bg-green- mb-2 flex w-full justify-between gap-x-10">
-									<h1 className="text-xl font-semibold underline underline-offset-2">
-										{job.position}
-									</h1>
-									<p className="text-sm">{job.date}</p>
-								</div>
-								<p className="font- mb-2 text-right text-sm italic">
-									{job.company}
-								</p>
-								<p className="text- mb-5 px-2 pr-5">
-									{job.about}
-								</p>
-								<div className="flex flex-col gap-2 whitespace-nowrap px-5">
-									{job.duties.map(duty => {
-										return (
-											<div>
-												<p>{`\u25cf ${duty}`}</p>
-											</div>
-										);
-									})}
-								</div>
-							</div>
-						);
-					})}
+				<div className="col-span-2">
+					{education.map((topic, idx) => (
+						<div key={idx} className="bg-fuchsia- m-10 p-4">
+							<Heading
+								position={topic.subject}
+								date={topic.year}
+							/>
+							<p>{topic.about}</p>
+							{topic.courses && <List items={topic.courses} />}
+						</div>
+					))}
+				</div>
+				<Seperator />
+				{/* Work History */}
+				<div className="relative col-span-1">
+					<h1
+						ref={sectionRefs.current["Work History"]}
+						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+					>
+						Work History
+					</h1>
+				</div>
+				<div className="col-span-2">
+					{jobs.map((job, idx) => (
+						<div
+							key={idx}
+							className="gap-y- m- bg-fuchsia- my-10 p-4"
+						>
+							<Heading position={job.position} date={job.date} />
+							<p className="bg-gray- pb-3 pl-3 italic">
+								{job.company}
+							</p>
+							<p className="bg-red-">{job.about}</p>
+							{/* <ul className="bg-orange-80 mt-4 list-disc space-y-2 pl-6">
+								{job.duties.map((duty, dutyIdx) => (
+									<li className="bg-teal-" key={dutyIdx}>
+										{duty}
+									</li>
+								))}
+							</ul> */}
+							<List items={job.duties} />
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
