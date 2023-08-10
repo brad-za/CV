@@ -12,11 +12,11 @@ const myRoutes = () => {
 	const route = useLocation();
 	return (
 		<div className="">
-			{route.pathname !== "/mouse" ? (
+			{route.pathname !== "/" ? (
 				<React.Fragment>
 					<Navbar className="z-30" />
 					<Routes className="">
-						<Route path="/" element={<Home />} />
+						<Route path="/CV" element={<Home />} />
 						<Route path="/blog/*" element={<Blog />} />
 						<Route path="/keyboard/" element={<Keyboard />} />
 						<Route path="/hero/" element={<Hero />} />
@@ -28,7 +28,7 @@ const myRoutes = () => {
 			) : (
 				<React.Fragment>
 					<Routes>
-						<Route path="/mouse" element={<MouseTracking />} />
+						<Route path="/" element={<MouseTracking />} />
 					</Routes>
 				</React.Fragment>
 			)}
