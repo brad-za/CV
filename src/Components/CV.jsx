@@ -29,7 +29,7 @@ const CV = () => {
 		<div className="mx-28 my-10 w-2/3 p-4">
 			<div className=" grid  grid-cols-3  gap-4 gap-y-32 ">
 				{/* About Me */}
-				<div className="relative col-span-1 ">
+				<div className="relative col-span-1 border-r-2">
 					<h1
 						ref={sectionRefs.current["About Me"]}
 						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
@@ -37,42 +37,44 @@ const CV = () => {
 						About Me
 					</h1>
 				</div>
-				<div className="col-span-2">
-					{aboutMe.map(paragraph => (
-						<div key={paragraph}>
-							{paragraph}
-							<br />
-							<br />
-						</div>
-					))}
-					<p>
-						Please explore my{" "}
-						<a
-							className="text-blue-500"
-							target="_blank"
-							href="https://github.com/putintin420"
-						>
-							github
-						</a>{" "}
-						profile to see some of the work I have done and the
-						progress I have made in my coding journey.
-					</p>
-					<br />
-					<p>
-						I am especially happy with my performance in the 2022
-						Advent of Code challenge,{" "}
-						<a
-							className="text-blue-500"
-							target="_blank"
-							href="https://github.com/putintin420/AOC"
-						>
-							found here
-						</a>
-					</p>
+				<div className="bg-red-  col-span-2 my-10 mt-4 p-4 pl-6">
+					<div className="p-4">
+						{aboutMe.map(paragraph => (
+							<div key={paragraph}>
+								{paragraph}
+								<br />
+								<br />
+							</div>
+						))}
+						<p>
+							Please explore my{" "}
+							<a
+								className="text-blue-500"
+								target="_blank"
+								href="https://github.com/putintin420"
+							>
+								github
+							</a>{" "}
+							profile to see some of the work I have done and the
+							progress I have made in my coding journey.
+						</p>
+						<br />
+						<p>
+							I am especially happy with my performance in the
+							2022 Advent of Code challenge,{" "}
+							<a
+								className="text-blue-500"
+								target="_blank"
+								href="https://github.com/putintin420/AOC"
+							>
+								found here
+							</a>
+						</p>
+					</div>
 				</div>
 				<Seperator />
 				{/* Technical Profile */}
-				<div className="relative col-span-1">
+				<div className="relative col-span-1 border-r-2">
 					<h1
 						ref={sectionRefs.current["Technical Profile"]}
 						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
@@ -80,12 +82,14 @@ const CV = () => {
 						Technical Profile
 					</h1>
 				</div>
-				<div className="col-span-2">
-					<Skills />
+				<div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
+					<div className="p-4">
+						<Skills />
+					</div>
 				</div>
 				<Seperator />
 				{/* Education */}
-				<div className="relative col-span-1">
+				<div className="relative col-span-1 border-r-2">
 					<h1
 						ref={sectionRefs.current["Education"]}
 						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
@@ -93,21 +97,25 @@ const CV = () => {
 						Education
 					</h1>
 				</div>
-				<div className="col-span-2">
+				<div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
 					{education.map((topic, idx) => (
-						<div key={idx} className="bg-fuchsia- m-10 p-4">
+						<div key={idx} className="bg-fuchsia- my-10 p-4">
 							<Heading
 								position={topic.subject}
 								date={topic.year}
 							/>
-							<p>{topic.about}</p>
-							{topic.courses && <List items={topic.courses} />}
+							<div className="px-2">
+								<p>{topic.about}</p>
+								{topic.courses && (
+									<List items={topic.courses} />
+								)}
+							</div>
 						</div>
 					))}
 				</div>
 				<Seperator />
 				{/* Work History */}
-				<div className="relative col-span-1">
+				<div className="relative col-span-1 border-r-2">
 					<h1
 						ref={sectionRefs.current["Work History"]}
 						className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
@@ -115,24 +123,18 @@ const CV = () => {
 						Work History
 					</h1>
 				</div>
-				<div className="col-span-2">
+				<div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
 					{jobs.map((job, idx) => (
 						<div
 							key={idx}
 							className="gap-y- m- bg-fuchsia- my-10 p-4"
 						>
 							<Heading position={job.position} date={job.date} />
+
 							<p className="bg-gray- pb-3 pl-3 italic">
 								{job.company}
 							</p>
 							<p className="bg-red-">{job.about}</p>
-							{/* <ul className="bg-orange-80 mt-4 list-disc space-y-2 pl-6">
-								{job.duties.map((duty, dutyIdx) => (
-									<li className="bg-teal-" key={dutyIdx}>
-										{duty}
-									</li>
-								))}
-							</ul> */}
 							<List items={job.duties} />
 						</div>
 					))}
