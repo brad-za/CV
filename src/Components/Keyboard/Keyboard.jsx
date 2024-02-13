@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, Suspense } from "react";
 import Scene from "./Scene";
 import Intro from "./Info/Intro";
 import { Leva } from "leva";
+import { AnimationProvider } from "./AnimationContext";
+import Animations from "./Animations";
 
 const Keyboard = () => {
 	return (
@@ -11,7 +13,11 @@ const Keyboard = () => {
 			</div>
 
 			<div className="bg-violet- relative w-full">
-				<Scene />
+				<AnimationProvider>
+					<Animations />
+					<Scene />
+				</AnimationProvider>
+
 				<Leva collapsed />
 			</div>
 		</div>

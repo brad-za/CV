@@ -8,8 +8,9 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { MeshPhysicalMaterial } from "three";
 import { useControls } from "leva";
+import { useAnimation } from "../AnimationContext";
 
-export default function Model({ keyCapsRef }) {
+export default function Model() {
 	const { nodes, materials } = useGLTF(
 		"src/assets/keyboard/keycapsRight-transformed.glb",
 	);
@@ -17,6 +18,8 @@ export default function Model({ keyCapsRef }) {
 	const gltf = useGLTF("src/assets/keyboard/keycapsRight-transformed.glb");
 
 	// console.log(gltf);
+
+	const { keyCapsRef } = useAnimation();
 
 	const config = useControls("keycaps-new", {
 		visible: true,

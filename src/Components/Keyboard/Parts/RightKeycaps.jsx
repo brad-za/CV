@@ -6,11 +6,12 @@ import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import rightKeycaps from "../../../assets/keyboard/rightKeycaps.glb";
 import { useControls } from "leva";
-import gsap from "gsap";
+
+import { useAnimation } from "../AnimationContext";
 
 export default function Model({ thumbClusterAnimation }) {
 	const { nodes, materials } = useGLTF(rightKeycaps);
-	const keyCapsRef = useRef();
+	const { keyCapsRef } = useAnimation();
 	const hasThumbClusterAnimated = useRef(false);
 	const config = useControls("keycaps", {
 		visible: true,
@@ -47,56 +48,23 @@ export default function Model({ thumbClusterAnimation }) {
 	// 	depthWrite: true,
 	// });
 
-	useEffect(() => {
-		// Check if the keyCapsRef is available and has children
-		if (keyCapsRef.current && keyCapsRef.current.children.length) {
-			// Only apply animations if it's the first time or if animateThumbCluster is true
-			if (thumbClusterAnimation || hasThumbClusterAnimated.current) {
-				keyCapsRef.current.children.forEach((child, index) => {
-					if (
-						child.className.includes("thumbCluster") ||
-						child.className.includes("thumbKey")
-					) {
-						const yPos = (index + 1) * 1.75;
-						if (thumbClusterAnimation) {
-							// Animate each child up by 2 units times their index
-							gsap.to(child.position, {
-								y: `+=${yPos}`,
-								duration: 1,
-							});
-						} else {
-							// Animate each child down by 2 units times their index
-							gsap.to(child.position, {
-								y: `-=${yPos}`,
-								duration: 1,
-							});
-						}
-					}
-				});
-
-				// Mark that an animation has occurred
-				hasThumbClusterAnimated.current = true;
-			}
-		}
-	}, [thumbClusterAnimation, keyCapsRef]);
-
 	return (
 		// prettier-ignore
 		<group ref={keyCapsRef} dispose={null}>
 		{/*  <meshStandardMaterial {...config} /> */}
       
                 {/* column 1 - left */}
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps023.geometry} material={materials["top housing.028"]} position={[47.63, -13.61, 3.1]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps022.geometry} material={materials["top housing.028"]} position={[47.63, -13.61, -14.7]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps021.geometry} material={materials["top housing.028"]} position={[47.63, -13.61, -32.51]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps022.geometry} material={materials["top housing.028"]} position={[47.63, -13.61, -14.7]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps023.geometry} material={materials["top housing.028"]} position={[47.63, -13.61, 3.1]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps020.geometry} material={materials["top housing.028"]} position={[47.6, -13.61, 20.94]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
     
                 {/* column 2 */}
      
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps018.geometry} material={materials["top housing.028"]} position={[65.49, -13.61, -34.66]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps017.geometry} material={materials["top housing.028"]} position={[65.49, -13.6, -16.85]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.5} ><meshPhysicalMaterial {...config} /></mesh>
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps016.geometry} material={materials["top housing.028"]} position={[65.49, -13.61, 0.95]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps019.geometry} material={materials["top housing.028"]} position={[65.46, -13.61, 18.79]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps016.geometry} material={materials["top housing.028"]} position={[65.49, -13.61, 0.95]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps017.geometry} material={materials["top housing.028"]} position={[65.49, -13.6, -16.85]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.5} ><meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps018.geometry} material={materials["top housing.028"]} position={[65.49, -13.61, -34.66]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
      
                 {/* column 3*/}
         
@@ -109,15 +77,15 @@ export default function Model({ thumbClusterAnimation }) {
             
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps001.geometry} material={materials["top housing.028"]} position={[101.09, -13.61, 18.84]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64}><meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps010.geometry} material={materials["top housing.028"]} position={[101.17, -13.61, 0.98]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps012.geometry} material={materials["top housing.028"]} position={[101.17, -13.61, -34.64]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps011.geometry} material={materials["top housing.028"]} position={[101.17, -13.61, -16.82]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps012.geometry} material={materials["top housing.028"]} position={[101.17, -13.61, -34.64]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
         
                 {/* column 5 */}
            
-                <mesh className={"column"} geometry={nodes.XDA_Keycaps002.geometry} material={materials["top housing.028"]} position={[119.01, -13.61, 23.2]} rotation={[Math.PI / 2, 0, -Math.PI]}scale={24.64} ><meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps007.geometry} material={materials["top housing.028"]} position={[118.98, -13.61, -30.24]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps008.geometry} material={materials["top housing.028"]} position={[118.98, -13.61, -12.43]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
                 <mesh className={"column"} geometry={nodes.XDA_Keycaps009.geometry} material={materials["top housing.028"]} position={[118.98, -13.61, 5.38]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={24.64} > <meshPhysicalMaterial {...config} /></mesh>
+                <mesh className={"column"} geometry={nodes.XDA_Keycaps002.geometry} material={materials["top housing.028"]} position={[119.01, -13.61, 23.2]} rotation={[Math.PI / 2, 0, -Math.PI]}scale={24.64} ><meshPhysicalMaterial {...config} /></mesh>
           
                 {/* column 6 - right */}
            

@@ -16,11 +16,7 @@ import { useControls } from "leva";
 import Animations from "./Animations-old";
 import KeycapsRight from "./Parts/KeycapsRight";
 
-const Parts = ({ animateRotary, thumbClusterAnimation }) => {
-	const keybRef = useRef();
-	const rotaryRef = useRef();
-	const columnsRef = useRef();
-
+const Parts = () => {
 	const config = useControls("background config", {
 		preset: {
 			value: "warehouse",
@@ -44,7 +40,6 @@ const Parts = ({ animateRotary, thumbClusterAnimation }) => {
 			<Environment {...config} />
 
 			<group
-				ref={keybRef}
 				// rotation-x={1.3}
 				// rotation-z={0}
 				// rotation-y={0}
@@ -52,17 +47,14 @@ const Parts = ({ animateRotary, thumbClusterAnimation }) => {
 				scale={0.05}
 			>
 				<group position={[0, 0, 0]}>
-					{/* <KeycapsRight keyCapsRef={keyCapsRef} /> */}
-					<RightKeycaps
-						thumbClusterAnimation={thumbClusterAnimation}
-					/>
+					<RightKeycaps />
 					<StemClick />
 					<BottomHousing />
 					<Stem />
 					<Contacts />
 					<Springs />
 					<TopHousing />
-					<Rotary animateRotary={animateRotary} />
+					<Rotary />
 					<Housing />
 					<ProMicro />
 				</group>

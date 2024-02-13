@@ -1,168 +1,143 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect } from "react";
+import { useAnimation } from "./AnimationContext";
+import gsap from "gsap";
 
-const createTimelineForStarting = keyb => {
-	const startTimeline = gsap.timeline({
-		scrollTrigger: {
-			trigger: "#starting",
-			markers: true,
-			scrub: true,
-			start: "top bottom",
-			end: "bottom bottom",
-		},
-	});
+const Animations = () => {
+	const {
+		hasAnimated,
+		hasThumbClusterAnimated,
+		rotaryRef,
+		keyCapsRef,
+		animateRotary,
+		animateThumbCluster,
+		animateColumnar,
+	} = useAnimation();
 
-	startTimeline
-		.to(keyb.position, { x: "-7" })
-		.to(keyb.rotation, { x: "1.57", z: "0" }, "<");
+	// rotary encoder
 
-	return startTimeline;
-};
-
-const createTimelineForDecisions = (keyb, rotaryR) => {
-	const decisionTimeline = gsap.timeline({
-		scrollTrigger: {
-			trigger: "#decisions",
-			markers: true,
-			scrub: true,
-			start: "top bottom",
-			end: "middle middle",
-		},
-	});
-
-	decisionTimeline
-		.to(keyb.position, { x: "-2" })
-		.to(keyb.position, { y: "-0.2" })
-		.to(keyb.rotation, { x: "0.3" })
-		.to(keyb.position, { z: "-2" }, "<");
-
-	rotaryR.children.forEach(child => {
-		if (child.className === "rotaryEncoder") {
-			decisionTimeline.to(child.position, { y: "18" }, "<");
-		}
-		if (child.className === "rotaryKnob") {
-			decisionTimeline.to(child.position, { y: "50" });
-		}
-	});
-
-	return decisionTimeline;
-};
-
-const createTimelineForThumbCluster = (keyb, rotaryR, keyCapsR) => {
-	let count = 0;
-
-	const thumbTimeline = gsap.timeline({
-		scrollTrigger: {
-			trigger: "#ThumbCluster",
-			markers: true,
-			scrub: true,
-			start: "top bottom",
-			end: "top middle",
-			id: "thumbCluster",
-		},
-	});
-
-	thumbTimeline.to(keyb.position, { y: "1.2" });
-
-	rotaryR.children.forEach(child => {
-		if (child.className === "rotaryEncoder") {
-			thumbTimeline.to(child.position, { y: "-21.41" }, "<");
-		}
-		if (child.className === "rotaryKnob") {
-			thumbTimeline.to(child.position, { y: "-14.18" }, ">");
-		}
-	});
-
-	keyCapsR.children.forEach(child => {
-		if (
-			child.className === "thumbCluster" ||
-			child.className === "thumbKey"
-		) {
-			thumbTimeline.to(child.material, { opacity: 0.9, roughness: 0.4 });
-			thumbTimeline.to(child.position, { y: `+=${count++ * 2}` }, "<");
-		}
-	});
-
-	return thumbTimeline;
-};
-
-const createTimelineForColumnar = (keyb, keyCapsR, colCount) => {
-	let count = 0;
-
-	let columnarTimeline = gsap.timeline({
-		scrollTrigger: {
-			trigger: "#Columnar",
-			markers: true,
-			scrub: true,
-			start: "top bottom",
-			end: "top top", // extended end to allow more scroll to complete the animations
-			id: "Columnar",
-		},
-	});
-
-	// Undo transformations from ThumbCluster animation
-	keyCapsR.children.forEach(child => {
-		if (
-			child.className === "thumbCluster" ||
-			child.className === "thumbKey"
-		) {
-			columnarTimeline
-				.to(child.position, { y: `-= ${count++ * 2}` }) // Opposite transformation
-				.to(
-					child.material,
-					{
-						opacity: 0.4,
-						roughness: 0,
-					},
-					">",
-				);
-		}
-	});
-
-	columnarTimeline
-		.to(keyb.rotation, { x: "1.2" })
-		.to(keyb.position, { x: "-7", z: "0" }, "<");
-	// .to(keyb.position, { x: "-7" }, ">")
-	// .to(keyb.position, { z: "0" }, ">");
-
-	keyCapsR.children
-		.slice()
-		.reverse()
-		.forEach(child => {
-			if (child.className == "column") {
-				colCount++;
-				columnarTimeline
-					.to(child.material, { opacity: 0.9, roughness: 0.4 }, ">")
-					.to(child.position, { y: `+=${colCount * 1}` }, "<");
-			}
-		});
-
-	return columnarTimeline;
-};
-
-const Animations = ({ keybRef, storyRef, keyCapsRef, rotaryRef }) => {
-	const contextRef = useRef();
-	let colCount = 0;
 	useEffect(() => {
-		if (keybRef.current) {
-			const keyb = keybRef.current;
-			const rotaryR = rotaryRef.current;
-			const keyCapsR = keyCapsRef.current;
+		// Check if the rotaryRef is available and has children
+		if (rotaryRef.current && rotaryRef.current.children.length) {
+			// Determine the direction based on animateRotary and whether the animation has played
+			const direction = animateRotary ? 1 : -1;
 
-			contextRef.current = gsap.context(() => {
-				gsap.registerPlugin(ScrollTrigger);
-				createTimelineForStarting(keyb);
-				createTimelineForDecisions(keyb, rotaryR);
-				createTimelineForThumbCluster(keyb, rotaryR, keyCapsR);
-				createTimelineForColumnar(keyb, keyCapsR, colCount);
-			}, storyRef.current);
+			// Apply animations only if it's the first time or if animateRotary is true
+			if (animateRotary || hasAnimated.current) {
+				rotaryRef.current.children.forEach(child => {
+					// Identify the child and apply the appropriate animation
+					if (child.className === "rotaryEncoder") {
+						gsap.to(child.position, {
+							y: `+=${18 * direction}`,
+							duration: 1,
+						});
+					} else if (child.className === "rotaryKnob") {
+						gsap.to(child.position, {
+							y: `+=${36 * direction}`,
+							duration: 1,
+						});
+					}
+				});
+
+				// Mark that an animation has occurred
+				hasAnimated.current = true;
+			}
 		}
+	}, [animateRotary]);
 
-		return () => {
-			contextRef.current && contextRef.current.revert();
-		};
-	}, [keybRef.current]);
+	// thumb cluster
+
+	useEffect(() => {
+		const baseMovement = 0.5; // The starting movement distance for the first keycap
+		const staggerIncrement = 0.1; // Additional distance added for each keycap
+		// Check if the keyCapsRef is available and has children
+		if (keyCapsRef.current && keyCapsRef.current.children.length) {
+			// Only apply animations if it's the first time or if animateThumbCluster is true
+			if (animateThumbCluster || hasThumbClusterAnimated.current) {
+				keyCapsRef.current.children.forEach((child, index) => {
+					if (
+						child.className.includes("thumbCluster") ||
+						child.className.includes("thumbKey")
+					) {
+						const yPos = baseMovement + staggerIncrement * index;
+
+						if (animateThumbCluster) {
+							// Animate up with adjusted material properties:
+							gsap.to(child.position, {
+								y: `+=${yPos}`,
+								duration: 1,
+								ease: "Power2.easeInOut", // Consider easing functions for a smoother effect
+							});
+							gsap.to(child.material, {
+								opacity: 0.9,
+								roughness: 0.4,
+								duration: 1,
+							});
+						} else {
+							// Animate down and revert properties:
+							gsap.to(child.position, {
+								y: `-=${yPos}`,
+								duration: 1,
+								ease: "Power2.easeInOut",
+							});
+							gsap.to(child.material, {
+								opacity: 0.4,
+								roughness: 0,
+								duration: 1,
+							});
+						}
+					}
+				});
+
+				// Mark that an animation has occurred
+				hasThumbClusterAnimated.current = true;
+			}
+		}
+	}, [animateThumbCluster, keyCapsRef]);
+
+	// columnar
+
+	useEffect(() => {
+		if (keyCapsRef.current && keyCapsRef.current.children.length) {
+			const baseMovement = 0.5; // The starting movement distance for the first keycap
+			const staggerIncrement = 0.1; // Additional distance added for each keycap
+
+			keyCapsRef.current.children.forEach((child, index) => {
+				if (child.className.includes("column")) {
+					const yPos = baseMovement + staggerIncrement * index;
+
+					if (animateColumnar) {
+						// Animate forward
+						gsap.to(child.position, {
+							y: `+=${yPos}`,
+							duration: 1,
+							ease: "Power2.easeInOut",
+						});
+						gsap.to(child.material, {
+							opacity: 0.9,
+							roughness: 0.4,
+							duration: 1,
+						});
+					} else {
+						// Animate backward
+						gsap.to(child.position, {
+							y: `-=${yPos}`,
+							duration: 1,
+							ease: "Power2.easeInOut",
+						});
+						// Assuming you want to revert opacity and roughness to initial values
+						gsap.to(child.material, {
+							opacity: 0.4,
+							roughness: 0,
+							duration: 1,
+						});
+					}
+				}
+			});
+
+			// Optionally, set a flag or update state to indicate the animation has completed
+			// if needed here...
+		}
+	}, [animateColumnar, keyCapsRef]);
 
 	return null;
 };
