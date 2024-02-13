@@ -13,12 +13,11 @@ import Rotary from "./Parts/Rotary";
 import Housing from "./Parts/Housing";
 import ProMicro from "./Parts/ProMicro";
 import { useControls } from "leva";
-import Animations from "./Animations";
-import useResetOrigin from "../../Hooks/useResetOrigin";
+import Animations from "./Animations-old";
+import KeycapsRight from "./Parts/KeycapsRight";
 
-const Parts = ({ storyRef }) => {
+const Parts = ({ animateRotary, thumbClusterAnimation }) => {
 	const keybRef = useRef();
-	const keyCapsRef = useRef();
 	const rotaryRef = useRef();
 	const columnsRef = useRef();
 
@@ -41,41 +40,33 @@ const Parts = ({ storyRef }) => {
 	});
 	return (
 		<>
-			{/* <OrbitControls /> */}
 			<Perf position="bottom-left" />
 			<Environment {...config} />
 
 			<group
-				// ref={node => {
-				// 	keybRef = node;
-				// }}
 				ref={keybRef}
-				rotation-x={1.3}
-				rotation-z={0}
-				rotation-y={0}
-				position={[-20, 1, 0]}
+				// rotation-x={1.3}
+				// rotation-z={0}
+				// rotation-y={0}
+				position={[-4, 1, -1]}
 				scale={0.05}
 			>
 				<group position={[0, 0, 0]}>
-					<RightKeycaps keyCapsRef={keyCapsRef} />
+					{/* <KeycapsRight keyCapsRef={keyCapsRef} /> */}
+					<RightKeycaps
+						thumbClusterAnimation={thumbClusterAnimation}
+					/>
 					<StemClick />
 					<BottomHousing />
 					<Stem />
 					<Contacts />
 					<Springs />
 					<TopHousing />
-					<Rotary rotaryRef={rotaryRef} />
+					<Rotary animateRotary={animateRotary} />
 					<Housing />
 					<ProMicro />
 				</group>
 			</group>
-
-			<Animations
-				storyRef={storyRef}
-				keybRef={keybRef}
-				keyCapsRef={keyCapsRef}
-				rotaryRef={rotaryRef}
-			/>
 		</>
 	);
 };

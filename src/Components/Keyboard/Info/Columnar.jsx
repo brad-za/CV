@@ -4,7 +4,7 @@ const Columnar = () => {
 	return (
 		<div
 			id="Columnar"
-			className="bg-emerald- absolute top-[400vh] right-0 flex h-[100vh] w-1/2 flex-col  text-right text-3xl"
+			className="bg-emerald- absolute right-0 top-[400vh] flex h-[100vh] w-1/2 flex-col  text-right text-3xl"
 		>
 			<span className="Columnar" />
 			<div className="-mt-20 flex h-full flex-col items-center justify-center ">

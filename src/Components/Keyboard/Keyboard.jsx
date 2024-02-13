@@ -1,32 +1,20 @@
-import React, { Suspense, useRef } from "react";
-
+import React, { useRef } from "react";
 import Scene from "./Scene";
-import Rotary from "./Info/Rotary";
 import Intro from "./Info/Intro";
-import StartingPoint from "./Info/StartingPoint";
-import ThumbCluster from "./Info/ThumbCluster";
 import { Leva } from "leva";
-import Columnar from "./Info/Columnar";
 
 const Keyboard = () => {
-	const storyRef = useRef();
-
 	return (
-		// <Suspense fallback={null}>
-		<div ref={storyRef} className="relative h-[500vh]">
-			<Scene storyRef={storyRef} />
-			<Leva
-				collapsed // default = false, when true the GUI is collpased
-			/>
-			<div className="story">
+		<div className="flex h-[200vh] flex-col">
+			<div className="bg-violet- flex h-screen items-center justify-center">
 				<Intro />
-				<StartingPoint />
-				<Rotary />
-				<ThumbCluster />
-				<Columnar />
+			</div>
+
+			<div className="bg-violet- relative w-full">
+				<Scene />
+				<Leva collapsed />
 			</div>
 		</div>
-		// </Suspense>
 	);
 };
 
