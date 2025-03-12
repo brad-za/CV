@@ -24,7 +24,6 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
   return (
     <React.Fragment>
       {/* [&>*]: is an arbitrary selector that styles all children */}
-      <div className="[&>*]:rounded-3xl ">
         <NavCard mouseOverElementHandler={handleMouseOver} />
         <SkillsCard mouseOverElementHandler={handleMouseOver} />
         <FunCard mouseOverElementHandler={handleMouseOver} />
@@ -34,7 +33,7 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
         <QualityCard mouseOverElementHandler={handleMouseOver} />
         <BioCard mouseOverElementHandler={handleMouseOver} />
         <MeCard mouseOverElementHandler={handleMouseOver} />
-        <BlogCard mouseOverElementHandler={handleMouseOver} />
+        {/* <BlogCard mouseOverElementHandler={handleMouseOver} /> */}
         {/* THREE */}
         <div
           className="group"
@@ -63,7 +62,6 @@ const GalleryElements = ({ mouseOverElementHandler }) => {
             </div>
           </div>
         </div>
-      </div>
     </React.Fragment>
     // </MouseTracking>
   );

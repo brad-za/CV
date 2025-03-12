@@ -57,21 +57,29 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
     setIsHovered(false);
     mouseOverElementHandler(null);
   };
+
+  // Use inline styles for the positioning properties
+  const style = {
+    bottom,
+    right,
+    left, 
+    top,
+    // Handle height and width separately to allow percentage values
+    [`--card-height`]: mdHeight,
+    [`--card-width`]: mdWidth,
+  };
+
   return (
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <div
         className={`
-          block items-center justify-center overflow-hidden rounded-3xl 
-          ${background} ${label ? "px-4 py-10" : "p-6"} text-3xl font-extrabold text-black 
-          md:absolute md:flex
-          ${bottom ? `bottom-[${bottom}]` : ""}
-          ${right ? `right-[${right}]` : ""}
-          ${left ? `left-[${left}]` : ""}
-          ${top ? `top-[${top}]` : ""}
-          md:h-[${mdHeight}] md:w-[${mdWidth}]
+          block items-center justify-center overflow-hidden rounded-3xl
+          ${background} ${label ? "px-4 py-10" : "p-6"} text-3xl font-extrabold text-black
+          md:absolute md:flex md:h-[var(--card-height)] md:w-[var(--card-width)]
           relative
           ${image ? "group" : ""}
         `}
+        style={style}
       >
         {label && labelDirection && (
           <div
