@@ -3,6 +3,7 @@ import App from "./App.tsx";
 import { createRoot } from "react-dom/client";
 
 import "./index.css";
+import "./style/globals.scss";
 
 const container = document.getElementById("root");
 // Add non-null assertion since we know the element exists

@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import Routes from "./Routes";
+import Routes from "./Routes.tsx";
 
 interface AppProps {
   tab?: string;
