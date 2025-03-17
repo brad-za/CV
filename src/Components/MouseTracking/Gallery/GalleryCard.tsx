@@ -1,4 +1,5 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, CSSProperties } from "react";
+import useWindowSize from "../../../Hooks/useWindowSize";
 
 type LabelDirection = "up" | "down" | "left" | "right";
 
@@ -47,6 +48,8 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
   image,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { width } = useWindowSize();
+  const isMdBreakpoint = width >= 768; // Tailwind's md breakpoint
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -58,22 +61,23 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
     mouseOverElementHandler(null);
   };
 
-  // Use inline styles for the positioning properties
+  // Use CSS variables for height and width, and apply positioning only at md breakpoint
   const style = {
-    bottom,
-    right,
-    left, 
-    top,
-    // Handle height and width separately to allow percentage values
-    [`--card-height`]: mdHeight,
-    [`--card-width`]: mdWidth,
-  };
+    "--card-height": mdHeight,
+    "--card-width": mdWidth,
+    ...(isMdBreakpoint && {
+      bottom,
+      right,
+      left,
+      top,
+    }),
+  } as CSSProperties;
 
   return (
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <div
         className={`
-          block items-center justify-center overflow-hidden rounded-3xl
+          block items-center w-full justify-center overflow-hidden rounded-3xl
           ${background} ${label ? "px-4 py-10" : "p-6"} text-3xl font-extrabold text-black
           md:absolute md:flex md:h-[var(--card-height)] md:w-[var(--card-width)]
           relative
