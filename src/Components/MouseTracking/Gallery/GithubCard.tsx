@@ -24,7 +24,7 @@ const GithubCard: React.FC<GithubCardProps> = ({ mouseOverElementHandler }) => {
       <a
         onMouseMove={() => mouseOverElementHandler(null)}
         target="_blank"
-        href="https://github.com/putintin420"
+        href="https://github.com/brad-za"
         className="grid h-full w-full place-items-center text-3xl leading-9"
       >
         Take a look at my github profile and the way I like to code.

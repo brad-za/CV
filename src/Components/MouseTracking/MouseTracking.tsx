@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import useMousePosition from "../../Hooks/useMousePosition.tsx";
 import useWindowSize from "../../Hooks/useWindowSize.tsx";
 import useMouseTrackingLayout from "../../Hooks/useMouseTrackingLayout.tsx";
@@ -15,6 +15,23 @@ const MouseTracking: React.FC = () => {
   const windowRef = useRef<HTMLDivElement>(null);
   const [mouseLabel, setMouseLabel] = useState<string | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  // Track scroll position to show/hide navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show navbar when scrolled down more than 200px
+      setShowNavbar(window.scrollY > 200);
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const mousePosition = useMousePosition();
   const windowSize = useWindowSize();
@@ -26,13 +43,32 @@ const MouseTracking: React.FC = () => {
 
   return (
     <div className="relative">
-      {/* Fixed Navbar for mobile */}
+      {/* Fixed Navbar for mobile - hidden by default */}
       <div className="lg:hidden">
-        <Nav className="fixed top-0 left-0 right-0 z-[9999] bg-chipDarkBlue bg-opacity-80 backdrop-blur-md" />
+        <div
+          className={`fixed top-0 left-0 right-0 z-[9999] bg-chipDarkBlue bg-opacity-80 backdrop-blur-md transition-all duration-500 ease-in-out ${
+            showNavbar ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <Nav />
+        </div>
       </div>
 
-      {/* Add padding to the top to account for the fixed navbar on mobile */}
-      <div className="pt-[135px] lg:pt-0">
+      {/* Desktop Navbar - hidden by default */}
+      <div className="hidden lg:block">
+        <div
+          className={`fixed top-0 left-0 right-0 z-[9999] bg-chipDarkBlue bg-opacity-80 backdrop-blur-md transition-all duration-500 ease-in-out ${
+            showNavbar ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <Nav />
+        </div>
+      </div>
+
+      {/* Add padding to the top only when navbar is visible */}
+      <div
+        className={`${showNavbar ? "pt-[135px]" : "pt-0"} transition-all duration-500`}
+      >
         {/* Mouse Ball */}
         <div className="pointer-events-none z-30 cursor-none">
           <div

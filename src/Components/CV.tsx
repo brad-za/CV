@@ -59,7 +59,7 @@ const CV: React.FC = () => {
               <a
                 className="text-blue-500"
                 target="_blank"
-                href="https://github.com/putintin420"
+                href="https://github.com/brad-za"
               >
                 github
               </a>{" "}
@@ -73,7 +73,7 @@ const CV: React.FC = () => {
               <a
                 className="text-blue-500"
                 target="_blank"
-                href="https://github.com/putintin420/AOC"
+                href="https://github.com/brad-za/AOC"
               >
                 found here
               </a>
