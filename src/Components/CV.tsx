@@ -5,7 +5,6 @@ import Skills from "./Skills.tsx";
 import aboutMe from "./CV/aboutMe.json";
 import jobs from "./CV/jobs.json";
 import education from "./CV/education.json";
-import Separator from "./Seperator.tsx";
 import Seperator from "./Seperator.tsx";
 import Heading from "./CV/Heading.tsx";
 import List from "./CV/List.tsx";

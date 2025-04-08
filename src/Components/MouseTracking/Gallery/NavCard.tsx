@@ -13,7 +13,6 @@ const NavCard: React.FC<NavCardProps> = ({ mouseOverElementHandler }) => {
     { name: "Home", href: "/", id: "home", end: true },
     { name: "Blog", href: "/blog", id: "blog", end: false },
     { name: "About me", href: "/CV", id: "cv", end: true },
-    { name: "Keyboard", href: "/keyboard", id: "keyboard", end: true },
     // { name: "Balls", href: "/balls", id: "balls", end: true },
   ];
 

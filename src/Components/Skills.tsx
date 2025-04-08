@@ -25,7 +25,7 @@ const Skills: React.FC<SkillsProps> = ({ col }) => {
       stars: 4,
     },
     {
-      name: "JSON",
+      name: "GIT",
       stars: 4,
     },
     {

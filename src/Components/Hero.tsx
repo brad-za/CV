@@ -1,7 +1,7 @@
 import React from "react";
-import AnimationLogic from "./Hero/AnimationLogic";
+import AnimationLogic from "./Hero/AnimationLogic.tsx";
 import TextAnimation from "./Hero/TextAnimation.tsx";
-import AnimationSettings from "./Hero/AnimationSettings";
+import AnimationSettings from "./Hero/AnimationSettings.tsx";
 import HeroAnimationSettingsProvider from "../Hooks/useHeroAnimationSettings.tsx";
 
 const Hero: React.FC = () => {

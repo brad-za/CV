@@ -5,7 +5,6 @@ import Home from "./Components/Home.tsx";
 import Blog from "./Components/Blog/Blog";
 import MouseTracking from "./Components/MouseTracking/MouseTracking.tsx";
 import Footer from "./Components/Footer.tsx";
-import Keyboard from "./Components/Keyboard/Keyboard";
 import Hero from "./Components/Hero.tsx";
 
 const AppRoutes: React.FC = () => {
@@ -19,7 +18,6 @@ const AppRoutes: React.FC = () => {
           <ReactRoutes>
             <Route path="/CV" element={<Home />} />
             <Route path="/blog/*" element={<Blog />} />
-            <Route path="/keyboard/" element={<Keyboard />} />
             <Route path="/hero/" element={<Hero />} />
             {/* <Route path="/balls" element={<Balls />} /> */}
           </ReactRoutes>
