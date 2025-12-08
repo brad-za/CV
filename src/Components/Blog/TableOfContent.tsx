@@ -11,9 +11,10 @@ const TableOfContent: React.FC<TableOfContentProps> = ({ tableOfContents }) => {
   const loc = location.pathname.split("/");
 
   let inActiveClassName =
-    "inline-block h-full cursor-pointer border-b-2 border-transparent py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
+    "inline-block h-full cursor-pointer py-3 text-[1.2em] font-normal tracking-wider text-chipWhite hover:border-white md:py-5";
+
   let activeClassName =
-    "inline-block h-full cursor-pointer border-b-2 bg-green-200 py-3 text-[1.2em] font-normal tracking-wider text-chipWhite border-white md:py-5";
+    "inline-block h-full cursor-pointer py-3 text-[1.2em] font-normal tracking-wider text-chipWhite md:py-5";
 
   return (
     <>
@@ -31,7 +32,7 @@ const TableOfContent: React.FC<TableOfContentProps> = ({ tableOfContents }) => {
                   style={{
                     marginLeft: heading.indent * 17.5,
                   }}
-                  className={` my-1 rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
+                  className={` my-1 rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] `}
                 >
                   <NavLink
                     className={({ isActive }) => {

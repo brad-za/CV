@@ -11,7 +11,7 @@ const ToolsCard: React.FC<ToolsCardProps> = ({ mouseOverElementHandler }) => {
     <GalleryCard
       bottom="10%"
       left="3.75%"
-      mdHeight="40%"
+      mdHeight="35%"
       mdWidth="18%"
       background="bg-[#C059FF]"
       mouseOverElementHandler={mouseOverElementHandler}

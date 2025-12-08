@@ -12,7 +12,7 @@ const QualityCard: React.FC<QualityCardProps> = ({
     <GalleryCard
       left="8%"
       top="13%"
-      mdHeight="22%"
+      mdHeight="20%"
       mdWidth="22%"
       background="bg-[#FF4179]"
       mouseOverElementHandler={mouseOverElementHandler}

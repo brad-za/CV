@@ -13,14 +13,6 @@ interface Tool {
 const Tools: React.FC<ToolsProps> = ({ col }) => {
   const tools: Tool[] = [
     {
-      name: "Windows",
-      stars: 4,
-    },
-    {
-      name: "Mac",
-      stars: 4,
-    },
-    {
       name: "Visual Studio Code",
       stars: 4,
     },
@@ -30,23 +22,23 @@ const Tools: React.FC<ToolsProps> = ({ col }) => {
     },
     {
       name: "Github",
-      stars: 1,
+      stars: 4,
+    },
+    {
+      name: "CAD",
+      stars: 4,
+    },
+    {
+      name: "KiCad",
+      stars: 4,
     },
     {
       name: "Figma",
       stars: 4,
     },
     {
-      name: "MS Office",
-      stars: 4,
-    },
-    {
       name: "Docker",
-      stars: 3,
-    },
-    {
-      name: "Internet",
-      stars: 3,
+      stars: 4,
     },
     {
       name: "Postman",

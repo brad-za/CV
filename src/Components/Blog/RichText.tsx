@@ -282,6 +282,52 @@ const RichText: React.FC<RichTextProps> = ({
           </p>
         );
 
+      case "bulleted-list":
+        return (
+          <ul key={index} className="mb-8 ml-8 list-disc space-y-2">
+            {obj?.children?.map((listItem, i) => {
+              const listItemContent = listItem.children?.map((itemChild, j) => {
+                // Handle list-item-child or direct children
+                if (itemChild.type === "list-item-child") {
+                  return itemChild.children?.map((child, k) =>
+                    getContentFragment(k, child.text || "", child)
+                  );
+                } else {
+                  return getContentFragment(j, itemChild.text || "", itemChild);
+                }
+              });
+              return (
+                <li key={i} className="ml-4">
+                  {listItemContent}
+                </li>
+              );
+            })}
+          </ul>
+        );
+
+      case "numbered-list":
+        return (
+          <ol key={index} className="mb-8 ml-8 list-decimal space-y-2">
+            {obj?.children?.map((listItem, i) => {
+              const listItemContent = listItem.children?.map((itemChild, j) => {
+                // Handle list-item-child or direct children
+                if (itemChild.type === "list-item-child") {
+                  return itemChild.children?.map((child, k) =>
+                    getContentFragment(k, child.text || "", child)
+                  );
+                } else {
+                  return getContentFragment(j, itemChild.text || "", itemChild);
+                }
+              });
+              return (
+                <li key={i} className="ml-4">
+                  {listItemContent}
+                </li>
+              );
+            })}
+          </ol>
+        );
+
       case "image":
         return (
           <img

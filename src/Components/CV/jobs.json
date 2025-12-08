@@ -26,15 +26,25 @@
         ]
     },
     {
-        "position": "React Developer",
-        "date": "2021 - Current",
+        "position": "Learning to code",
+        "date": "2021 - 2024",
         "company": "",
         "about": "With an emphasis on live data displays and graphs, react was the perfect option for me for a few reasons. The community is massive and information is freely available to those looking for it, I found learning about my mistakes from community members to be a vital part of my journey. Components and JSX made sense to me - complexity could come later. When I found out I could write declarative instead of imperative code, the world seemed to open up in front of me.",
         "duties": [
             "Collected and managed incoming data streams.",
             "Designed and tested dynamic and live graphs to show historical blockchain data.",
-            "Automated advanced trading processes via API.",
-            "Committed to several open source community projects."
+            "Automated advanced trading processes via API."
+        ]
+    },
+    {
+        "position": "React Developer",
+        "date": "2024 - current",
+        "company": "VIA Labs",
+        "about": "Joined VIA Labs to work on cross-chain infrastructure, developing user-facing applications that bridge the gap between multiple blockchain ecosystems. My focus has been on creating intuitive interfaces for complex multi-chain interactions, supporting both EVM and non-EVM networks including Midnight, Polkadot, Reef, Stellar and Solana.",
+        "duties": [
+            "Developed bridge frontend for ProtoUSD product, enabling USDC transfers across 15+ chains",
+            "Built unified wallet connection suite providing common interface for multiple blockchain wallets",
+            "Designed reusable component library to simplify cross-chain wallet integration"
         ]
     }
 ]

@@ -7,7 +7,7 @@
   {
     "year": "2022",
     "subject": "Three.js",
-    "about": "The next step in my crypto & coding journey was to start working with smart contracts and moving funds around the blockchain in a more automated manor. I used Solidity, Ethers and React to make a number of bots to automate tasks for myself and my friends using Crypto. I also made a few NFT collections and release a couple of ERC-20 tokens to become more proficient and feel the waters."
+    "about": "Explored 3D web graphics through Three.js, combining my interest in creative coding with basic Blender skills. While experimenting with a custom keyboard display project, I discovered React Three Fiber, which better aligned with my React workflow. Though I didn't complete any major projects, this exploration deepened my understanding of 3D rendering concepts and reinforced the importance of choosing the right tools for the job."
   },
   {
     "year": "2021",
@@ -28,18 +28,24 @@
     "year": "2019",
     "subject": "Javascript",
     "about": "I started learning javascript to try and automate some of my day to day tasks at work, this soon changed when the pandemic started and I became obsessed with all things crypto.",
-    "courses": ["Advent of code 2022"]
+    "courses": [
+      "Advent of code 2022-2025"
+    ]
   },
   {
     "year": "2018",
     "subject": "Python",
     "about": "I started learning javascript to try and automate some of my day to day tasks at work, this soon changed when the pandemic started and I became obsessed with all things crypto.",
-    "courses": ["Automate the Boring Stuff with Python"]
+    "courses": [
+      "Automate the Boring Stuff with Python"
+    ]
   },
   {
     "year": "2017",
     "subject": "SQL",
     "about": "This is where it all began. Our stock management system was lacking in reporting power and organisation. One day our server admin was in office and within minutes wrote an SQL query that created a report that we could not get using the stock management system. I started learning as much as I could about SQL and our database, within weeks I had learned an invaluable skill and could now collect data from our system like never before.",
-    "courses": [""]
+    "courses": [
+      "Learnt on the job"
+    ]
   }
 ]

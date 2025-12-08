@@ -65,7 +65,7 @@ const FAQ: React.FC = () => {
               className="flex w-full items-center justify-between px-4 py-3 text-left text-lg font-medium focus:outline-none"
               onClick={() => toggleFAQ(index)}
             >
-              <span>{faq.question}</span>
+              <span className="font-bold text-xl">{faq.question}</span>
               <span className="ml-6 flex-shrink-0">
                 {openIndex === index ? "−" : "+"}
               </span>

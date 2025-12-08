@@ -18,7 +18,7 @@ const Dropdown: React.FC<DropdownProps> = ({ language }) => {
         className={({ isActive }) =>
           isActive ? activeClassName : inActiveClassName
         }
-        to={`${language.slug}`}
+        to={`/blog/${language.slug}`}
       >
         {language.name}
       </NavLink>
@@ -33,7 +33,7 @@ const Dropdown: React.FC<DropdownProps> = ({ language }) => {
                   className={({ isActive }) =>
                     isActive ? activeClassName : inActiveClassName
                   }
-                  to={`${language.slug}/${category.slug}`}
+                  to={`/blog/${language.slug}/${category.slug}`}
                 >
                   <h1 className="">
                     {category.posts && (
@@ -52,7 +52,7 @@ const Dropdown: React.FC<DropdownProps> = ({ language }) => {
                           className={({ isActive }) =>
                             isActive ? activeClassName : inActiveClassName
                           }
-                          to={`${language.slug}/${category.slug}/${post.slug}`}
+                          to={`/blog/${language.slug}/${category.slug}/${post.slug}`}
                         >
                           <span>
                             &#8226;

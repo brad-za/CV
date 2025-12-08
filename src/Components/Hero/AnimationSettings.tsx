@@ -165,30 +165,6 @@ const AnimationSettings: React.FC<AnimationSettingsProps> = () => {
                 <h3 className="mb-2 text-center font-bold">
                   Screen Transition
                 </h3>
-                <div className="mb-2 flex justify-center space-x-2">
-                  <button
-                    type="button"
-                    className={`rounded px-3 py-1 ${
-                      moveVertically
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-700 text-gray-300"
-                    }`}
-                    onClick={() => setMoveVertically?.(!moveVertically)}
-                  >
-                    Vertical
-                  </button>
-                  <button
-                    type="button"
-                    className={`rounded px-3 py-1 ${
-                      moveHorizontally
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-700 text-gray-300"
-                    }`}
-                    onClick={() => setMoveHorizontally?.(!moveHorizontally)}
-                  >
-                    Horizontal
-                  </button>
-                </div>
                 <div className="flex justify-between space-x-2">
                   <p>Auto Vertical Animation</p>
                   <input
