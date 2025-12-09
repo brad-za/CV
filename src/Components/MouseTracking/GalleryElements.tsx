@@ -87,19 +87,28 @@ const GalleryElements: React.FC<GalleryElementsProps> = ({
       <FunCard mouseOverElementHandler={handleMouseOver} mobileOrder={10} />
       {/* <BlogCard mouseOverElementHandler={handleMouseOver} /> */}
       {/* CONTACT */}
-      <div
-        className="group"
-        onMouseOver={() => {
-          mouseOverElementHandler("call me ;)");
-        }}
-        onMouseOut={() => mouseOverElementHandler(null)}
-      >
-        <div className="bottom-[8%] right-[17%] block items-center justify-center overflow-hidden rounded-3xl bg-[#FF511B] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[20%]">
-          <div className="p-3 duration-200 group-hover:translate-y-[-100%]">
-            <p className="">CONTACT</p>
-          </div>
-        </div>
-      </div>
+      <GalleryCard
+        bottom="8%"
+        right="17%"
+        mdHeight="12%"
+        mdWidth="20%"
+        background="bg-[#FF511B]"
+        mouseOverElementHandler={handleMouseOver}
+        name="call me ;)"
+        label="CONTACT"
+        labelDirection="up"
+        mobileOrder={11}
+        menuItems={[
+          {
+            label: "Email",
+            externalHref: "mailto:br4ds1mon@gmail.com",
+          },
+          {
+            label: "Discord",
+            externalHref: "https://discord.com/users/202008244397277184",
+          },
+        ]}
+      />
     </div>
   );
 };
