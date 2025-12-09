@@ -20,9 +20,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         to={
           language
             ? category
-              ? `${post.slug}`
-              : `${post.categories[0].slug}/${post.slug}`
-            : `${post.language.slug}/${post.categories[0].slug}/${post.slug}`
+              ? `/blog/${language}/${category}/${post.slug}`
+              : `/blog/${language}/${post.categories[0].slug}/${post.slug}`
+            : `/blog/${post.language.slug}/${post.categories[0].slug}/${post.slug}`
         }
       />
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
@@ -38,9 +38,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           to={
             language
               ? category
-                ? `${post.slug}`
-                : `${post.categories[0].slug}/${post.slug}`
-              : `${post.language.slug}/${post.categories[0].slug}/${post.slug}`
+                ? `/blog/${language}/${category}/${post.slug}`
+                : `/blog/${language}/${post.categories[0].slug}/${post.slug}`
+              : `/blog/${post.language.slug}/${post.categories[0].slug}/${post.slug}`
           }
         >
           {post.title}

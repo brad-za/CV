@@ -132,19 +132,7 @@ const RichText: React.FC<RichTextProps> = ({
       case "class":
         if (obj?.className) {
           switch (obj.className) {
-            case "gist": {
-              return (
-                <IframeWrapper
-                  key={index}
-                  id={
-                    (obj.children &&
-                      obj.children[0].children &&
-                      obj.children[0].children[0].text) ||
-                    ""
-                  }
-                />
-              );
-            }
+            // gist case removed - react-gist dependency no longer supported
             default:
               if (obj.children && obj.children[0].type) {
                 switch (obj.children[0].type) {

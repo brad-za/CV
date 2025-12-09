@@ -38,7 +38,7 @@ const PostWidget: React.FC = () => {
       {relatedPosts.map((post) => {
         return (
           <Link
-            to={`${post.language.slug}/${post.categories[0].slug}/${post.slug}`}
+            to={`/blog/${post.language.slug}/${post.categories[0].slug}/${post.slug}`}
             key={post.title}
           >
             <div className="mb-4 flex w-full items-center rounded-lg p-3 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b]">
