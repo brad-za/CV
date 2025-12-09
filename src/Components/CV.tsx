@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 import Skills from "./Skills.tsx";
 import aboutMe from "./CV/aboutMe.json";
 import jobs from "./CV/jobs.json";
@@ -45,6 +46,7 @@ const CV: React.FC = () => {
   const [profileImageBase64, setProfileImageBase64] = useState<
     string | undefined
   >(undefined);
+  const location = useLocation();
 
   // Load profile image as base64 on mount
   useEffect(() => {
@@ -63,6 +65,20 @@ const CV: React.FC = () => {
     };
     loadImage();
   }, []);
+
+  // Handle hash navigation to scroll to sections
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        // Use setTimeout to ensure the page has loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const sectionRefs = useRef<{
     [key: string]: React.RefObject<HTMLHeadingElement>;
@@ -239,7 +255,10 @@ const CV: React.FC = () => {
               References
             </h1>
           </div>
-          <div className="md:col-span-2 md:my-10 md:mt-4 md:pl-6">
+          <div
+            id="references"
+            className="md:col-span-2 md:my-10 md:mt-4 md:pl-6"
+          >
             <h1 className="mb-6 text-center text-2xl font-bold underline md:hidden">
               References
             </h1>

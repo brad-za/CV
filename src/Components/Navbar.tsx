@@ -21,7 +21,7 @@ const Nav: React.FC<NavProps> = ({ className }) => {
   const menus: MenuItem[] = [
     { name: "Home", href: "/", id: "home", end: true },
     { name: "Blog", href: "/blog", id: "blog", end: false },
-    { name: "About me", href: "/CV", id: "cv", end: true },
+    { name: "CV", href: "/CV", id: "cv", end: true },
     // { name: "Balls", href: "/balls", id: "balls", end: true },
   ];
 

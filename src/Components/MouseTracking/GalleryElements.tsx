@@ -66,6 +66,7 @@ const GalleryElements: React.FC<GalleryElementsProps> = ({
   panAmount,
 }) => {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleMouseOver = (name: string): void => {
     setHoveredElement(name);
@@ -88,9 +89,9 @@ const GalleryElements: React.FC<GalleryElementsProps> = ({
       {/* <BlogCard mouseOverElementHandler={handleMouseOver} /> */}
       {/* CONTACT */}
       <GalleryCard
-        bottom="8%"
+        bottom="3%"
         right="17%"
-        mdHeight="12%"
+        mdHeight="17%"
         mdWidth="20%"
         background="bg-[#FF511B]"
         mouseOverElementHandler={handleMouseOver}
@@ -106,6 +107,13 @@ const GalleryElements: React.FC<GalleryElementsProps> = ({
           {
             label: "Discord",
             externalHref: "https://discord.com/users/202008244397277184",
+          },
+          {
+            label: "Refs",
+            onClick: () => {
+              mouseOverElementHandler(null);
+              navigate("/CV#references");
+            },
           },
         ]}
       />

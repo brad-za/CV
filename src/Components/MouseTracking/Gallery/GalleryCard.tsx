@@ -185,7 +185,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
     if (!menuItems) return null;
 
     return (
-      <div className="flex gap-6 md:gap-10 flex-col h-full w-full">
+      <div className="flex gap-2 md:gap-4 flex-col h-full w-full">
         {menuItems.map((item, index) => {
           const baseClasses = `flex items-center justify-center w-full h-full border-b-2 border-transparent ${TEXT_CLASSES.menu} hover:border-black`;
           const activeClasses = `flex items-center justify-center w-full h-full border-b-2 ${TEXT_CLASSES.menu} border-black`;
