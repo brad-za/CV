@@ -1,7 +1,7 @@
 import React, { ReactNode, useState, useRef, CSSProperties } from "react";
 import useWindowSize from "../../../Hooks/useWindowSize";
 import useInView from "../../../Hooks/useInView";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 type LabelDirection = "up" | "down" | "left" | "right";
 
@@ -44,8 +44,9 @@ interface GalleryCardProps {
     alt: string;
   };
 
-  // Link options (makes content clickable)
+  // Link options (makes entire card clickable)
   href?: string; // External link
+  to?: string; // Internal link (react-router)
 
   // Profile card option
   profileImage?: {
@@ -57,6 +58,9 @@ interface GalleryCardProps {
       isBirthday: boolean;
     };
   };
+
+  // Action button that slides in from the right when revealed
+  actionLabel?: string;
 }
 
 const getLabelAnimation = (direction: LabelDirection, isHovered: boolean) => {
@@ -93,7 +97,9 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
   content,
   menuItems,
   href,
+  to,
   profileImage,
+  actionLabel,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -390,8 +396,46 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
           </div>
         )}
 
+        {/* Action label - desktop: slides in styled button, mobile: touch me style */}
+        {actionLabel &&
+          (isMdBreakpoint ? (
+            <div
+              className={`
+                absolute bottom-2 right-2 z-20
+                ease duration-200
+                ${isRevealed ? "translate-x-0 opacity-100" : "translate-x-[150%] opacity-0"}
+              `}
+            >
+              <span className="text-sm font-semibold bg-black text-white px-2 py-1 rounded-lg">
+                {actionLabel}
+              </span>
+            </div>
+          ) : (
+            <div className="absolute bottom-2 right-2 z-20 pointer-events-none">
+              <span className="text-xs font-normal opacity-60 animate-pulse">
+                touch me
+              </span>
+            </div>
+          ))}
+
         {/* Card content */}
         <div className="relative h-full w-full">{renderCardContent()}</div>
+
+        {/* Full card clickable overlay for internal links */}
+        {to && (
+          <Link to={to} className="absolute inset-0 z-30" aria-label={name} />
+        )}
+
+        {/* Full card clickable overlay for external links */}
+        {href && (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-30"
+            aria-label={name}
+          />
+        )}
       </div>
     </div>
   );

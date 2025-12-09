@@ -26,6 +26,7 @@ const GithubCard: React.FC<GithubCardProps> = ({
     }}
     content="Take a look at my github profile and the way I like to code."
     href="https://github.com/brad-za"
+    actionLabel="Click me →"
   />
 );
 

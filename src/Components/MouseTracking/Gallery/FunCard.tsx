@@ -18,13 +18,14 @@ const FunCard: React.FC<FunCardProps> = ({
       mdWidth="10%"
       background="bg-[#df2b2b]"
       mouseOverElementHandler={mouseOverElementHandler}
-      name="Fun"
-      label="FUN"
-      labelDirection="left"
+      name="Desk"
+      label="DESK"
+      labelDirection="down"
       mobileOrder={mobileOrder}
-    >
-      <div />
-    </GalleryCard>
+      actionLabel="Click me →"
+      to="/blog/cad/hardware/standing-desk"
+      content="Check out my custom standing desk build!"
+    />
   );
 };
 
