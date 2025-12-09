@@ -69,8 +69,8 @@ const MouseTracking: React.FC = () => {
       <div
         className={`${showNavbar ? "pt-[135px]" : "pt-0"} transition-all duration-500`}
       >
-        {/* Mouse Ball */}
-        <div className="pointer-events-none z-30 cursor-none">
+        {/* Mouse Ball - hidden on mobile */}
+        <div className="pointer-events-none z-30 cursor-none hidden md:block">
           <div
             style={{
               mixBlendMode: "difference",

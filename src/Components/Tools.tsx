@@ -26,7 +26,7 @@ const Tools: React.FC<ToolsProps> = ({ col }) => {
     },
     {
       name: "CAD",
-      stars: 4,
+      stars: 3,
     },
     {
       name: "KiCad",
@@ -34,7 +34,7 @@ const Tools: React.FC<ToolsProps> = ({ col }) => {
     },
     {
       name: "Figma",
-      stars: 4,
+      stars: 3,
     },
     {
       name: "Docker",

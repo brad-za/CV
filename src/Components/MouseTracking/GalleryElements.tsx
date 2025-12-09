@@ -7,9 +7,9 @@ import TeamCard from "./Gallery/TeamCard";
 import ToolsCard from "./Gallery/ToolsCard";
 import QualityCard from "./Gallery/QualityCard";
 import BioCard from "./Gallery/BioCard";
-import BlogCard from "./Gallery/BlogCard";
 import NavCard from "./Gallery/NavCard";
 import MeCard from "./Gallery/MeCard";
+import GalleryCard from "./Gallery/GalleryCard";
 
 interface PanAmount {
   panX: number;
@@ -21,20 +21,12 @@ interface GalleryElementsProps {
   panAmount: PanAmount;
 }
 
-// Keyboard card that mirrors the GitHub card hover behavior
-import GalleryCard from "./Gallery/GalleryCard";
-// direct navigation to blog language routes
-
+// Keyboard card using prop-driven API
 const KeyboardCard: React.FC<{
   mouseOverElementHandler: (name: string | null) => void;
-}> = ({ mouseOverElementHandler }) => {
+  mobileOrder?: number;
+}> = ({ mouseOverElementHandler, mobileOrder }) => {
   const navigate = useNavigate();
-
-  const navigateToCategory = (categoryKey: string) => {
-    mouseOverElementHandler(null);
-    // Navigate directly to the language route as requested (e.g. /blog/zmk)
-    navigate(`/blog/${categoryKey}`);
-  };
 
   return (
     <GalleryCard
@@ -47,25 +39,25 @@ const KeyboardCard: React.FC<{
       name="Keyboard"
       label="KEYBOARD"
       labelDirection="up"
+      mobileOrder={mobileOrder}
       image={{ src: "/keyboard.svg", alt: "keyboard" }}
-    >
-      <div className="flex gap-2 flex-col h-full w-full">
-        <button
-          onMouseMove={() => mouseOverElementHandler(null)}
-          onClick={() => navigateToCategory("zmk")}
-          className="flex items-center justify-center w-full h-full border-b-2 border-transparent text-[3vmin] font-normal tracking-wider hover:border-black"
-        >
-          <span>ZMK</span>
-        </button>
-        <button
-          onMouseMove={() => mouseOverElementHandler(null)}
-          onClick={() => navigateToCategory("qmk")}
-          className="flex items-center justify-center w-full h-full border-b-2 border-transparent text-[3vmin] font-normal tracking-wider hover:border-black"
-        >
-          <span>QMK</span>
-        </button>
-      </div>
-    </GalleryCard>
+      menuItems={[
+        {
+          label: "ZMK",
+          onClick: () => {
+            mouseOverElementHandler(null);
+            navigate("/blog/zmk");
+          },
+        },
+        {
+          label: "QMK",
+          onClick: () => {
+            mouseOverElementHandler(null);
+            navigate("/blog/qmk");
+          },
+        },
+      ]}
+    />
   );
 };
 
@@ -81,20 +73,19 @@ const GalleryElements: React.FC<GalleryElementsProps> = ({
   };
 
   return (
-    <React.Fragment>
-      {/* [&>*]: is an arbitrary selector that styles all children */}
-      <NavCard mouseOverElementHandler={handleMouseOver} />
-      <SkillsCard mouseOverElementHandler={handleMouseOver} />
-      <FunCard mouseOverElementHandler={handleMouseOver} />
-      <GithubCard mouseOverElementHandler={handleMouseOver} />
-      <TeamCard mouseOverElementHandler={handleMouseOver} />
-      <ToolsCard mouseOverElementHandler={handleMouseOver} />
-      <QualityCard mouseOverElementHandler={handleMouseOver} />
-      <BioCard mouseOverElementHandler={handleMouseOver} />
-      <MeCard mouseOverElementHandler={handleMouseOver} />
+    <div className="flex flex-col gap-6 p-4 md:block md:p-0">
+      {/* Mobile: flex column with gaps. Desktop (md+): block layout, no gaps, absolute positioning takes over */}
+      <NavCard mouseOverElementHandler={handleMouseOver} mobileOrder={1} />
+      <MeCard mouseOverElementHandler={handleMouseOver} mobileOrder={2} />
+      <BioCard mouseOverElementHandler={handleMouseOver} mobileOrder={3} />
+      <SkillsCard mouseOverElementHandler={handleMouseOver} mobileOrder={4} />
+      <ToolsCard mouseOverElementHandler={handleMouseOver} mobileOrder={5} />
+      <GithubCard mouseOverElementHandler={handleMouseOver} mobileOrder={6} />
+      <KeyboardCard mouseOverElementHandler={handleMouseOver} mobileOrder={7} />
+      <QualityCard mouseOverElementHandler={handleMouseOver} mobileOrder={8} />
+      <TeamCard mouseOverElementHandler={handleMouseOver} mobileOrder={9} />
+      <FunCard mouseOverElementHandler={handleMouseOver} mobileOrder={10} />
       {/* <BlogCard mouseOverElementHandler={handleMouseOver} /> */}
-      {/* KEYBOARD chooser */}
-      <KeyboardCard mouseOverElementHandler={handleMouseOver} />
       {/* CONTACT */}
       <div
         className="group"
@@ -103,13 +94,13 @@ const GalleryElements: React.FC<GalleryElementsProps> = ({
         }}
         onMouseOut={() => mouseOverElementHandler(null)}
       >
-        <div className=" bottom-[8%] right-[17%]  block items-center justify-center overflow-hidden  rounded-3xl bg-[#FF511B] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[20%]">
-          <div className=" p-3 duration-200 group-hover:translate-y-[-100%]">
+        <div className="bottom-[8%] right-[17%] block items-center justify-center overflow-hidden rounded-3xl bg-[#FF511B] text-3xl font-extrabold text-black md:absolute md:h-[9%] md:w-[20%]">
+          <div className="p-3 duration-200 group-hover:translate-y-[-100%]">
             <p className="">CONTACT</p>
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

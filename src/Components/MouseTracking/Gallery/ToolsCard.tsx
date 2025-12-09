@@ -4,9 +4,13 @@ import GalleryCard from "./GalleryCard";
 
 interface ToolsCardProps {
   mouseOverElementHandler: (name: string | null) => void;
+  mobileOrder?: number;
 }
 
-const ToolsCard: React.FC<ToolsCardProps> = ({ mouseOverElementHandler }) => {
+const ToolsCard: React.FC<ToolsCardProps> = ({
+  mouseOverElementHandler,
+  mobileOrder,
+}) => {
   return (
     <GalleryCard
       bottom="10%"
@@ -18,6 +22,7 @@ const ToolsCard: React.FC<ToolsCardProps> = ({ mouseOverElementHandler }) => {
       name="Tools"
       label="TOOLS"
       labelDirection="right"
+      mobileOrder={mobileOrder}
     >
       <Tools col />
     </GalleryCard>

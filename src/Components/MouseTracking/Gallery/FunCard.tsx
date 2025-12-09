@@ -3,9 +3,13 @@ import GalleryCard from "./GalleryCard";
 
 interface FunCardProps {
   mouseOverElementHandler: (name: string | null) => void;
+  mobileOrder?: number;
 }
 
-const FunCard: React.FC<FunCardProps> = ({ mouseOverElementHandler }) => {
+const FunCard: React.FC<FunCardProps> = ({
+  mouseOverElementHandler,
+  mobileOrder,
+}) => {
   return (
     <GalleryCard
       right="24%"
@@ -17,6 +21,7 @@ const FunCard: React.FC<FunCardProps> = ({ mouseOverElementHandler }) => {
       name="Fun"
       label="FUN"
       labelDirection="left"
+      mobileOrder={mobileOrder}
     >
       <div />
     </GalleryCard>
