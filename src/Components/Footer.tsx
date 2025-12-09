@@ -15,12 +15,12 @@ const Footer: React.FC = () => {
       <div className=" grid grid-flow-row content-center gap-2 md:grid-flow-col md:content-start">
         <Twitter
           colour="black"
-          href="https://twitter.com/chip_dao"
+          href="https://x.com/streetRAT_za"
           className="h-[30px]"
         />
         <Discord
           colour="black"
-          href="https://discord.gg/MpVZf9dRNz"
+          href="https://discord.com/users/202008244397277184"
           className="h-[30px]"
         />
       </div>
