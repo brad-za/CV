@@ -15,11 +15,11 @@ const PostDetails: React.FC<PostDetailsProps> = ({
 }) => {
   return (
     <div className="bg-emerald- md:justify- flex justify-center  text-left ">
-      <div className="px- mb-16 ">
+      <div className="px- mb-16 w-full">
         {posts.map((post) => (
           <div
             key={post.title}
-            className="bg-lime- mb-8 flex flex-col items-center justify-center  rounded-lg bg-[#94939314] p-2 pb-12 shadow-lg md:max-w-[750px] lg:max-w-[950px] lg:p-8"
+            className="bg-lime- mb-8 flex flex-col items-center justify-center  rounded-lg bg-[#94939314] p-2 pb-12 shadow-lg w-full md:max-w-[750px] lg:max-w-[950px] lg:p-8"
           >
             <div className=" relative mb-6 shadow-md">
               <img
@@ -28,7 +28,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
                 className="h-full w-[0px] rounded-t-lg object-top md:w-full"
               />
             </div>
-            <div className=" bg-orange- px-4 lg:px-0">
+            <div className=" bg-orange- px-2 md:px-4 lg:px-0">
               {/* <div className=" flex w-full items-center"> */}
               {/* author section */}
               <div className="bg-yellow- block w-full items-center justify-center text-center lg:flex">

@@ -27,7 +27,7 @@ const Article: React.FC<ArticleProps> = ({ setTableOfContents }) => {
   }, [post]);
 
   return (
-    <div className="mb-8 overflow-x-hidden">
+    <div className="mb-8 overflow-x-hidden w-full">
       <PostDetail posts={posts} setTableOfContents={setTableOfContents} />
       <Author />
     </div>

@@ -11,8 +11,8 @@ interface WidgetsProps {
 
 const Widgets: React.FC<WidgetsProps> = ({ tableOfContents }) => {
   return (
-    <div className="relaive top-8 flex md:justify-start lg:sticky ">
-      <div className="  ">
+    <div className="relaive top-8 flex md:justify-start lg:sticky w-full">
+      <div className="w-full">
         <TableOfContent tableOfContents={tableOfContents} />
         <PostWidget />
         <CategoriesWidget />

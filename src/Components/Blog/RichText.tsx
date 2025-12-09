@@ -333,55 +333,59 @@ const RichText: React.FC<RichTextProps> = ({
   };
 
   return (
-    <div className=" bg-red- flex flex-col-reverse items-start p-10">
-      <div className="bg-green- md:justify- flex  w-full flex-col">
-        {contents.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemindex) =>
-            getContentFragment(itemindex, item.text || "", item)
-          );
-
-          return getContentFragment(index, children, typeObj, typeObj.type);
-        })}
-      </div>
-
-      {tableOfContents.length ? (
-        <div className="m-3 mb-10 max-w-[50%] rounded-xl bg-[#ffffff14] p-5">
-          <h1 className="mb-2 text-lg font-bold underline underline-offset-2">
-            Table of contents
-          </h1>
-          <ol className="text-sm">
-            {tableOfContents.map((content, i) => {
-              return (
-                <li
-                  key={i}
-                  style={{
-                    marginLeft: content.indent * 17.5,
-                  }}
-                  className={` underline-white break-words rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
-                >
-                  <Link
-                    onClick={() => {
-                      const anchorId = document.getElementById(content.id);
-                      if (anchorId) {
-                        anchorId.scrollIntoView({
-                          behavior: "smooth",
-                          block: "center",
-                          inline: "nearest",
-                        });
-                      }
-                    }}
-                    to={`#${content.id}`}
-                  >
-                    {content.text}
-                  </Link>
-                </li>
+    <div className="flex justify-center w-full">
+      <div className="w-full md:max-w-[750px] lg:max-w-[950px]">
+        <div className="flex flex-col-reverse items-start p-2 md:p-10">
+          <div className="flex w-full flex-col">
+            {contents.map((typeObj, index) => {
+              const children = typeObj.children.map((item, itemindex) =>
+                getContentFragment(itemindex, item.text || "", item)
               );
+
+              return getContentFragment(index, children, typeObj, typeObj.type);
             })}
-          </ol>
+          </div>
+
+          {tableOfContents.length ? (
+            <div className="m-3 mb-10 w-full rounded-xl bg-[#ffffff14] p-5">
+              <h1 className="mb-2 text-lg font-bold underline underline-offset-2">
+                Table of contents
+              </h1>
+              <ol className="text-sm">
+                {tableOfContents.map((content, i) => {
+                  return (
+                    <li
+                      key={i}
+                      style={{
+                        marginLeft: content.indent * 17.5,
+                      }}
+                      className={` underline-white break-words rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
+                    >
+                      <Link
+                        onClick={() => {
+                          const anchorId = document.getElementById(content.id);
+                          if (anchorId) {
+                            anchorId.scrollIntoView({
+                              behavior: "smooth",
+                              block: "center",
+                              inline: "nearest",
+                            });
+                          }
+                        }}
+                        to={`#${content.id}`}
+                      >
+                        {content.text}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
-      ) : (
-        <></>
-      )}
+      </div>
     </div>
   );
 };

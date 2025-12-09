@@ -19,7 +19,7 @@ const TableOfContent: React.FC<TableOfContentProps> = ({ tableOfContents }) => {
   return (
     <>
       {tableOfContents.length && loc.length == 5 ? (
-        <div className="mb-8 max-w-xs rounded-lg bg-[#ffffff14] p-4 text-left text-chipWhite shadow-lg max-h-[80vh] flex flex-col">
+        <div className="mb-8 w-full md:max-w-xs rounded-lg bg-[#ffffff14] p-3 md:p-4 text-left text-chipWhite shadow-lg max-h-[80vh] flex flex-col">
           <h3 className="mb-3 border-b pb-3 text-base font-semibold">
             Table of content
           </h3>
