@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@theme {
+  --animate-scrollWheel: scrollWheel 2s infinite;
+
+  @keyframes scrollWheel {
+    0% {
+      transform: translateY(0%);
+      opacity: 100%;
+    }
+    100% {
+      transform: translateY(500%);
+      opacity: 20%;
+    }
+  }
+}
+
 body {
   background: no-repeat;
   background-attachment: fixed;

@@ -41,7 +41,11 @@ const Skills: React.FC<SkillsProps> = ({ col }) => {
       stars: 4,
     },
     {
-      name: "JavaScript",
+      name: "JS",
+      stars: 4,
+    },
+    {
+      name: "TS",
       stars: 4,
     },
     {
@@ -69,7 +73,7 @@ const Skills: React.FC<SkillsProps> = ({ col }) => {
             }`}
           >
             <p>{skill.name}</p>
-            <StarRating stars={skill.stars} />
+            <StarRating stars={skill.stars} compact={col} />
           </li>
         ))}
       </ul>

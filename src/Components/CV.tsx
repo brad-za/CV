@@ -87,13 +87,12 @@ const CV: React.FC = () => {
       education,
       jobs,
       personalInfo,
-      profileImageBase64,
-      references
+      profileImageBase64
     );
   };
 
   return (
-    <div className="mx-28 my-10 w-2/3 p-4">
+    <div className="mx-4 my-10 w-full p-4 md:mx-28 md:w-2/3">
       {/* Export PDF Button */}
       <div className="mb-8 flex justify-end">
         <button
@@ -103,127 +102,158 @@ const CV: React.FC = () => {
           Export as PDF
         </button>
       </div>
-      <div className=" grid  grid-cols-3  gap-4 gap-y-32 ">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4 md:gap-y-32">
         {/* About Me */}
-        <div className="relative col-span-1 border-r-2">
-          <h1
-            ref={sectionRefs.current["About Me"]}
-            className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
-          >
-            About Me
-          </h1>
-        </div>
-        <div className="bg-red-  col-span-2 my-10 mt-4 p-4 pl-6">
-          <div className="p-4">
-            {aboutMe.map((paragraph: string) => (
-              <div key={paragraph}>
-                {paragraph}
-                <br />
-                <br />
-              </div>
-            ))}
-            <p>
-              Please explore my{" "}
-              <a
-                className="text-blue-500"
-                target="_blank"
-                href="https://github.com/brad-za"
-              >
-                github
-              </a>{" "}
-              profile to see some of the work I have done and the progress I
-              have made in my coding journey.
-            </p>
-            <br />
-            <p>
-              I am especially happy with my performance in the 2022 Advent of
-              Code challenge,{" "}
-              <a
-                className="text-blue-500"
-                target="_blank"
-                href="https://github.com/brad-za/AOC"
-              >
-                found here
-              </a>
-            </p>
+        <div className="col-span-1 md:col-span-3 md:contents">
+          <div className="relative hidden md:col-span-1 md:block md:border-r-2">
+            <h1
+              ref={sectionRefs.current["About Me"]}
+              className="sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+            >
+              About Me
+            </h1>
+          </div>
+          <div className="md:col-span-2 md:my-10 md:mt-4 md:pl-6">
+            <h1 className="mb-6 text-center text-2xl font-bold underline md:hidden">
+              About Me
+            </h1>
+            <div className="p-4">
+              {aboutMe.map((paragraph: string) => (
+                <div key={paragraph}>
+                  {paragraph}
+                  <br />
+                  <br />
+                </div>
+              ))}
+              <p>
+                Please explore my{" "}
+                <a
+                  className="text-blue-500"
+                  target="_blank"
+                  href="https://github.com/brad-za"
+                >
+                  github
+                </a>{" "}
+                profile to see some of the work I have done and the progress I
+                have made in my coding journey.
+              </p>
+              <br />
+              <p>
+                I am especially happy with my performance in the 2022 Advent of
+                Code challenge,{" "}
+                <a
+                  className="text-blue-500"
+                  target="_blank"
+                  href="https://github.com/brad-za/AOC"
+                >
+                  found here
+                </a>
+              </p>
+            </div>
           </div>
         </div>
         <Seperator />
         {/* Technical Profile */}
-        <div className="relative col-span-1 border-r-2">
-          <h1
-            ref={sectionRefs.current["Technical Profile"]}
-            className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
-          >
-            Technical Profile
-          </h1>
-        </div>
-        <div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
-          <div className="p-4">
-            <Skills col={false} />
+        <div className="col-span-1 md:col-span-3 md:contents">
+          <div className="relative hidden md:col-span-1 md:block md:border-r-2">
+            <h1
+              ref={sectionRefs.current["Technical Profile"]}
+              className="sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+            >
+              Technical Profile
+            </h1>
+          </div>
+          <div className="md:col-span-2 md:my-10 md:mt-4 md:pl-6">
+            <h1 className="mb-6 text-center text-2xl font-bold underline md:hidden">
+              Technical Profile
+            </h1>
+            <div className="p-4">
+              <Skills col={false} />
+            </div>
           </div>
         </div>
         <Seperator />
         {/* Education */}
-        <div className="relative col-span-1 border-r-2">
-          <h1
-            ref={sectionRefs.current["Education"]}
-            className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
-          >
-            Education
-          </h1>
-        </div>
-        <div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
-          {education.map((topic: any, idx: number) => (
-            <div key={idx} className="bg-fuchsia- my-10 p-4">
-              <Heading position={topic.subject} date={topic.year} />
-              <div className="px-2">
-                <p>{topic.about}</p>
-                {topic.courses && <List items={topic.courses} />}
-              </div>
+        <div className="col-span-1 md:col-span-3 md:contents">
+          <div className="relative hidden md:col-span-1 md:block md:border-r-2">
+            <h1
+              ref={sectionRefs.current["Education"]}
+              className="sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+            >
+              Education
+            </h1>
+          </div>
+          <div className="md:col-span-2 md:my-10 md:mt-4 md:pl-6">
+            <h1 className="mb-6 text-center text-2xl font-bold underline md:hidden">
+              Education
+            </h1>
+            <div className="p-4">
+              {education.map((topic: any, idx: number) => (
+                <div key={idx} className="bg-fuchsia- my-10 p-4">
+                  <Heading position={topic.subject} date={topic.year} />
+                  <div className="px-2">
+                    <p>{topic.about}</p>
+                    {topic.courses && <List items={topic.courses} />}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
         <Seperator />
         {/* Work History */}
-        <div className="relative col-span-1 border-r-2">
-          <h1
-            ref={sectionRefs.current["Work History"]}
-            className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
-          >
-            Work History
-          </h1>
-        </div>
-        <div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
-          {jobs.map((job: any, idx: number) => (
-            <div key={idx} className="gap-y- m- bg-fuchsia- my-10 p-4">
-              <Heading position={job.position} date={job.date} />
+        <div className="col-span-1 md:col-span-3 md:contents">
+          <div className="relative hidden md:col-span-1 md:block md:border-r-2">
+            <h1
+              ref={sectionRefs.current["Work History"]}
+              className="sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+            >
+              Work History
+            </h1>
+          </div>
+          <div className="md:col-span-2 md:my-10 md:mt-4 md:pl-6">
+            <h1 className="mb-6 text-center text-2xl font-bold underline md:hidden">
+              Work History
+            </h1>
+            <div className="p-4">
+              {jobs.map((job: any, idx: number) => (
+                <div key={idx} className="gap-y- m- bg-fuchsia- my-10 p-4">
+                  <Heading position={job.position} date={job.date} />
 
-              <p className="bg-gray- pb-3 pl-3 italic">{job.company}</p>
-              <p className="bg-red-">{job.about}</p>
-              <List items={job.duties} />
+                  <p className="bg-gray- pb-3 pl-3 italic">{job.company}</p>
+                  <p className="bg-red-">{job.about}</p>
+                  <List items={job.duties} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
         <Seperator />
         {/* References */}
-        <div className="relative col-span-1 border-r-2">
-          <h1
-            ref={sectionRefs.current["References"]}
-            className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
-          >
-            References
-          </h1>
-        </div>
-        <div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
-          {references.map((ref: any, idx: number) => (
-            <div key={idx} className="gap-y- m- bg-fuchsia- my-4 p-4">
-              <p className="font-semibold">{ref.name}</p>
-              <a className="text-blue-500" href={`mailto:${ref.email}`}>
-                {ref.email}
-              </a>
+        <div className="col-span-1 md:col-span-3 md:contents">
+          <div className="relative hidden md:col-span-1 md:block md:border-r-2">
+            <h1
+              ref={sectionRefs.current["References"]}
+              className="sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+            >
+              References
+            </h1>
+          </div>
+          <div className="md:col-span-2 md:my-10 md:mt-4 md:pl-6">
+            <h1 className="mb-6 text-center text-2xl font-bold underline md:hidden">
+              References
+            </h1>
+            <div className="p-4">
+              {references.map((ref: any, idx: number) => (
+                <div key={idx} className="gap-y- m- bg-fuchsia- my-4 p-4">
+                  <p className="font-semibold">{ref.name}</p>
+                  <a className="text-blue-500" href={`mailto:${ref.email}`}>
+                    {ref.email}
+                  </a>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 

@@ -24,7 +24,7 @@ const NavCard: React.FC<NavCardProps> = ({
     menuItems={[
       { label: "Home", href: "/", end: true },
       { label: "Blog", href: "/blog" },
-      { label: "About me", href: "/CV", end: true },
+      { label: "CV", href: "/CV", end: true },
     ]}
   />
 );

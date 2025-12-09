@@ -33,7 +33,12 @@ const AnimationWindow: React.FC<AnimationWindowProps> = ({
           className={`flex content-center items-center justify-center rounded-xl duration-[2000ms] ease-in-out ${windowSize}`}
         >
           <div
-            className={`absolute bottom-0 right-0 rounded-br-lg bg-yellow-400 px-8 py-6`}
+            className={`absolute bottom-0 right-0 z-50 cursor-pointer rounded-br-lg bg-yellow-400 px-8 py-6 transition-all hover:bg-yellow-300`}
+            onClick={() => {
+              document.getElementById("cv-section")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
           >
             <p className="text-2xl font-bold text-black">scroll</p>
           </div>

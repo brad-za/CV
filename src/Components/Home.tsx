@@ -8,7 +8,7 @@ import CV from "./CV.tsx";
 
 const Home: React.FC = () => {
   return (
-    <div className="flex flex-col content-center items-center justify-center pt-20">
+    <div className="flex flex-col content-center items-center justify-center">
       <Hero />
 
       <Seperator />

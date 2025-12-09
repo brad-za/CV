@@ -13,7 +13,7 @@ interface Tool {
 const Tools: React.FC<ToolsProps> = ({ col }) => {
   const tools: Tool[] = [
     {
-      name: "Visual Studio Code",
+      name: "VSC",
       stars: 4,
     },
     {
@@ -61,7 +61,7 @@ const Tools: React.FC<ToolsProps> = ({ col }) => {
             }`}
           >
             <p>{tool.name}</p>
-            <StarRating stars={tool.stars} />
+            <StarRating stars={tool.stars} compact={col} />
           </li>
         ))}
       </ul>
