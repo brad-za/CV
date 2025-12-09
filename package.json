@@ -21,6 +21,8 @@
     "graphql-request": "^7.1.2",
     "gsap": "^3.11.4",
     "html-react-parser": "^5.2.2",
+    "jspdf": "^3.0.4",
+    "jspdf-autotable": "^5.0.2",
     "leva": "^0.10.0",
     "moment": "^2.29.4",
     "postcss": "^8.4.27",
