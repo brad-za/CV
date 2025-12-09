@@ -1,6 +1,5 @@
 import React from "react";
 import { HashRouter } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 import Routes from "./Routes.tsx";
 
 interface AppProps {
@@ -10,11 +9,9 @@ interface AppProps {
 function App({ tab }: AppProps) {
   return (
     <React.StrictMode>
-      <HelmetProvider>
-        <HashRouter>
-          <Routes />
-        </HashRouter>
-      </HelmetProvider>
+      <HashRouter>
+        <Routes />
+      </HashRouter>
     </React.StrictMode>
   );
 }
