@@ -5,6 +5,7 @@ import Skills from "./Skills.tsx";
 import aboutMe from "./CV/aboutMe.json";
 import jobs from "./CV/jobs.json";
 import education from "./CV/education.json";
+import references from "./CV/references.json";
 import Seperator from "./Seperator.tsx";
 import Heading from "./CV/Heading.tsx";
 import List from "./CV/List.tsx";
@@ -70,6 +71,7 @@ const CV: React.FC = () => {
     "Technical Profile": useRef(null),
     Education: useRef(null),
     "Work History": useRef(null),
+    References: useRef(null),
   });
 
   const handleClick = (section: string): void => {
@@ -85,7 +87,8 @@ const CV: React.FC = () => {
       education,
       jobs,
       personalInfo,
-      profileImageBase64
+      profileImageBase64,
+      references
     );
   };
 
@@ -199,6 +202,26 @@ const CV: React.FC = () => {
               <p className="bg-gray- pb-3 pl-3 italic">{job.company}</p>
               <p className="bg-red-">{job.about}</p>
               <List items={job.duties} />
+            </div>
+          ))}
+        </div>
+        <Seperator />
+        {/* References */}
+        <div className="relative col-span-1 border-r-2">
+          <h1
+            ref={sectionRefs.current["References"]}
+            className="bg-whit sticky top-1/2 -translate-y-1/2 transform text-xl font-bold underline"
+          >
+            References
+          </h1>
+        </div>
+        <div className="bg-red- col-span-2 my-10 mt-4 p-4 pl-6">
+          {references.map((ref: any, idx: number) => (
+            <div key={idx} className="gap-y- m- bg-fuchsia- my-4 p-4">
+              <p className="font-semibold">{ref.name}</p>
+              <a className="text-blue-500" href={`mailto:${ref.email}`}>
+                {ref.email}
+              </a>
             </div>
           ))}
         </div>

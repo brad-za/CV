@@ -30,6 +30,11 @@ interface Job {
   duties: string[];
 }
 
+interface Reference {
+  name: string;
+  email: string;
+}
+
 // Draw star rating as graphics - returns a function that draws to the PDF
 const drawStarRating = (
   doc: jsPDF,
@@ -81,7 +86,8 @@ export const generateCV = (
   education: Education[],
   jobs: Job[],
   personalInfo: PersonalInfo,
-  profileImageBase64?: string
+  profileImageBase64?: string,
+  references?: Reference[]
 ): void => {
   try {
     console.log("Generating CV PDF...");
@@ -138,10 +144,19 @@ export const generateCV = (
       yPosition + 26
     );
 
-    // GitHub link
+    // GitHub link (clickable)
     if (personalInfo.github) {
       doc.setTextColor(52, 152, 219);
-      doc.text(`GitHub: ${personalInfo.github}`, textStartX, yPosition + 33);
+      doc.text("GitHub: ", textStartX, yPosition + 33);
+      const githubLabelWidth = doc.getTextWidth("GitHub: ");
+      doc.textWithLink(
+        personalInfo.github,
+        textStartX + githubLabelWidth,
+        yPosition + 33,
+        {
+          url: `https://${personalInfo.github}`,
+        }
+      );
     }
 
     yPosition += headerHeight + 10;
@@ -319,6 +334,38 @@ export const generateCV = (
 
       yPosition += 8;
     });
+
+    // References Section
+    if (references && references.length > 0) {
+      if (yPosition > 240) {
+        doc.addPage();
+        yPosition = 20;
+      }
+      addSectionTitle("References");
+
+      references.forEach((ref) => {
+        if (yPosition > 270) {
+          doc.addPage();
+          yPosition = 20;
+        }
+
+        // Reference name
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(44, 62, 80);
+        doc.text(ref.name, margin, yPosition);
+        yPosition += 6;
+
+        // Reference email (clickable)
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(52, 152, 219);
+        doc.textWithLink(ref.email, margin, yPosition, {
+          url: `mailto:${ref.email}`,
+        });
+        yPosition += 10;
+      });
+    }
 
     // Save the PDF
     console.log("Saving PDF...");
