@@ -345,11 +345,11 @@ const RichText: React.FC<RichTextProps> = ({
       </div>
 
       {tableOfContents.length ? (
-        <div className="m-3 mb-10 rounded-xl bg-[#ffffff14] p-5">
-          <h1 className="mb-2 text-xl font-bold underline underline-offset-2">
+        <div className="m-3 mb-10 max-w-[50%] rounded-xl bg-[#ffffff14] p-5">
+          <h1 className="mb-2 text-lg font-bold underline underline-offset-2">
             Table of contents
           </h1>
-          <ol>
+          <ol className="text-sm">
             {tableOfContents.map((content, i) => {
               return (
                 <li
@@ -357,7 +357,7 @@ const RichText: React.FC<RichTextProps> = ({
                   style={{
                     marginLeft: content.indent * 17.5,
                   }}
-                  className={` underline-white rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
+                  className={` underline-white break-words rounded-lg p-2 duration-500 ease-in hover:-translate-y-1 hover:scale-105 hover:bg-[#9b99995b] hover:underline`}
                 >
                   <Link
                     onClick={() => {

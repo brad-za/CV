@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Whitelogo from "../assets/chip/whiteLogo.jsx";
-import Clogo from "../assets/chip/clogo.jsx";
+import homeSvg from "../assets/home.svg";
 import Iconclose from "../assets/nav/icon-close.jsx";
 import Iconburger from "../assets/nav/icon-hamburger.jsx";
 
@@ -41,8 +40,9 @@ const Nav: React.FC<NavProps> = ({ className }) => {
         {open ? <Iconclose /> : <Iconburger />}
       </div>
       <span className="h-full">
-        <Clogo className="flex pb-10 md:hidden" />
-        <Whitelogo className="mt-2 hidden md:flex" />
+        <a href="/" aria-label="Home">
+          <img src={homeSvg} alt="Home" className="h-12 md:h-16" />
+        </a>
       </span>
 
       <ul
